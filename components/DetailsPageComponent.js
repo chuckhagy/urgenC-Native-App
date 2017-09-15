@@ -15,7 +15,7 @@ export default class DetailsPageComponent extends React.Component {
           <Right />
         </Header>
       <Content>
-        <DetailsPageLayout props={this.props} />
+        <DetailsPageLayout item={this.props} />
       </Content>
     </Container>
     );

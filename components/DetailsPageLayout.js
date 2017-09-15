@@ -9,7 +9,7 @@ export default class DetailsPageLayout extends Component {
     render() {
         return (
             <Content>
-              <DetailsComponent props={this.props} />
+              <DetailsComponent item={this.props.item} />
             </Content>
         )
     }

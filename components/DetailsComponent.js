@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Body, Text, H2 } from 'native-base';
 
 
 
@@ -8,19 +8,17 @@ export default class DetailsComponent extends React.Component{
     bodyVisibile: false
   }
   render(){
-    let items = this.props.items
     return(
       <Content>
         <Card>
           <CardItem>
             <Body>
-              <Text>{this.props.props.props.title}</Text>
-              <Text>Note</Text>
-              <Text>Due</Text>
-              <Text>Stars</Text>
-              <Text>Stats</Text>
-              <Text>Edit</Text>
-              <Text>Delete</Text>
+              <Text>{this.props.item.title}</Text>
+              <Text>BODY: {this.props.item.body}</Text>
+              <Text>DUE: {this.props.item.duedate}</Text>
+              <Text>PRIORITY: {this.props.item.priority}</Text>
+              <H2>Edit</H2>
+              <H2>Delete</H2>
            </Body>
           </CardItem>
         </Card>

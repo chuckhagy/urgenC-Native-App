@@ -20,7 +20,7 @@ render(){
       <Card>
         <CardItem >
           <Body>
-            <H1  onPress={() => Actions.details({title: 'THIS IS A PROP FROM THE CARD!!!'}) }>{items.title}</H1>
+            <H1  onPress={() => Actions.details(items) }>{items.title}</H1>
             <Text>{items.body}</Text>
             <Text>DUE: {items.duedate}</Text>
             <Text>Stars: {items.priority}</Text>

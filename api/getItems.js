@@ -1,5 +1,5 @@
 export default function getItems(){
-  console.log('FETCH<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+  console.log('FETCHING NOW...')
   return fetch("https://api.airtable.com/v0/appXOOiOxSZATJHhu/items", {
     headers:{
       Authorization: "Bearer keyguaiAIUYZl6jYN",
