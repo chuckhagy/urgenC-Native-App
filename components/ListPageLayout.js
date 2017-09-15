@@ -1,0 +1,47 @@
+import React, { Component } from 'react'
+import { ListView, View } from  'react-native'
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+
+import ListItemComponent from './ListItemComponent'
+
+const rowHasChanged = (r1, r2) => r1.id !== r2.id;
+const ds = new ListView.DataSource({rowHasChanged});
+
+export default class ListPageLayout extends Component {
+  //   state = {
+  //       dataSource: ds.cloneWithRows(this.props.items)
+  //   };
+  // 
+  //   renderRow = (rowData) => {
+  //       return (          
+  //         <ListItemComponent items={rowData} />
+  //       )
+  //   }
+  // 
+  //   componentWillReceiveProps (newProps) {
+  //       if (newProps.items !== this.props.items) {
+  //           this.setState({
+  //               dataSource: this.state.dataSource.cloneWithRows(newProps.items)
+  //           })
+  //       }
+  //   }
+  // 
+  // render() {
+  //   console.log(this.props, "<<<< props 3 levels in") 
+  // 
+  //       return (
+  //           <Content>
+  //             <ListView
+  //                 dataSource={this.state.dataSource}
+  //                 renderRow={this.renderRow}
+  //                 enableEmptySections={true}
+  //             />
+  //           </Content>
+  //       )
+  //   }
+  render(){
+    return <ListItemComponent />  
+  }
+}
+
+
