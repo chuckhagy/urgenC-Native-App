@@ -5,8 +5,10 @@ export default function rootReducer(
   action
 ) {
   switch (action.type) {
-    case "X":
-      return {};
+    case "GET_ITEMS":
+      return {
+        items: action.items
+      };
 
     default:
       return currentState;

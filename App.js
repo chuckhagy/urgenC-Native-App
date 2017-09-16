@@ -38,8 +38,8 @@ import {
   Lightbox
 } from "react-native-router-flux";
 
-// import setupStore from './redux/setupStore'
-// const store = setupStore();
+import setupStore from "./redux/setupStore";
+const store = setupStore();
 
 export default class App extends React.Component {
   state = {
