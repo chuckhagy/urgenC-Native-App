@@ -54,13 +54,11 @@ export default class App extends React.Component {
       this.setState({
         items: newItems
       });
-      console.log(this.state.items, " <<< TOP LEVEL STATE");
       Actions.pop({ refresh: { items: this.state.items } });
     });
   }
 
   render() {
-    console.log(this.state.items);
     return (
       <Router>
         <Stack key="root">
