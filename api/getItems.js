@@ -1,5 +1,4 @@
 import env from "./env";
-console.log(env);
 export default function getItems() {
   console.log("FETCHING NOW...");
   return fetch(

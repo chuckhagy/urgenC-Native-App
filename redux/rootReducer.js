@@ -1,9 +1,4 @@
-export default function rootReducer(
-  currentState = {
-    items: []
-  },
-  action
-) {
+export default function rootReducer(currentState = { items: [] }, action) {
   switch (action.type) {
     case "GET_ITEMS":
       return {

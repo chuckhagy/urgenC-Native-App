@@ -15,7 +15,6 @@ import {
   Text
 } from "native-base";
 
-//functionalComponent
 const ListPageComponent = ({ items }) =>
   <Container>
     <Content>
