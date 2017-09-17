@@ -1,29 +1,42 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React from "react";
+import { Text } from "react-native";
 
-import { storiesOf } from '@storybook/react-native';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from "@storybook/react-native";
+import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
 
-import Button from './Button';
-import CenterView from './CenterView';
-import Welcome from './Welcome';
+import Button from "./Button";
+import ListItemComponent from "../../components/ListItemComponent";
+import CenterView from "./CenterView";
+import Welcome from "./Welcome";
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf("Welcome", module).add("to Storybook", () =>
+  <Welcome showApp={linkTo("Button")} />
+);
 
-storiesOf('Button', module)
-  .addDecorator(getStory =>
-    <CenterView>
-      {getStory()}
-    </CenterView>
-  )
-  .add('with text', () =>
-    <Button onPress={action('clicked-text')}>
-      <Text>Hello Button</Text>
-    </Button>
-  )
-  .add('with some emoji', () =>
-    <Button onPress={action('clicked-emoji')}>
-      <Text>😀 😎 👍 💯</Text>
-    </Button>
-  );
+storiesOf("ListItemComponent", module).add("Happy Path", () =>
+  <ListItemComponent
+    items={{
+      id: "1",
+      title: "Go to Gym",
+      body: "Three times per week with trainer",
+      completed: false,
+      success: false,
+      priority: "3",
+      duedate: "17-09-20",
+      createdate: "2017-09-08T02:27:04.000Z"
+    }}
+  />
+);
+// <ListItemComponent
+// items={{
+//   id: "1",
+//   title: "Test Title",
+//   body: "Test Body",
+//   completed: false,
+//   success: false,
+//   priority: "3",
+//   duedate: "17-09-20",
+//   createdate: "2017-09-08T02:27:04.000Z"
+// }}
+// />;
