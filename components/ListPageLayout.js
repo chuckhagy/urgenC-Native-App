@@ -46,7 +46,6 @@ export default class ListPageLayout extends Component {
           renderRow={this.renderRow}
           enableEmptySections={true}
         />
-        <Text>Hi there</Text>
       </Content>
     );
   }
