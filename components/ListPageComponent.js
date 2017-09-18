@@ -15,10 +15,10 @@ import {
   Text
 } from "native-base";
 
-const ListPageComponent = ({ items }) =>
+const ListPageComponent = props =>
   <Container>
     <Content>
-      <ListPageLayout items={items} />
+      <ListPageLayout items={props.items} props={props} />
     </Content>
   </Container>;
 export default ListPageComponent;

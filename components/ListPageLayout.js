@@ -27,7 +27,7 @@ export default class ListPageLayout extends Component {
   };
 
   renderRow = rowData => {
-    return <ListItemComponent items={rowData} />;
+    return <ListItemComponent items={rowData} props={this.props.props} />;
   };
 
   componentWillReceiveProps(newProps) {

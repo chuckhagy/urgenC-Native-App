@@ -4,6 +4,12 @@ export default function rootReducer(currentState = { items: [] }, action) {
       return {
         items: action.items
       };
+    case "UPDATE_ITEM":
+      console.log(currentState, "<<<<<<< current state");
+      return {
+        ...currentState,
+        items: action.items
+      };
 
     default:
       return currentState;

@@ -21,6 +21,6 @@ export default function getItems() {
         duedate: record.fields.duedate,
         createddate: record.fields.createddate
       }))
-    )
-    .catch(error => alert("System Error: Please Try Again Later"));
+    );
+  //.catch() <<<<< DO THIS
 }

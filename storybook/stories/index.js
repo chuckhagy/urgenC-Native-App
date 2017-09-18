@@ -28,15 +28,3 @@ storiesOf("ListItemComponent", module).add("Happy Path", () =>
     }}
   />
 );
-// <ListItemComponent
-// items={{
-//   id: "1",
-//   title: "Test Title",
-//   body: "Test Body",
-//   completed: false,
-//   success: false,
-//   priority: "3",
-//   duedate: "17-09-20",
-//   createdate: "2017-09-08T02:27:04.000Z"
-// }}
-// />;
