@@ -4,7 +4,7 @@ export default function getItemsProcess() {
   return (dispatch, getState) => {
     return getItems().then(items => {
       items = items.sort(function(b, a) {
-        return new Date(a.date) - new Date(b.date);
+        return a.priority - b.priority;
       });
       dispatch({
         type: "GET_ITEMS",

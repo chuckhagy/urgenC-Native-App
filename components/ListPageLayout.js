@@ -18,7 +18,11 @@ import { Actions } from "react-native-router-flux";
 
 import ListItemComponent from "./ListItemComponent";
 
-const rowHasChanged = (r1, r2) => r1.id !== r2.id;
+const rowHasChanged = (r1, r2) =>
+  r1.id !== r2.id ||
+  r1.title !== r2.title ||
+  r1.duedate !== r2.duedate ||
+  r1.priority !== r2.priority;
 const ds = new ListView.DataSource({ rowHasChanged });
 
 export default class ListPageLayout extends Component {

@@ -49,7 +49,6 @@ export default class DetailsComponent extends React.Component {
   render() {
     return (
       <Content>
-        {console.log(this.props.item.data[1], "<<<<<")}
         <Form>
           <Item stackedLabel>
             <Label>G O A L :</Label>
@@ -80,7 +79,7 @@ export default class DetailsComponent extends React.Component {
               value={this.state.priority}
             />
           </Item>
-          <ListItem style={style.verify}>
+          <ListItem style={style.verify} onPress={this._checkHandle}>
             <CheckBox
               checked={this.state.checkBox}
               onPress={this._checkHandle}
