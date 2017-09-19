@@ -53,7 +53,7 @@ export default class DetailsComponent extends React.Component {
       <Content>
         <Card>
           <Text style={style.heading}>
-            M I N S - L E F T : {this.props.item.data[0].timeLeft}
+            T I M E - L E F T : {this.props.item.data[0].displayTime}
           </Text>
         </Card>
         <Form>

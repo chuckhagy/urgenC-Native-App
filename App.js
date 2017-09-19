@@ -14,10 +14,8 @@ import {
 } from "react-native-router-flux";
 import listPageContainer from "./redux/containers/listPageContainer";
 import addPageContainer from "./redux/containers/addPageContainer";
+import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
-import Red from "./components/Red";
-import Blue from "./components/Blue";
-import Green from "./components/Green";
 import Yellow from "./components/Yellow";
 
 import setupStore from "./redux/setupStore";
@@ -82,8 +80,9 @@ export default class App extends Component {
                 icon={TabIcon}
               />
               <Scene
-                key="green"
-                component={Green}
+                key="stats"
+                hideNavBar
+                component={statsPageContainer}
                 title="Stats"
                 tabBarLabel=" "
                 iconName="line-chart"
@@ -91,6 +90,7 @@ export default class App extends Component {
               />
               <Scene
                 key="yellow"
+                hideNavBar
                 component={Yellow}
                 title="History"
                 tabBarLabel=" "

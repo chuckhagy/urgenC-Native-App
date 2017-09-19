@@ -9,6 +9,9 @@ export default function createItemProcess(item) {
       let currentTime = moment(Date.now());
       item.timeLeft = moment(item.duedate).diff(currentTime, "minutes");
       item.totalTime = moment(item.duedate).diff(item.createddate, "minutes");
+      item.displayTime = moment(moment(item.duedate).diff(currentTime)).format(
+        "DD:HH:MM:SS"
+      );
       item.rank =
         (1 - item.timeLeft / item.totalTime) * 0.6 + item.priority / 5 * 0.5;
 

@@ -40,42 +40,46 @@ export default class ListItemComponent extends React.Component {
 
     const styles = StyleSheet.create({
       textColor: {
-        color: `rgb(${r}, ${g}, ${b})`,
-        fontSize: 12
+        // color: `rgb(${r}, ${g}, ${b})`,
+        color: `rgb(255, 255, 255)`,
+        fontSize: 12,
+        textAlign: "left"
       },
       bg: {
         backgroundColor: `blue`
+      },
+      bold: {
+        fontWeight: `bold`,
+        fontSize: 22
+      },
+      bottom: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        margin: 10
       }
     });
 
     return (
       <Content>
         <Card onPress={() => Actions.details([item, thisProps])}>
-          <CardItem>
+          <View>
             <Body>
-              <H1 onPress={() => Actions.details([item, thisProps])}>
-                {item.title}
-              </H1>
-              <Text>
-                {item.body}
-              </Text>
-              <Text>
-                DUE: {item.duedate}
-              </Text>
-              <Text>
-                Stars: {item.priority}
-              </Text>
-              <Text>
-                Days Left: {(item.timeLeft / 1440).toFixed(2)}
-              </Text>
-              <Text>
-                Total Days: {(item.totalTime / 1440).toFixed(2)}
-              </Text>
               <Text style={styles.textColor}>
                 {Math.round(item.rank * 100) || 0}
               </Text>
+              <H1 onPress={() => Actions.details([item, thisProps])}>
+                {item.title}
+              </H1>
             </Body>
-          </CardItem>
+          </View>
+          <View style={styles.bottom}>
+            <Text style={styles.bold}>
+              Stars: {item.priority}
+            </Text>
+            <Text style={styles.bold}>
+              {item.displayTime}
+            </Text>
+          </View>
         </Card>
       </Content>
     );

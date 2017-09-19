@@ -22,9 +22,10 @@ export default function rootReducer(currentState = { items: [] }, action) {
       const newItems = currentState.items.filter(
         each => each.id !== action.newItem.id
       );
+      console.log(action.newItem, "New Item Here");
       newItems.push(action.newItem);
       newItems.sort(function(b, a) {
-        return a.priority - b.priority;
+        return a.rank - b.rank;
       });
       return {
         ...currentState,
