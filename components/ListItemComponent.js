@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import {
   Container,
   Header,
@@ -40,6 +41,15 @@ export default class ListItemComponent extends React.Component {
               </Text>
               <Text>
                 Stars: {item.priority}
+              </Text>
+              <Text>
+                Days Left: {(item.timeLeft / 1440).toFixed(2)}
+              </Text>
+              <Text>
+                Total Time: {item.totalTime}
+              </Text>
+              <Text>
+                Importance: {Math.round(item.rank * 100) || 0}
               </Text>
             </Body>
           </CardItem>

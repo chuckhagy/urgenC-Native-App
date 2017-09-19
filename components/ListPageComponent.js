@@ -1,6 +1,8 @@
 import React from "react";
 import sortBy from "lodash.sortby";
 import ListPageLayout from "./ListPageLayout";
+import rankMaker from "../logic/rankMaker";
+
 import {
   Container,
   Header,
@@ -16,13 +18,14 @@ import {
   Text
 } from "native-base";
 
-// console.log(items, "<<<<<<<<<<< PreSorted");
-// items = sortBy(items, "priority");
-
 const ListPageComponent = props =>
   <Container>
+    {props.updateTimes()}
     <Content>
-      <ListPageLayout items={props.items} props={props} />
+      <ListPageLayout
+        items={sortBy(props.items, "rank").reverse()}
+        props={props}
+      />
     </Content>
   </Container>;
 export default ListPageComponent;

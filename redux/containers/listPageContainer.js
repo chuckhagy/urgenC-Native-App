@@ -3,6 +3,7 @@ import { compose, lifecycle } from "recompose";
 import ListPageComponent from "../../components/ListPageComponent";
 import getItemsProcess from "../thunks/getItemsProcess";
 import updateItemsProcess from "../thunks/updateItemsProcess";
+import updateTimesProcess from "../thunks/updateTimesProcess";
 
 function mapStateToProps(state) {
   return { ...state };
@@ -11,7 +12,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onDidMount: () => dispatch(getItemsProcess()),
-    updateThisItem: fullItem => dispatch(updateItemsProcess(fullItem))
+    updateThisItem: fullItem => dispatch(updateItemsProcess(fullItem)),
+    updateTimes: () => dispatch(updateTimesProcess())
   };
 }
 

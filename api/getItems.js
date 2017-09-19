@@ -10,8 +10,9 @@ export default function getItems() {
     }
   )
     .then(response => response.json())
-    .then(data =>
-      data.records.map(record => ({
+    .then(data => {
+      console.log(data, "<<<<<<<<<<<<<<<<<<<<<");
+      return data.records.map(record => ({
         id: record.id,
         title: record.fields.title,
         body: record.fields.body,
@@ -19,8 +20,8 @@ export default function getItems() {
         success: record.fields.success,
         priority: record.fields.priority,
         duedate: record.fields.duedate,
-        createddate: record.fields.createddate
-      }))
-    );
+        createddate: record.createdTime
+      }));
+    });
   //.catch() <<<<< DO THIS
 }
