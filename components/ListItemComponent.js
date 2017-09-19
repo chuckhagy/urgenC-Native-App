@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import moment from "moment";
 import {
   Container,
@@ -10,6 +11,7 @@ import {
   Text,
   List,
   ListItem,
+  Badge,
   H1
 } from "native-base";
 import { Actions } from "react-native-router-flux";
@@ -24,6 +26,28 @@ export default class ListItemComponent extends React.Component {
     if (this.props.items) item = this.props.items;
     else item = { title: "Title", body: "N/A", duedate: "N/A", stars: "N/A" };
     let thisProps = this.props.props;
+
+    var r = 0;
+    var g = 0;
+    var b = 0;
+    r = item.rank * 255 + 50;
+    if (item.rank > 0.8) g = 0;
+    else g = 1 / item.rank * 100;
+    if (item.rank > 0.4) b = 0;
+    else b = 1 / item.rank * 80;
+
+    let thisColor = "";
+    if (item.rank < 0.5) thisColor = "black";
+    else thisColor = "white";
+
+    const styles = StyleSheet.create({
+      border: {
+        backgroundColor: `rgb(${r}, ${g}, ${b})`
+      },
+      textColor: {
+        color: `${thisColor}`
+      }
+    });
 
     return (
       <Content>
@@ -46,11 +70,13 @@ export default class ListItemComponent extends React.Component {
                 Days Left: {(item.timeLeft / 1440).toFixed(2)}
               </Text>
               <Text>
-                Total Time: {item.totalTime}
+                Total Days: {(item.totalTime / 1440).toFixed(2)}
               </Text>
-              <Text>
-                Importance: {Math.round(item.rank * 100) || 0}
-              </Text>
+              <Badge style={styles.border}>
+                <Text style={styles.textColor}>
+                  {Math.round(item.rank * 100) || 0}
+                </Text>
+              </Badge>
             </Body>
           </CardItem>
         </Card>
