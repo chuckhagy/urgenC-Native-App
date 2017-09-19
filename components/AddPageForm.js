@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { StyleSheet, View } from "react-native";
+import { Actions } from "react-native-router-flux";
 import {
   Header,
   Content,
@@ -34,17 +35,24 @@ export default class AddPageFormComponent extends React.Component {
       duedate:
         this.state.duedate ||
         moment(Date.now()).add(1, "day").format("YYYY-MM-DD"),
-      priority: this.state.priority || "n/a",
+      priority: this.state.priority || "3",
       createddate: moment(Date.now()).format("YYYY-MM-DD")
+    });
+    this.setState({
+      id: "",
+      title: "",
+      body: "",
+      duedate: "",
+      priority: ""
     });
   };
 
   _handleCancel = () => {
     console.log("CANCEL");
+    Actions.pop();
   };
 
   render() {
-    // console.log(this.props.props, "<<<<<<<<<<<<<<PROPS");
     return (
       <Content>
         <Form>

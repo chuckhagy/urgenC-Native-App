@@ -13,7 +13,6 @@ export default function rootReducer(currentState = { items: [] }, action) {
       timeItems = timeItems.map(item => {
         item.timeLeft = moment(item.duedate).diff(currentTime, "seconds");
       });
-      console.log(timeItems, "<<<<<<<<<<<<<<<TIMEITEMS");
       return {
         ...currentState,
         items: timeItems
@@ -27,17 +26,31 @@ export default function rootReducer(currentState = { items: [] }, action) {
       newItems.sort(function(b, a) {
         return a.priority - b.priority;
       });
-      console.log(newItems, "AHhhhhhhhhhhhhhhhh");
       return {
         ...currentState,
         items: [...newItems]
       };
 
-    case "UPDATE_ITEM":
-      const moreItems = currentState.items.unshift(action.newItem);
+    case "CREATE_ITEM":
+      const moreItems = currentState;
+      moreItems.items.push(action.newItem);
       return {
         ...currentState,
-        items: moreItems
+        items: moreItems.items
+      };
+
+    case "DELETE_ITEM":
+      const lessItems = currentState;
+      console.log(lessItems);
+      console.log(action.id);
+      lessItems.items = currentState.items.filter(
+        item => item.id !== action.id
+      );
+      console.log(lessItems);
+
+      return {
+        ...currentState,
+        items: lessItems.items
       };
 
     default:

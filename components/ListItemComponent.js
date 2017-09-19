@@ -30,11 +30,13 @@ export default class ListItemComponent extends React.Component {
     var r = 0;
     var g = 0;
     var b = 0;
-    r = item.rank * 255 + 50;
-    if (item.rank > 0.8) g = 0;
-    else g = 1 / item.rank * 100;
-    if (item.rank > 0.4) b = 0;
-    else b = 1 / item.rank * 80;
+    if (item.rank) {
+      r = item.rank * 255 + 50;
+      if (item.rank > 0.8) g = 0;
+      else g = 1 / item.rank * 100;
+      if (item.rank > 0.4) b = 0;
+      else b = 1 / item.rank * 80;
+    }
 
     let thisColor = "";
     if (item.rank < 0.5) thisColor = "black";

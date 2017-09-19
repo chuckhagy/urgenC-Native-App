@@ -11,7 +11,6 @@ export default function getItems() {
   )
     .then(response => response.json())
     .then(data => {
-      console.log(data, "<<<<<<<<<<<<<<<<<<<<<");
       return data.records.map(record => ({
         id: record.id,
         title: record.fields.title,

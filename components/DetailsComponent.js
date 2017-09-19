@@ -38,8 +38,8 @@ export default class DetailsComponent extends React.Component {
   };
 
   _handleDelete = () => {
+    this.props.item.data[1].deleteItem(this.state.id);
     console.log("DELETING");
-    console.log(this.props, "<<<<<<<<<<<<<<<<<<<<< props");
   };
 
   _checkHandle = () => {

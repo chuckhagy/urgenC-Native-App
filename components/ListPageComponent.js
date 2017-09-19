@@ -1,7 +1,6 @@
 import React from "react";
 import sortBy from "lodash.sortby";
 import ListPageLayout from "./ListPageLayout";
-import rankMaker from "../logic/rankMaker";
 
 import {
   Container,
