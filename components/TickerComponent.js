@@ -8,8 +8,11 @@ export default class TickerComponent extends React.Component {
   };
 
   componentDidMount() {
-    // this.tick();
     this.timer();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   tick() {

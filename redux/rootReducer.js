@@ -7,16 +7,6 @@ export default function rootReducer(currentState = { items: [] }, action) {
         ...currentState,
         items: action.items
       };
-    case "UPDATE_TIMES":
-      const timeItems = currentState.items;
-      const currentTime = moment(Date.now());
-      timeItems = timeItems.map(item => {
-        item.timeLeft = moment(item.duedate).diff(currentTime, "seconds");
-      });
-      return {
-        ...currentState,
-        items: timeItems
-      };
 
     case "UPDATE_ITEM":
       const newItems = currentState.items.filter(
