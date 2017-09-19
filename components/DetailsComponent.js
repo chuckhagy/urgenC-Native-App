@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import TickerComponent from "./TickerComponent";
+
 import {
   Header,
   Content,
@@ -53,7 +55,10 @@ export default class DetailsComponent extends React.Component {
       <Content>
         <Card>
           <Text style={style.heading}>
-            T I M E - L E F T : {this.props.item.data[0].displayTime}
+            <TickerComponent
+              info={this.props.item.data[0]}
+              style={style.heading}
+            />
           </Text>
         </Card>
         <Form>

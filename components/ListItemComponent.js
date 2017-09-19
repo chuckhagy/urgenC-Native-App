@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import moment from "moment";
+import TickerComponent from "./TickerComponent";
 import {
   Container,
   Header,
@@ -41,19 +42,19 @@ export default class ListItemComponent extends React.Component {
     let stars = "";
     switch (item.priority) {
       case "1":
-        stars = "⭐️";
+        stars = "❗️";
         break;
       case "2":
-        stars = "⭐️⭐️";
+        stars = "❗️❗️";
         break;
       case "3":
-        stars = "⭐️⭐️⭐️";
+        stars = "❗️❗️❗️";
         break;
       case "4":
-        stars = "⭐️⭐️⭐️⭐️";
+        stars = "❗️❗️❗️❗️";
         break;
       case "5":
-        stars = "⭐️⭐️⭐️⭐️⭐️";
+        stars = "❗️❗️❗️❗️❗️";
         break;
     }
 
@@ -76,7 +77,7 @@ export default class ListItemComponent extends React.Component {
       },
       bottom: {
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         margin: 10
       }
     });
@@ -84,27 +85,24 @@ export default class ListItemComponent extends React.Component {
     return (
       <Content>
         <View onPress={() => Actions.details([item, thisProps])}>
-          <Card>
-            <Body>
-              <Text style={styles.textColor}>
-                {Math.round(item.rank * 100) || 0}
-              </Text>
-              <H1
-                onPress={() => Actions.details([item, thisProps])}
-                style={styles.justBold}
-              >
-                {item.title}
-              </H1>
-            </Body>
-            <View style={styles.bottom}>
-              <Text style={styles.bold}>
-                {stars}
-              </Text>
-              <Text style={styles.bold}>
-                {item.displayTime}
-              </Text>
-            </View>
-          </Card>
+          <TouchableOpacity onPress={() => Actions.details([item, thisProps])}>
+            <Card>
+              <Body>
+                <Text style={styles.textColor}>
+                  {Math.round(item.rank * 100) || 0}
+                </Text>
+                <H1 style={styles.justBold}>
+                  {item.title}
+                </H1>
+              </Body>
+              <View style={styles.bottom}>
+                <Text style={styles.bold}>
+                  {stars}
+                </Text>
+                <TickerComponent info={this.props.items} style={styles.bold} />
+              </View>
+            </Card>
+          </TouchableOpacity>
         </View>
       </Content>
     );
