@@ -13,6 +13,8 @@ import {
   CheckBox,
   Container,
   ListItem,
+  Card,
+  CardItem,
   Body
 } from "native-base";
 
@@ -49,6 +51,11 @@ export default class DetailsComponent extends React.Component {
   render() {
     return (
       <Content>
+        <Card>
+          <Text style={style.heading}>
+            M I N S - L E F T : {this.props.item.data[0].timeLeft}
+          </Text>
+        </Card>
         <Form>
           <Item stackedLabel>
             <Label>G O A L :</Label>
@@ -125,7 +132,8 @@ const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    margin: 20
+    margin: 20,
+    height: 60
   },
   verify: {
     marginTop: 15,
@@ -134,5 +142,11 @@ const style = StyleSheet.create({
   verifyCheck: {
     marginLeft: 6,
     marginRight: 15
+  },
+  heading: {
+    color: "red",
+    fontSize: 22,
+    textAlign: "center",
+    margin: 25
   }
 });

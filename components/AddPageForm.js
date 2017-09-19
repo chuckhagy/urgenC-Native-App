@@ -15,7 +15,9 @@ import {
   CheckBox,
   Container,
   ListItem,
-  Body
+  Body,
+  Card,
+  CardItem
 } from "native-base";
 
 export default class AddPageFormComponent extends React.Component {

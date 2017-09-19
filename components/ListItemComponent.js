@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import moment from "moment";
 import {
   Container,
@@ -38,22 +38,19 @@ export default class ListItemComponent extends React.Component {
       else b = 1 / item.rank * 80;
     }
 
-    let thisColor = "";
-    if (item.rank < 0.5) thisColor = "black";
-    else thisColor = "white";
-
     const styles = StyleSheet.create({
-      border: {
-        backgroundColor: `rgb(${r}, ${g}, ${b})`
-      },
       textColor: {
-        color: `${thisColor}`
+        color: `rgb(${r}, ${g}, ${b})`,
+        fontSize: 12
+      },
+      bg: {
+        backgroundColor: `blue`
       }
     });
 
     return (
       <Content>
-        <Card>
+        <Card onPress={() => Actions.details([item, thisProps])}>
           <CardItem>
             <Body>
               <H1 onPress={() => Actions.details([item, thisProps])}>
@@ -74,11 +71,9 @@ export default class ListItemComponent extends React.Component {
               <Text>
                 Total Days: {(item.totalTime / 1440).toFixed(2)}
               </Text>
-              <Badge style={styles.border}>
-                <Text style={styles.textColor}>
-                  {Math.round(item.rank * 100) || 0}
-                </Text>
-              </Badge>
+              <Text style={styles.textColor}>
+                {Math.round(item.rank * 100) || 0}
+              </Text>
             </Body>
           </CardItem>
         </Card>

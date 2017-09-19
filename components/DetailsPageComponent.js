@@ -19,14 +19,6 @@ export default class DetailsPageComponent extends React.Component {
   render() {
     return (
       <Container>
-        <Header style={{ backgroundColor: "black" }}>
-          <Body>
-            <Title style={{ color: "white", fontWeight: "bold" }}>
-              Goal Details
-            </Title>
-          </Body>
-          <Right />
-        </Header>
         <Content>
           <DetailsPageLayout item={this.props} />
         </Content>

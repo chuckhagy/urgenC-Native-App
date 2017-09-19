@@ -1,6 +1,7 @@
 // export default from './storybook';
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { Provider } from "react-redux";
 import {
   Scene,
@@ -22,6 +23,33 @@ import Yellow from "./components/Yellow";
 import setupStore from "./redux/setupStore";
 const store = setupStore();
 
+class TabIcon extends Component {
+  render() {
+    var color = this.props.selected ? "#00f240" : "#ffffff";
+    return (
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center",
+          alignSelf: "center",
+          justifyContent: "center",
+          marginTop: 15
+        }}
+      >
+        <Icon
+          style={{ color: color }}
+          name={this.props.iconName || "circle"}
+          size={18}
+        />
+        <Text style={{ color: color, fontSize: 12 }}>
+          {this.props.title}
+        </Text>
+      </View>
+    );
+  }
+}
+
 export default class App extends Component {
   render() {
     return (
@@ -31,17 +59,44 @@ export default class App extends Component {
             <Scene
               key="tabbar"
               tabs={true}
-              tabBarStyle={{ backgroundColor: "#FFFFFF" }}
+              tabBarStyle={{ backgroundColor: "#c90000" }}
             >
               <Scene
                 key="list"
+                hideNavBar
+                headerMode="float"
                 component={listPageContainer}
-                title="urgenC"
+                title="Goals"
+                tabBarLabel=" "
+                iconName="home"
+                icon={TabIcon}
                 initial
               />
-              <Scene key="add" component={addPageContainer} title="Add Item" />
-              <Scene key="green" component={Green} title="GREEN PAGE" />
-              <Scene key="yellow" component={Yellow} title="YELLOW PAGE" />
+              <Scene
+                key="add"
+                hideNavBar
+                component={addPageContainer}
+                title="Add Item"
+                tabBarLabel=" "
+                iconName="newspaper-o"
+                icon={TabIcon}
+              />
+              <Scene
+                key="green"
+                component={Green}
+                title="Stats"
+                tabBarLabel=" "
+                iconName="line-chart"
+                icon={TabIcon}
+              />
+              <Scene
+                key="yellow"
+                component={Yellow}
+                title="History"
+                tabBarLabel=" "
+                iconName="book"
+                icon={TabIcon}
+              />
             </Scene>
             <Scene
               key="details"
