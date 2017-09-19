@@ -5,7 +5,6 @@ import { Actions } from "react-native-router-flux";
 export default function updateItemProcess(fullItem) {
   return (dispatch, getState) => {
     return updateItem(fullItem).then(item => {
-      console.log(item, "<<<<<<<<< ITEM1");
       let currentTime = moment(Date.now());
       timeLeft = moment(item.duedate).diff(currentTime, "minutes");
       totalTime = moment(item.duedate).diff(item.createddate, "minutes");
@@ -23,12 +22,12 @@ export default function updateItemProcess(fullItem) {
           priority: item.priority,
           duedate: item.duedate,
           displayTime: displayTime,
+          displayTime: displayTime,
           totalTime: totalTime,
           timeLeft: timeLeft,
           rank: rank
         }
       });
-      console.log(item, "<<<<<<<<< ITEM2");
       Actions.jump("list");
       return item;
     });

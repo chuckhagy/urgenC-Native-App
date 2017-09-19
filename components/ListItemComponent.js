@@ -38,6 +38,25 @@ export default class ListItemComponent extends React.Component {
       else b = 1 / item.rank * 80;
     }
 
+    let stars = "";
+    switch (item.priority) {
+      case "1":
+        stars = "⭐️";
+        break;
+      case "2":
+        stars = "⭐️⭐️";
+        break;
+      case "3":
+        stars = "⭐️⭐️⭐️";
+        break;
+      case "4":
+        stars = "⭐️⭐️⭐️⭐️";
+        break;
+      case "5":
+        stars = "⭐️⭐️⭐️⭐️⭐️";
+        break;
+    }
+
     const styles = StyleSheet.create({
       textColor: {
         // color: `rgb(${r}, ${g}, ${b})`,
@@ -52,6 +71,9 @@ export default class ListItemComponent extends React.Component {
         fontWeight: `bold`,
         fontSize: 22
       },
+      justBold: {
+        fontWeight: `bold`
+      },
       bottom: {
         flexDirection: "row",
         justifyContent: "space-around",
@@ -61,26 +83,29 @@ export default class ListItemComponent extends React.Component {
 
     return (
       <Content>
-        <Card onPress={() => Actions.details([item, thisProps])}>
-          <View>
+        <View onPress={() => Actions.details([item, thisProps])}>
+          <Card>
             <Body>
               <Text style={styles.textColor}>
                 {Math.round(item.rank * 100) || 0}
               </Text>
-              <H1 onPress={() => Actions.details([item, thisProps])}>
+              <H1
+                onPress={() => Actions.details([item, thisProps])}
+                style={styles.justBold}
+              >
                 {item.title}
               </H1>
             </Body>
-          </View>
-          <View style={styles.bottom}>
-            <Text style={styles.bold}>
-              Stars: {item.priority}
-            </Text>
-            <Text style={styles.bold}>
-              {item.displayTime}
-            </Text>
-          </View>
-        </Card>
+            <View style={styles.bottom}>
+              <Text style={styles.bold}>
+                {stars}
+              </Text>
+              <Text style={styles.bold}>
+                {item.displayTime}
+              </Text>
+            </View>
+          </Card>
+        </View>
       </Content>
     );
   }
