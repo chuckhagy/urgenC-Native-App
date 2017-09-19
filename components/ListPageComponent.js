@@ -1,4 +1,5 @@
 import React from "react";
+import sortBy from "lodash.sortby";
 import ListPageLayout from "./ListPageLayout";
 import {
   Container,
@@ -14,6 +15,9 @@ import {
   Icon,
   Text
 } from "native-base";
+
+// console.log(items, "<<<<<<<<<<< PreSorted");
+// items = sortBy(items, "priority");
 
 const ListPageComponent = props =>
   <Container>
