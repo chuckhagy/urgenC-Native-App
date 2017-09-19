@@ -12,6 +12,7 @@ import {
   Lightbox
 } from "react-native-router-flux";
 import listPageContainer from "./redux/containers/listPageContainer";
+import addPageContainer from "./redux/containers/addPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
 import Red from "./components/Red";
 import Blue from "./components/Blue";
@@ -35,10 +36,10 @@ export default class App extends Component {
               <Scene
                 key="list"
                 component={listPageContainer}
-                title="List PAGE"
+                title="urgenC"
                 initial
               />
-              <Scene key="red" component={Red} title="RED PAGE" />
+              <Scene key="add" component={addPageContainer} title="Add Item" />
               <Scene key="green" component={Green} title="GREEN PAGE" />
               <Scene key="yellow" component={Yellow} title="YELLOW PAGE" />
             </Scene>

@@ -33,6 +33,13 @@ export default function rootReducer(currentState = { items: [] }, action) {
         items: [...newItems]
       };
 
+    case "UPDATE_ITEM":
+      const moreItems = currentState.items.unshift(action.newItem);
+      return {
+        ...currentState,
+        items: moreItems
+      };
+
     default:
       return currentState;
   }

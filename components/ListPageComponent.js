@@ -20,7 +20,6 @@ import {
 
 const ListPageComponent = props =>
   <Container>
-    {props.updateTimes()}
     <Content>
       <ListPageLayout
         items={sortBy(props.items, "rank").reverse()}
