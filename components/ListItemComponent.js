@@ -99,7 +99,11 @@ export default class ListItemComponent extends React.Component {
                 <Text style={styles.bold}>
                   {stars}
                 </Text>
-                <TickerComponent info={this.props.items} style={styles.bold} />
+                <TickerComponent
+                  info={this.props.items}
+                  style={styles.bold}
+                  expiredItem={this.props.props.expiredItem}
+                />
               </View>
             </Card>
           </TouchableOpacity>

@@ -4,7 +4,6 @@ import ListPageComponent from "../../components/ListPageComponent";
 import getItemsProcess from "../thunks/getItemsProcess";
 import updateItemsProcess from "../thunks/updateItemsProcess";
 import deleteItemProcess from "../thunks/deleteItemProcess";
-import updateTimesProcess from "../thunks/updateTimesProcess";
 
 function mapStateToProps(state) {
   return { ...state };
@@ -15,7 +14,7 @@ function mapDispatchToProps(dispatch) {
     onDidMount: () => dispatch(getItemsProcess()),
     updateThisItem: fullItem => dispatch(updateItemsProcess(fullItem)),
     deleteItem: id => dispatch(deleteItemProcess(id)),
-    updateTimes: () => dispatch(updateTimesProcess())
+    expiredItem: id => dispatch({ type: "EXPIRED_ITEM", id: id })
   };
 }
 

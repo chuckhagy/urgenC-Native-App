@@ -17,6 +17,7 @@ export default function getItems() {
         body: record.fields.body,
         completed: record.fields.completed,
         success: record.fields.success,
+        failure: record.fields.failure,
         priority: record.fields.priority,
         duedate: record.fields.duedate,
         createddate: record.createdTime

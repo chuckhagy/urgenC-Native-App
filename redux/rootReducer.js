@@ -3,9 +3,17 @@ import moment from "moment";
 export default function rootReducer(currentState = { items: [] }, action) {
   switch (action.type) {
     case "GET_ITEMS":
+      let thisTest = action.items.filter(
+        item =>
+          moment(Date.now()).isSameOrAfter(moment(item.duedate)) &&
+          !item.success &&
+          !item.failure
+      );
+      console.log(thisTest, "<<<<<<<<<<<<<<<< this Test");
       return {
         ...currentState,
-        items: action.items
+        items: action.items,
+        modalOn: thisTest.length > 0
       };
 
     case "UPDATE_ITEM":
@@ -16,9 +24,16 @@ export default function rootReducer(currentState = { items: [] }, action) {
       newItems.sort(function(b, a) {
         return a.rank - b.rank;
       });
+      let test = newItems.filter(
+        item =>
+          moment(Date.now()).isSameOrAfter(moment(item.duedate)) &&
+          !item.success &&
+          !item.failure
+      );
       return {
         ...currentState,
-        items: [...newItems]
+        items: [...newItems],
+        modalOn: test.length > 0
       };
 
     case "CREATE_ITEM":
@@ -31,16 +46,23 @@ export default function rootReducer(currentState = { items: [] }, action) {
 
     case "DELETE_ITEM":
       const lessItems = currentState;
-      console.log(lessItems);
-      console.log(action.id);
       lessItems.items = currentState.items.filter(
         item => item.id !== action.id
       );
-      console.log(lessItems);
 
       return {
         ...currentState,
         items: lessItems.items
+      };
+
+    case "EXPIRED_ITEM":
+      const freshItems = currentState;
+      freshItems.items.find(item => item.id === action.id).completed = true;
+
+      return {
+        ...currentState,
+        modalOn: true,
+        items: freshItems.items
       };
 
     default:

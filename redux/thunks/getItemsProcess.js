@@ -13,7 +13,7 @@ export default function getItemsProcess() {
           (1 - item.timeLeft / item.totalTime) * 0.6 + item.priority / 5 * 0.5;
         return item;
       });
-      console.log(newItems);
+      // console.log(newItems);
       dispatch({
         type: "GET_ITEMS",
         items: newItems

@@ -13,10 +13,12 @@ export default class TickerComponent extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.timerID);
-    console.log("GOT HERE IN UNMOUNTER");
   }
 
   tick() {
+    if (moment(currentTime).isSameOrAfter(moment(this.props.info.duedate))) {
+      this.props.expiredItem(this.props.info.id);
+    }
     let currentTime = moment(Date.now());
     let displayTime = moment(
       moment(moment(this.props.info.duedate).diff(currentTime))

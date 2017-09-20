@@ -27,7 +27,11 @@ const ds = new ListView.DataSource({ rowHasChanged });
 
 export default class ListPageLayout extends Component {
   state = {
-    dataSource: ds.cloneWithRows(this.props.items)
+    dataSource: ds.cloneWithRows(
+      this.props.items.filter(a => {
+        return !a.completed;
+      })
+    )
   };
 
   renderRow = rowData => {
@@ -37,7 +41,11 @@ export default class ListPageLayout extends Component {
   componentWillReceiveProps(newProps) {
     if (newProps.items !== this.props.items) {
       this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(newProps.items)
+        dataSource: this.state.dataSource.cloneWithRows(
+          newProps.items.filter(a => {
+            return !a.completed;
+          })
+        )
       });
     }
   }

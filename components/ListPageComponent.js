@@ -1,6 +1,7 @@
 import React from "react";
 import sortBy from "lodash.sortby";
 import ListPageLayout from "./ListPageLayout";
+import ResponseComponent from "./ResponseComponent";
 import { StyleSheet, View } from "react-native";
 
 import {
@@ -26,10 +27,13 @@ const ListPageComponent = props =>
           <Title style={styles.heading}>urgenC</Title>
         </Body>
       </Header>
-      <ListPageLayout
-        items={sortBy(props.items, "rank").reverse()}
-        props={props}
-      />
+      {console.log(props.modalOn, "<<<<<<< MODALON AT DECISIONS")}
+      {props.modalOn
+        ? <ResponseComponent props={props} />
+        : <ListPageLayout
+            items={sortBy(props.items, "rank").reverse()}
+            props={props}
+          />}
     </Content>
   </Container>;
 export default ListPageComponent;
