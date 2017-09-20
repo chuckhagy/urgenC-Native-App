@@ -2,6 +2,8 @@ import React from "react";
 import moment from "moment";
 import { StyleSheet, View, Picker } from "react-native";
 import { Actions } from "react-native-router-flux";
+import DatePicker from "react-native-datepicker";
+
 import {
   Header,
   Content,
@@ -73,22 +75,32 @@ export default class AddPageFormComponent extends React.Component {
               value={this.state.body}
             />
           </Item>
-          <Item stackedLabel>
-            <Label>D U E :</Label>
-            <Input
-              defaultValue={moment(Date.now())
-                .add(1, "day")
-                .format("YYYY-MM-DD")}
-              onChangeText={duedate => this.setState({ duedate })}
-              value={this.state.duedate}
-            />
-          </Item>
-          {/* <Item stackedLabel> */}
-          {/* <Input
-              onChangeText={priority => this.setState({ priority })}
-              value={this.state.priority}
-            />
-          </Item> */}
+          <DatePicker
+            style={{ width: 200 }}
+            date={this.state.duedate}
+            mode="datetime"
+            placeholder="select date"
+            format="YYYY-MM-DD"
+            minDate="2017-09-19"
+            maxDate="2020-12-31"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: "absolute",
+                left: 0,
+                top: 4,
+                marginLeft: 5
+              },
+              dateInput: {
+                marginLeft: 36
+              }
+            }}
+            onDateChange={date => {
+              this.setState({ duedate: date });
+            }}
+          />
+
           <Picker
             selectedValue={this.state.priority}
             onValueChange={(itemValue, itemIndex) =>

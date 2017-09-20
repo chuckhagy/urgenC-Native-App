@@ -1,6 +1,8 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Picker } from "react-native";
+import DatePicker from "react-native-datepicker";
 import TickerComponent from "./TickerComponent";
+import MomentTimezone from "moment-timezone";
 
 import {
   Header,
@@ -77,20 +79,43 @@ export default class DetailsComponent extends React.Component {
               value={this.state.body}
             />
           </Item>
-          <Item stackedLabel>
-            <Label>D U E :</Label>
-            <Input
-              onChangeText={duedate => this.setState({ duedate })}
-              value={this.state.duedate}
-            />
-          </Item>
-          <Item stackedLabel>
-            <Label>P R I O R I T Y :</Label>
-            <Input
-              onChangeText={priority => this.setState({ priority })}
-              value={this.state.priority}
-            />
-          </Item>
+          <DatePicker
+            style={{ width: 200 }}
+            date={this.state.duedate}
+            mode="datetime"
+            placeholder="select date"
+            format="YYYY-MM-DD"
+            minDate="2017-09-19"
+            maxDate="2020-12-31"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateIcon: {
+                position: "absolute",
+                left: 0,
+                top: 4,
+                marginLeft: 5
+              },
+              dateInput: {
+                marginLeft: 36
+              }
+            }}
+            onDateChange={date => {
+              this.setState({ duedate: date });
+            }}
+          />
+          <Picker
+            selectedValue={this.state.priority}
+            onValueChange={(itemValue, itemIndex) =>
+              this.setState({ priority: itemValue })}
+          >
+            <Picker.Item label="🚨" value="1" />
+            <Picker.Item label="🚨🚨" value="2" />
+            <Picker.Item label="🚨🚨🚨" value="3" />
+            <Picker.Item label="🚨🚨🚨🚨" value="4" />
+            <Picker.Item label="🚨🚨🚨🚨🚨" value="5" />
+          </Picker>
+
           <ListItem style={style.verify} onPress={this._checkHandle}>
             <CheckBox
               checked={this.state.checkBox}
@@ -150,9 +175,8 @@ const style = StyleSheet.create({
   },
   heading: {
     color: "red",
-    fontSize: 30,
-    fontWeight: "bold",
+    fontSize: 20,
     textAlign: "center",
-    margin: 25
+    margin: 10
   }
 });
