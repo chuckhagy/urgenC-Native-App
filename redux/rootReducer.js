@@ -9,7 +9,7 @@ export default function rootReducer(currentState = { items: [] }, action) {
           !item.success &&
           !item.failure
       );
-      console.log(thisTest, "<<<<<<<<<<<<<<<< this Test");
+      // console.log(thisTest, "<<<<<<<<<<<<<<<< this Test");
       return {
         ...currentState,
         items: action.items,

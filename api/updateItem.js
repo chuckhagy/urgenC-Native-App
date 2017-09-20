@@ -1,6 +1,6 @@
 import env from "./env";
 export default function updateItem(fullItem) {
-  console.log("UPDATING NOW...");
+  // console.log("UPDATING NOW...");
   return fetch(
     `https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/items/${fullItem.id}`,
     {

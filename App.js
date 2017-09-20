@@ -16,7 +16,7 @@ import listPageContainer from "./redux/containers/listPageContainer";
 import addPageContainer from "./redux/containers/addPageContainer";
 import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
-import Yellow from "./components/Yellow";
+import historyPageContainer from "./redux/containers/historyPageContainer";
 import Green from "./components/Green";
 
 import setupStore from "./redux/setupStore";
@@ -83,19 +83,19 @@ export default class App extends Component {
               <Scene
                 key="stats"
                 hideNavBar
-                component={statsPageContainer}
+                component={Green}
                 title="Stats"
                 tabBarLabel=" "
                 iconName="line-chart"
                 icon={TabIcon}
               />
               <Scene
-                key="yellow"
+                key="history"
                 hideNavBar
-                component={Yellow}
-                title="History"
+                component={historyPageContainer}
+                title="Failures"
                 tabBarLabel=" "
-                iconName="book"
+                iconName="frown-o"
                 icon={TabIcon}
               />
             </Scene>
