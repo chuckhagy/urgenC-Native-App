@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Picker } from "react-native";
 import { Actions } from "react-native-router-flux";
 import {
   Header,
@@ -83,13 +83,24 @@ export default class AddPageFormComponent extends React.Component {
               value={this.state.duedate}
             />
           </Item>
-          <Item stackedLabel>
-            <Label>P R I O R I T Y :</Label>
-            <Input
+          {/* <Item stackedLabel> */}
+          {/* <Input
               onChangeText={priority => this.setState({ priority })}
               value={this.state.priority}
             />
-          </Item>
+          </Item> */}
+          <Picker
+            selectedValue={this.state.priority}
+            onValueChange={(itemValue, itemIndex) =>
+              this.setState({ priority: itemValue })}
+          >
+            <Picker.Item label="🚨" value="1" />
+            <Picker.Item label="🚨🚨" value="2" />
+            <Picker.Item label="🚨🚨🚨" value="3" />
+            <Picker.Item label="🚨🚨🚨🚨" value="4" />
+            <Picker.Item label="🚨🚨🚨🚨🚨" value="5" />
+          </Picker>
+
           <Container style={style.buttons}>
             <Button iconLeft large primary onPress={this._handleSubmit}>
               <Icon name="send" />

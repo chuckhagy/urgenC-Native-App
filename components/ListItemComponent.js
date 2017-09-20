@@ -42,19 +42,19 @@ export default class ListItemComponent extends React.Component {
     let stars = "";
     switch (item.priority) {
       case "1":
-        stars = "❗️";
+        stars = "🚨";
         break;
       case "2":
-        stars = "❗️❗️";
+        stars = "🚨🚨";
         break;
       case "3":
-        stars = "❗️❗️❗️";
+        stars = "🚨🚨🚨";
         break;
       case "4":
-        stars = "❗️❗️❗️❗️";
+        stars = "🚨🚨🚨🚨";
         break;
       case "5":
-        stars = "❗️❗️❗️❗️❗️";
+        stars = "🚨🚨🚨🚨🚨";
         break;
     }
 

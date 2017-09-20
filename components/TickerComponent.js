@@ -8,11 +8,12 @@ export default class TickerComponent extends React.Component {
   };
 
   componentDidMount() {
-    this.timer();
+    this.timerID = setInterval(() => this.tick(), 500);
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer);
+    clearInterval(this.timerID);
+    console.log("GOT HERE IN UNMOUNTER");
   }
 
   tick() {
@@ -21,10 +22,6 @@ export default class TickerComponent extends React.Component {
       moment(moment(this.props.info.duedate).diff(currentTime))
     ).format("DD:hh:mm:ss");
     this.setState({ timeRemaining: displayTime });
-  }
-
-  timer() {
-    setInterval(this.tick.bind(this), 500);
   }
 
   render() {

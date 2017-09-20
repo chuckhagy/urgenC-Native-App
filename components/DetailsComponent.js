@@ -150,7 +150,8 @@ const style = StyleSheet.create({
   },
   heading: {
     color: "red",
-    fontSize: 22,
+    fontSize: 30,
+    fontWeight: "bold",
     textAlign: "center",
     margin: 25
   }
