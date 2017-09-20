@@ -8,7 +8,7 @@ export default class TickerComponent extends React.Component {
   };
 
   componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 100);
+    this.timerID = setInterval(() => this.tick(), 500);
   }
 
   componentWillUnmount() {

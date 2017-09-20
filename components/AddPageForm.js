@@ -53,6 +53,13 @@ export default class AddPageFormComponent extends React.Component {
 
   _handleCancel = () => {
     console.log("CANCEL");
+    this.setState({
+      id: "",
+      title: "",
+      body: "",
+      duedate: "",
+      priority: ""
+    });
     Actions.pop();
   };
 
@@ -114,7 +121,13 @@ export default class AddPageFormComponent extends React.Component {
           </Picker>
 
           <Container style={style.buttons}>
-            <Button iconLeft large primary onPress={this._handleSubmit}>
+            <Button
+              iconLeft
+              large
+              primary
+              onPress={this._handleSubmit}
+              disabled={this.state.title.length === 0}
+            >
               <Icon name="send" />
               <Text>SUBMIT</Text>
             </Button>
