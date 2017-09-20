@@ -106,11 +106,11 @@ export default class AddPageFormComponent extends React.Component {
             onValueChange={(itemValue, itemIndex) =>
               this.setState({ priority: itemValue })}
           >
-            <Picker.Item label="🚨" value="1" />
-            <Picker.Item label="🚨🚨" value="2" />
-            <Picker.Item label="🚨🚨🚨" value="3" />
-            <Picker.Item label="🚨🚨🚨🚨" value="4" />
-            <Picker.Item label="🚨🚨🚨🚨🚨" value="5" />
+            <Picker.Item label="❗️" value="1" />
+            <Picker.Item label="❗️❗️" value="2" />
+            <Picker.Item label="❗️❗️❗️" value="3" />
+            <Picker.Item label="❗️❗️❗️❗️" value="4" />
+            <Picker.Item label="❗️❗️❗️❗️❗️" value="5" />
           </Picker>
 
           <Container style={style.buttons}>

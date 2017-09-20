@@ -42,19 +42,19 @@ export default class ListItemComponent extends React.Component {
     let stars = "";
     switch (item.priority) {
       case "1":
-        stars = "🚨";
+        stars = "❗️";
         break;
       case "2":
-        stars = "🚨🚨";
+        stars = "❗️❗️";
         break;
       case "3":
-        stars = "🚨🚨🚨";
+        stars = "❗️❗️❗️";
         break;
       case "4":
-        stars = "🚨🚨🚨🚨";
+        stars = "❗️❗️❗️❗️";
         break;
       case "5":
-        stars = "🚨🚨🚨🚨🚨";
+        stars = "❗️❗️❗️❗️❗️";
         break;
     }
 
@@ -69,8 +69,14 @@ export default class ListItemComponent extends React.Component {
         backgroundColor: `blue`
       },
       bold: {
-        fontWeight: `bold`,
-        fontSize: 22
+        fontSize: 18
+      },
+      box: {
+        borderColor: `rgb(${r}, ${g}, ${b})`,
+        borderBottomWidth: 3,
+        padding: 4,
+        width: 115,
+        height: 32
       },
       justBold: {
         fontWeight: `bold`
@@ -99,11 +105,13 @@ export default class ListItemComponent extends React.Component {
                 <Text style={styles.bold}>
                   {stars}
                 </Text>
-                <TickerComponent
-                  info={this.props.items}
-                  style={styles.bold}
-                  expiredItem={this.props.props.expiredItem}
-                />
+                <View style={styles.box}>
+                  <TickerComponent
+                    info={this.props.items}
+                    style={styles.bold}
+                    updateThisItem={this.props.props.updateThisItem}
+                  />
+                </View>
               </View>
             </Card>
           </TouchableOpacity>

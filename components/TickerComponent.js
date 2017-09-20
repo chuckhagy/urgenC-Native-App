@@ -8,7 +8,7 @@ export default class TickerComponent extends React.Component {
   };
 
   componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 500);
+    this.timerID = setInterval(() => this.tick(), 100);
   }
 
   componentWillUnmount() {
@@ -17,13 +17,19 @@ export default class TickerComponent extends React.Component {
 
   tick() {
     if (moment(currentTime).isSameOrAfter(moment(this.props.info.duedate))) {
-      this.props.expiredItem(this.props.info.id);
+      this.props.updateThisItem(this.props.info);
     }
+
     let currentTime = moment(Date.now());
-    let displayTime = moment(
-      moment(moment(this.props.info.duedate).diff(currentTime))
-    ).format("DD:hh:mm:ss");
-    this.setState({ timeRemaining: displayTime });
+    let diff = moment(this.props.info.duedate).diff(currentTime, "seconds");
+    if (diff <= 60) this.setState({ timeRemaining: `${diff} sec` });
+    else if (diff <= 3600)
+      this.setState({ timeRemaining: `${(diff / 60).toFixed(2)} min` });
+    else if (diff <= 86400)
+      this.setState({ timeRemaining: `${(diff / 3600).toFixed(1)} hr` });
+    else if (diff >= 86400)
+      this.setState({ timeRemaining: `${(diff / 86400).toFixed(1)} day` });
+    else this.setState({ timeRemaining: diff });
   }
 
   render() {

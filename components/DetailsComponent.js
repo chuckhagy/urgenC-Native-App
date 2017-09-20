@@ -109,11 +109,11 @@ export default class DetailsComponent extends React.Component {
             onValueChange={(itemValue, itemIndex) =>
               this.setState({ priority: itemValue })}
           >
-            <Picker.Item label="🚨" value="1" />
-            <Picker.Item label="🚨🚨" value="2" />
-            <Picker.Item label="🚨🚨🚨" value="3" />
-            <Picker.Item label="🚨🚨🚨🚨" value="4" />
-            <Picker.Item label="🚨🚨🚨🚨🚨" value="5" />
+            <Picker.Item label="❗️" value="1" />
+            <Picker.Item label="❗️❗️" value="2" />
+            <Picker.Item label="❗️❗️❗️" value="3" />
+            <Picker.Item label="❗️❗️❗️❗️" value="4" />
+            <Picker.Item label="❗️❗️❗️❗️❗️" value="5" />
           </Picker>
 
           <ListItem style={style.verify} onPress={this._checkHandle}>

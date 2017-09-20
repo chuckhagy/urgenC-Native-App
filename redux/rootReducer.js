@@ -30,6 +30,7 @@ export default function rootReducer(currentState = { items: [] }, action) {
           !item.success &&
           !item.failure
       );
+
       return {
         ...currentState,
         items: [...newItems],
@@ -53,16 +54,6 @@ export default function rootReducer(currentState = { items: [] }, action) {
       return {
         ...currentState,
         items: lessItems.items
-      };
-
-    case "EXPIRED_ITEM":
-      const freshItems = currentState;
-      freshItems.items.find(item => item.id === action.id).completed = true;
-
-      return {
-        ...currentState,
-        modalOn: true,
-        items: freshItems.items
       };
 
     default:
