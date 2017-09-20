@@ -79,7 +79,8 @@ export default class ListItemComponent extends React.Component {
         height: 32
       },
       justBold: {
-        fontWeight: `bold`
+        fontWeight: `bold`,
+        fontSize: 20
       },
       bottom: {
         flexDirection: "row",
@@ -97,9 +98,9 @@ export default class ListItemComponent extends React.Component {
                 <Text style={styles.textColor}>
                   {Math.round(item.rank * 100) || 0}
                 </Text>
-                <H1 style={styles.justBold}>
+                <Text style={styles.justBold}>
                   {item.title}
-                </H1>
+                </Text>
               </Body>
               <View style={styles.bottom}>
                 <Text style={styles.bold}>

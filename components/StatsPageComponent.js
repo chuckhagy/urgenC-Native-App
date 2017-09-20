@@ -20,12 +20,12 @@ export default class StatsPageComponent extends React.Component {
   render() {
     return (
       <Container>
+        <Header style={styles.headingBg}>
+          <Body>
+            <Title style={styles.heading}>urgenC</Title>
+          </Body>
+        </Header>
         <Content>
-          <Header style={styles.headingBg}>
-            <Body>
-              <Title style={styles.heading}>urgenC</Title>
-            </Body>
-          </Header>
           <StatsPageLayout props={this.props} />
         </Content>
       </Container>

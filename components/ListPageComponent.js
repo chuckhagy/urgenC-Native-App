@@ -21,12 +21,12 @@ import {
 
 const ListPageComponent = props =>
   <Container>
+    <Header style={styles.headingBg}>
+      <Body>
+        <Title style={styles.heading}>urgenC</Title>
+      </Body>
+    </Header>
     <Content>
-      <Header style={styles.headingBg}>
-        <Body>
-          <Title style={styles.heading}>urgenC</Title>
-        </Body>
-      </Header>
       {/* {console.log(props.modalOn, "<<<<<<< MODALON AT DECISIONS")} */}
       {props.modalOn
         ? <ResponseComponent props={props} />
