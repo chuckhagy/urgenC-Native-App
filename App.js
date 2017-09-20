@@ -83,7 +83,7 @@ export default class App extends Component {
               <Scene
                 key="stats"
                 hideNavBar
-                component={Green}
+                component={statsPageContainer}
                 title="Stats"
                 tabBarLabel=" "
                 iconName="line-chart"
@@ -93,7 +93,7 @@ export default class App extends Component {
                 key="history"
                 hideNavBar
                 component={historyPageContainer}
-                title="Failures"
+                title="Grave Yard"
                 tabBarLabel=" "
                 iconName="frown-o"
                 icon={TabIcon}
