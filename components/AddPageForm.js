@@ -87,7 +87,7 @@ export default class AddPageFormComponent extends React.Component {
             date={this.state.duedate}
             mode="datetime"
             placeholder="select date"
-            format="YYYY-MM-DD"
+            // format="YYYY-MM-DD"
             minDate="2017-09-19"
             maxDate="2020-12-31"
             confirmBtnText="Confirm"
