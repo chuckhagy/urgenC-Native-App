@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Picker } from "react-native";
 import DatePicker from "react-native-datepicker";
 import TickerComponent from "./TickerComponent";
-import MomentTimezone from "moment-timezone";
+import moment from "moment";
 
 import {
   Header,
@@ -28,7 +28,10 @@ export default class DetailsComponent extends React.Component {
     id: this.props.item.data[0].id,
     title: this.props.item.data[0].title,
     body: this.props.item.data[0].body,
-    duedate: this.props.item.data[0].duedate,
+    duedate: moment
+      .utc(this.props.item.data[0].duedate)
+      .subtract(7, "hour")
+      .format(),
     priority: this.props.item.data[0].priority
   };
 
@@ -38,7 +41,7 @@ export default class DetailsComponent extends React.Component {
       id: this.state.id,
       title: this.state.title,
       body: this.state.body,
-      duedate: this.state.duedate,
+      duedate: moment.utc(this.state.duedate).add(7, "hour"),
       priority: this.state.priority
     });
   };
@@ -53,6 +56,11 @@ export default class DetailsComponent extends React.Component {
     else this.setState({ checkBox: true });
   };
   render() {
+    console.log(this.state.duedate, "<<<<<<<<<<<<<<<<straight time");
+    console.log(
+      moment.utc(this.state.duedate).subtract(7, "hour").format(),
+      "<<<<<<<<<<<<<<<<adjusted 7 time"
+    );
     return (
       <Content>
         <Card>

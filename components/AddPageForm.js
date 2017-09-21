@@ -32,15 +32,18 @@ export default class AddPageFormComponent extends React.Component {
   };
 
   _handleSubmit = event => {
-    // console.log("SUBMITING");
+    console.log("SUBMITING");
+    // console.log(this.state.duedate, "xxxxxxxx with from state plain");
+    // console.log(moment.utc(this.state.duedate), "xxxxxxxx with UTC");
+    // console.log(moment.utc(this.state.duedate), "xxxxxxxx with 7 added");
     this.props.props.createThisItem({
       title: this.state.title || "n/a",
       body: this.state.body || "n/a",
       duedate:
-        this.state.duedate ||
-        moment(Date.now()).add(1, "day").format("YYYY-MM-DD"),
+        moment.utc(this.state.duedate).add(7, "hour") || //deals with utc?
+        moment.utc(Date.now()).add(1, "day").format("YYYY-MM-DD"),
       priority: this.state.priority || "3",
-      createddate: moment(Date.now()).format("YYYY-MM-DD")
+      createddate: moment.utc(Date.now()).format("YYYY-MM-DD")
     });
     this.setState({
       id: "",

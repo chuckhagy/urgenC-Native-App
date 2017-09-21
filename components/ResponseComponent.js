@@ -23,8 +23,9 @@ export default class ResponseComponent extends React.Component {
   _handleYes = () => {
     let thisItem = this.props.props.items.find(
       item =>
-        moment(moment(Date.now())).isSameOrAfter(moment(item.duedate)) &&
-        !item.completed
+        moment
+          .utc(moment.utc(Date.now()))
+          .isSameOrAfter(moment.utc(item.duedate)) && !item.completed
     );
     thisItem.completed = true;
     thisItem.success = true;
@@ -35,8 +36,9 @@ export default class ResponseComponent extends React.Component {
   _handleNo = () => {
     let thisItem = this.props.props.items.find(
       item =>
-        moment(moment(Date.now())).isSameOrAfter(moment(item.duedate)) &&
-        !item.completed
+        moment
+          .utc(moment.utc(Date.now()))
+          .isSameOrAfter(moment.utc(item.duedate)) && !item.completed
     );
     thisItem.completed = true;
     thisItem.success = false;
@@ -47,8 +49,9 @@ export default class ResponseComponent extends React.Component {
   render() {
     let thisItem = this.props.props.items.find(
       item =>
-        moment(moment(Date.now())).isSameOrAfter(moment(item.duedate)) &&
-        !item.completed
+        moment
+          .utc(moment.utc(Date.now()))
+          .isSameOrAfter(moment.utc(item.duedate)) && !item.completed
     );
     thisItem && console.log(thisItem, "<<<<<<<<<<<<<< THIS is the second one");
     if (thisItem) {

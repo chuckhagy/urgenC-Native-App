@@ -18,11 +18,13 @@ export default class TickerComponent extends React.Component {
   }
 
   tick() {
-    if (moment(currentTime).isSameOrAfter(moment(this.props.info.duedate))) {
+    if (
+      moment.utc(currentTime).isSameOrAfter(moment.utc(this.props.info.duedate))
+    ) {
       this.props.updateThisItem(this.props.info);
     }
-    let currentTime = moment(Date.now());
-    let diff = moment(this.props.info.duedate).diff(currentTime, "seconds");
+    let currentTime = moment.utc(Date.now());
+    let diff = moment.utc(this.props.info.duedate).diff(currentTime, "seconds");
     if (diff <= 60) this.setState({ timeRemaining: `${diff} sec`, math: diff });
     else if (diff <= 3600)
       this.setState({

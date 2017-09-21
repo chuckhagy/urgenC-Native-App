@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import moment from "moment";
 import TickerComponent from "./TickerComponent";
 import {
   Container,
