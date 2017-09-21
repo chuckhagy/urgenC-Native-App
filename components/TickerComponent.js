@@ -21,7 +21,6 @@ export default class TickerComponent extends React.Component {
     if (moment(currentTime).isSameOrAfter(moment(this.props.info.duedate))) {
       this.props.updateThisItem(this.props.info);
     }
-
     let currentTime = moment(Date.now());
     let diff = moment(this.props.info.duedate).diff(currentTime, "seconds");
     if (diff <= 60) this.setState({ timeRemaining: `${diff} sec`, math: diff });

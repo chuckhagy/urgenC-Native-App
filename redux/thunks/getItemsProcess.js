@@ -10,7 +10,7 @@ export default function getItemsProcess() {
         item.timeLeft = moment(item.duedate).diff(currentTime, "minutes");
         item.totalTime = moment(item.duedate).diff(item.createddate, "minutes");
         item.rank =
-          (1 - item.timeLeft / item.totalTime) * 0.6 + item.priority / 5 * 0.5;
+          (1 - item.timeLeft / item.totalTime) * 0.5 + item.priority / 5 * 0.5;
         return item;
       });
       // console.log(newItems);

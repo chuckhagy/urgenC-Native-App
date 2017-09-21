@@ -8,9 +8,6 @@ export default function updateItemProcess(fullItem) {
       let currentTime = moment(Date.now());
       timeLeft = moment(item.duedate).diff(currentTime, "minutes");
       totalTime = moment(item.duedate).diff(item.createddate, "minutes");
-      displayTime = moment(moment(item.duedate).diff(currentTime)).format(
-        "DD:HH:MM:SS"
-      );
       rank =
         (1 - item.timeLeft / item.totalTime) * 0.6 + item.priority / 5 * 0.5;
       dispatch({
@@ -24,8 +21,6 @@ export default function updateItemProcess(fullItem) {
           completed: item.completed,
           success: item.success,
           failure: item.failure,
-          displayTime: displayTime,
-          displayTime: displayTime,
           totalTime: totalTime,
           timeLeft: timeLeft,
           rank: rank

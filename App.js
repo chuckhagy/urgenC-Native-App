@@ -17,7 +17,6 @@ import addPageContainer from "./redux/containers/addPageContainer";
 import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
 import historyPageContainer from "./redux/containers/historyPageContainer";
-import Green from "./components/Green";
 
 import setupStore from "./redux/setupStore";
 const store = setupStore();

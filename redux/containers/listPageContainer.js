@@ -13,7 +13,8 @@ function mapDispatchToProps(dispatch) {
   return {
     onDidMount: () => dispatch(getItemsProcess()),
     updateThisItem: fullItem => dispatch(updateItemsProcess(fullItem)),
-    deleteItem: id => dispatch(deleteItemProcess(id))
+    deleteItem: id => dispatch(deleteItemProcess(id)),
+    refreshList: () => dispatch({ type: "REFRESH_LIST" })
   };
 }
 

@@ -9,7 +9,6 @@ export default function rootReducer(currentState = { items: [] }, action) {
           !item.success &&
           !item.failure
       );
-      // console.log(thisTest, "<<<<<<<<<<<<<<<< this Test");
       return {
         ...currentState,
         items: action.items,
@@ -50,10 +49,25 @@ export default function rootReducer(currentState = { items: [] }, action) {
       lessItems.items = currentState.items.filter(
         item => item.id !== action.id
       );
-
       return {
         ...currentState,
         items: lessItems.items
+      };
+
+    case "REFRESH_LIST":
+      const refreshedItems = currentState.items;
+      const currentTime = moment(Date.now());
+      refreshedItems = refreshedItems.map(item => {
+        item.timeLeft = moment(item.duedate).diff(currentTime, "minutes");
+        item.totalTime = moment(item.duedate).diff(item.createddate, "minutes");
+        item.rank =
+          (1 - item.timeLeft / item.totalTime) * 0.5 + item.priority / 5 * 0.5;
+        return item;
+      });
+
+      return {
+        ...currentState,
+        items: refreshedItems
       };
 
     default:

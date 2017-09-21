@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import sortBy from "lodash.sortby";
 import ListPageLayout from "./ListPageLayout";
 import ResponseComponent from "./ResponseComponent";
@@ -19,24 +19,39 @@ import {
   Text
 } from "native-base";
 
-const ListPageComponent = props =>
-  <Container>
-    <Header style={styles.headingBg}>
-      <Body>
-        <Title style={styles.heading}>urgenC</Title>
-      </Body>
-    </Header>
-    <Content>
-      {/* {console.log(props.modalOn, "<<<<<<< MODALON AT DECISIONS")} */}
-      {props.modalOn
-        ? <ResponseComponent props={props} />
-        : <ListPageLayout
-            items={sortBy(props.items, "rank").reverse()}
-            props={props}
-          />}
-    </Content>
-  </Container>;
-export default ListPageComponent;
+export default class ListPageComponent extends Component {
+  componentDidMount() {
+    this.refreshList = setInterval(() => this.refreshIt(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.refreshList);
+  }
+
+  refreshIt() {
+    this.props.refreshList();
+  }
+
+  render() {
+    return (
+      <Container>
+        <Header style={styles.headingBg}>
+          <Body>
+            <Title style={styles.heading}>urgenC</Title>
+          </Body>
+        </Header>
+        <Content>
+          {this.props.modalOn
+            ? <ResponseComponent props={this.props} />
+            : <ListPageLayout
+                items={sortBy(this.props.items, "rank").reverse()}
+                props={this.props}
+              />}
+        </Content>
+      </Container>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   heading: {
