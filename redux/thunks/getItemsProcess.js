@@ -15,7 +15,6 @@ export default function getItemsProcess() {
           (1 - item.timeLeft / item.totalTime) * 0.5 + item.priority / 5 * 0.5;
         return item;
       });
-      // console.log(newItems);
       dispatch({
         type: "GET_ITEMS",
         items: newItems

@@ -36,7 +36,6 @@ export default class DetailsComponent extends React.Component {
   };
 
   _handleSave = event => {
-    console.log("SAVING");
     this.props.item.data[1].updateThisItem({
       id: this.state.id,
       title: this.state.title,
@@ -48,7 +47,6 @@ export default class DetailsComponent extends React.Component {
 
   _handleDelete = () => {
     this.props.item.data[1].deleteItem(this.state.id);
-    console.log("DELETING");
   };
 
   _checkHandle = () => {
@@ -56,11 +54,6 @@ export default class DetailsComponent extends React.Component {
     else this.setState({ checkBox: true });
   };
   render() {
-    console.log(this.state.duedate, "<<<<<<<<<<<<<<<<straight time");
-    console.log(
-      moment.utc(this.state.duedate).subtract(7, "hour").format(),
-      "<<<<<<<<<<<<<<<<adjusted 7 time"
-    );
     return (
       <Content>
         <Card>
@@ -93,7 +86,7 @@ export default class DetailsComponent extends React.Component {
             mode="datetime"
             placeholder="select date"
             // format="YYYY-MM-DD hh:mm"
-            minDate={moment(Date.now()).format('YYYY-MM-DD')}
+            minDate={moment(Date.now()).format()}
             maxDate="2050-12-31"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"

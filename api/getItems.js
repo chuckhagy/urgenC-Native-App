@@ -1,6 +1,5 @@
 import env from "./env";
 export default function getItems() {
-  console.log("FETCHING NOW...");
   return fetch(
     `https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/items`,
     {

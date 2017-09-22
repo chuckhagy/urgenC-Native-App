@@ -53,7 +53,6 @@ export default class ResponseComponent extends React.Component {
           .utc(moment.utc(Date.now()))
           .isSameOrAfter(moment.utc(item.duedate)) && !item.completed
     );
-    thisItem && console.log(thisItem, "<<<<<<<<<<<<<< THIS is the second one");
     if (thisItem) {
       return (
         <Container>

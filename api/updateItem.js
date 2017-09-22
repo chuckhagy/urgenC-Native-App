@@ -1,6 +1,5 @@
 import env from "./env";
 export default function updateItem(fullItem) {
-  // console.log("UPDATING NOW...", fullItem);
   return fetch(
     `https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/items/${fullItem.id}`,
     {
@@ -24,7 +23,6 @@ export default function updateItem(fullItem) {
   )
     .then(response => response.json())
     .then(record => {
-      // console.log("RECORD...", record);
       return {
         id: record.id,
         title: record.fields.title,
