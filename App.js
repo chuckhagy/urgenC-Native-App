@@ -92,7 +92,7 @@ export default class App extends Component {
                 key="history"
                 hideNavBar
                 component={historyPageContainer}
-                title="Grave Yard"
+                title="Graveyard"
                 tabBarLabel=" "
                 iconName="frown-o"
                 icon={TabIcon}

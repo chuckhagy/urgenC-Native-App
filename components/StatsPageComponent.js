@@ -25,7 +25,7 @@ export default class StatsPageComponent extends React.Component {
             <Title style={styles.heading}>urgenC</Title>
           </Body>
         </Header>
-        <Content>
+        <Content style={styles.bg}>
           <StatsPageLayout props={this.props} />
         </Content>
       </Container>
@@ -42,5 +42,8 @@ const styles = StyleSheet.create({
   headingBg: {
     backgroundColor: "#c90000",
     paddingBottom: 5
+  },
+  bg: {
+    backgroundColor: "#000000"
   }
 });

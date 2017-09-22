@@ -57,7 +57,10 @@ export default class HistoryItemComponent extends React.Component {
         margin: 10
       },
       bg: {
-        backgroundColor: "black"
+        backgroundColor: "black",
+        borderColor: 'black',
+        borderBottomColor: 'rgb(19, 19, 19)',
+        borderBottomWidth: 2 
       }
     });
 

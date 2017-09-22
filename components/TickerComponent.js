@@ -38,7 +38,7 @@ export default class TickerComponent extends React.Component {
       });
     else if (diff >= 86400)
       this.setState({
-        timeRemaining: `${(diff / 86400).toFixed(1)} day`,
+        timeRemaining: `${(diff / 86400).toFixed(1)} days`,
         math: diff
       });
     else this.setState({ timeRemaining: diff });

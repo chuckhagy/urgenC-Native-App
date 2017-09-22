@@ -26,7 +26,7 @@ const ListPageComponent = props =>
         <Title style={styles.heading}>urgenC</Title>
       </Body>
     </Header>
-    <Content>
+    <Content style={styles.bg}>
       <HistoryPageLayout
         items={sortBy(props.items, "priority").reverse()}
         props={props}
@@ -44,5 +44,8 @@ const styles = StyleSheet.create({
   headingBg: {
     backgroundColor: "#c90000",
     paddingBottom: 5
+  },
+  bg: {
+    backgroundColor: "#000000",
   }
 });

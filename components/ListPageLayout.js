@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ListView, View } from "react-native";
+import { ListView, View, StyleSheet } from "react-native";
 import {
   Container,
   Header,
@@ -12,7 +12,8 @@ import {
   Right,
   Body,
   Icon,
-  Text
+  Text,
+  Spinner
 } from "native-base";
 import { Actions } from "react-native-router-flux";
 
@@ -51,14 +52,27 @@ export default class ListPageLayout extends Component {
   }
 
   render() {
+    if (this.props.items.length === 0) return (
+          <Spinner color='red' style={styles.spinner} />
+    )
+    else 
     return (
       <Content>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
           enableEmptySections={true}
+          removeClippedSubviews={false}
         />
       </Content>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  spinner: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '60%'
+  }
+});

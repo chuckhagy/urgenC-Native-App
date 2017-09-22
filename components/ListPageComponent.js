@@ -16,7 +16,8 @@ import {
   Right,
   Body,
   Icon,
-  Text
+  Text,
+  Spinner
 } from "native-base";
 
 export default class ListPageComponent extends Component {

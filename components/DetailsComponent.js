@@ -93,8 +93,8 @@ export default class DetailsComponent extends React.Component {
             mode="datetime"
             placeholder="select date"
             // format="YYYY-MM-DD hh:mm"
-            minDate="2017-09-19"
-            maxDate="2020-12-31"
+            minDate={moment(Date.now()).format('YYYY-MM-DD')}
+            maxDate="2050-12-31"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             customStyles={{
@@ -132,8 +132,7 @@ export default class DetailsComponent extends React.Component {
             />
             <Body>
               <Text>
-                I'm ready to give up on my future and change this goal like a
-                total loser.
+                I promise myself that changing this goal will make my life better.
               </Text>
             </Body>
           </ListItem>

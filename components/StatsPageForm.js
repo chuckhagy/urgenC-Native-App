@@ -128,7 +128,8 @@ const style = StyleSheet.create({
   },
   bg: {
     backgroundColor: "black",
-    padding: 10
+    padding: 10,
+    borderColor: 'black',
   },
   innerText: {
     color: "white",
@@ -147,7 +148,9 @@ const style = StyleSheet.create({
   },
   right: {
     textAlign: "right",
-    color: "white"
+    color: "white",
+    marginTop: 2,
+    marginBottom: 2
   },
   left: {
     textAlign: "left",

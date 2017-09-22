@@ -28,7 +28,7 @@ export default class ListItemComponent extends React.Component {
     else item = { title: "Title", body: "N/A", duedate: "N/A", stars: "N/A" };
     let thisProps = this.props.props;
 
-    var r = 0;
+    var r = 255;
     var g = 0;
     var b = 0;
     if (item.rank) {
@@ -60,7 +60,6 @@ export default class ListItemComponent extends React.Component {
 
     const styles = StyleSheet.create({
       textColor: {
-        // color: `rgb(${r}, ${g}, ${b})`,
         color: `rgb(255, 255, 255)`,
         fontSize: 12,
         textAlign: "left"
