@@ -9,11 +9,11 @@ A mobile app that keeps users accountable for reaching their goals, based on pri
 - JavaScript
 - NativeBase
 
-## Deleting Is Possible Before Expiration
+### Deleting Is Possible Before Expiration
 ![screenshot](./README/Delete.gif?raw=true)
 ![screenshot](./README/Graveyard.png?raw=true)
 
 
-## Easily Add and Review Goals
+### Easily Add and Review Goals
 ![screenshot](./README/Added.gif?raw=true)
 ![screenshot](./README/Stats.png?raw=true)
