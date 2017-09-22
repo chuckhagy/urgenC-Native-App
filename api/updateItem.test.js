@@ -11,6 +11,7 @@ let mockDataResponse = {
   },
   "id": "rec7YrLkGZrl9kYfZ",
 }
+
 let dataObject = {
     "body": "This Message",
     "createddate": "2017-09-21T23:30:49.047Z",
