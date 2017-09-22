@@ -21,7 +21,6 @@ export default function updateItem(fullItem) {
   )
     .then(response => response.json())
     .then(record => {
-      console.log(record, '<<<REcord<<<<<')
       return {
         id: record.id
       };

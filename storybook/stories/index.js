@@ -16,7 +16,7 @@ storiesOf("Welcome", module).add("to Storybook", () =>
 
 storiesOf("ListItemComponent", module).add("Happy Path", () =>
   <ListItemComponent
-    items={{
+    {items={
       id: "1",
       title: "Go to Gym",
       body: "Three times per week with trainer",
