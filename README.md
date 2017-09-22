@@ -1,5 +1,7 @@
-# urgenC
+# urgenC Native App
+
 This is a mobile app that keeps users accountable for reaching their goals, based on priority and deadlines. It was inspired by never-ending lists in apps like Workflowy, with goals that quickly get forgotten and end up taking up space forever. It also tracks success and failure to motivate people.
+
 ## Technologies Used
 - ReactNative
 - JavaScript
@@ -8,8 +10,6 @@ This is a mobile app that keeps users accountable for reaching their goals, base
 
 ![screenshot](./README/ExpiringGoal.gif?raw=true)
 ![screenshot](./README/Main.png?raw=true)
-
-
 
 ## Functionality 1
 Easily add and review your goals your goals - including the ability to edit them before expiration.
