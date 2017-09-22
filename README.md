@@ -12,7 +12,7 @@ This is a mobile app that keeps users accountable for reaching their goals, base
 ![screenshot](./README/Main.png?raw=true)
 
 ## Functionality 1
-Easily add and review your goals your goals - including the ability to edit them before expiration.
+Easily add and review your goals - including the ability to edit them before expiration.
 ![screenshot](./README/Added.gif?raw=true)
 ![screenshot](./README/Stats.png?raw=true)
 
