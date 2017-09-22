@@ -1,8 +1,14 @@
 # urgenC
 A mobile app that keeps users accountable for reaching their goals, based on priority and deadlines.
 
-![screenshot](./README/Main.png?raw=true)
-![screenshot](./README/Stats.png?raw=true)
+![screenshot](./README/ExpiringGoal.gif?raw=true)
+![screenshot](./README/Delete.gif?raw=true)
+
+## Technologies Used
+- ReactNative
+- JavaScript
+- NativeBase
+
 
 ## Technologies Used
 - ReactNative
