@@ -60,7 +60,7 @@ export default class ListItemComponent extends React.Component {
 
     const styles = StyleSheet.create({
       textColor: {
-        color: `rgb(255, 255, 255)`,
+        color: `white`,
         fontSize: 12,
         textAlign: "left"
       },

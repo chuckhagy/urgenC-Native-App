@@ -23,8 +23,9 @@ const rowHasChanged = (r1, r2) =>
   r1.id !== r2.id ||
   r1.title !== r2.title ||
   r1.duedate !== r2.duedate ||
-  r1.priority !== r2.priority;
-const ds = new ListView.DataSource({ rowHasChanged });
+  r1.priority !== r2.priority ||
+  r1.rating !== r2.rating;
+  const ds = new ListView.DataSource({ rowHasChanged });
 
 export default class ListPageLayout extends Component {
   state = {
@@ -55,7 +56,7 @@ export default class ListPageLayout extends Component {
     if (this.props.items.length === 0) return (
           <Spinner color='red' style={styles.spinner} />
     )
-    else 
+    else
     return (
       <Content>
         <ListView
