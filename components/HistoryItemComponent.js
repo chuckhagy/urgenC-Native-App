@@ -60,9 +60,10 @@ export default class HistoryItemComponent extends React.Component {
         backgroundColor: "black",
         borderColor: 'black',
         borderBottomColor: 'rgb(19, 19, 19)',
-        borderBottomWidth: 2 
+        borderBottomWidth: 2
       }
     });
+
 
     return (
       <Card style={styles.bg}>

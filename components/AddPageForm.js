@@ -32,10 +32,6 @@ export default class AddPageFormComponent extends React.Component {
   };
 
   _handleSubmit = event => {
-    console.log("SUBMITING");
-    // console.log(this.state.duedate, "xxxxxxxx with from state plain");
-    // console.log(moment.utc(this.state.duedate), "xxxxxxxx with UTC");
-    // console.log(moment.utc(this.state.duedate), "xxxxxxxx with 7 added");
     this.props.props.createThisItem({
       title: this.state.title || "n/a",
       body: this.state.body || "n/a",
@@ -55,7 +51,6 @@ export default class AddPageFormComponent extends React.Component {
   };
 
   _handleCancel = () => {
-    // console.log("CANCEL");
     this.setState({
       id: "",
       title: "",

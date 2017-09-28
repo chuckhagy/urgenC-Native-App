@@ -50,7 +50,7 @@ export default class HistoryPageLayout extends Component {
     }
   }
 
-  render() {
+  render() {    
     return (
       <Content>
         <ListView

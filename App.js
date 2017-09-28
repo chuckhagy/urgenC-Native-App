@@ -109,15 +109,3 @@ export default class App extends Component {
     );
   }
 }
-
-// componentDidMount() {
-//   getItems().then(items => {
-//     newItems = items.sort(function(a, b) {
-//       return b.priority - a.priority;
-//     });
-//     this.setState({
-//       items: newItems
-//     });
-//     Actions.pop({ refresh: { items: this.state.items } });
-//   });
-// }
