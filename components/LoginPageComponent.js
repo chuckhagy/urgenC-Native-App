@@ -18,7 +18,7 @@ import {
 
 export default class LoginPageComponent extends React.Component {
     render(){
-        reutrn(
+        return(
 
         )
     }

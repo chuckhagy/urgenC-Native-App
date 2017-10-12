@@ -1,25 +1,26 @@
 import createItem from "../../api/createItem";
-import { Actions } from "react-native-router-flux";
+import {Actions} from "react-native-router-flux";
 import moment from "moment";
 
 export default function createItemProcess(item) {
-  return (dispatch, getState) => {
-    return createItem(item).then(newId => {
-      item.id = newId.id;
-      let currentTime = moment.utc(Date.now());
-      item.timeLeft = moment.utc(item.duedate).diff(currentTime, "minutes");
-      item.totalTime = moment
-        .utc(item.duedate)
-        .diff(item.createddate, "minutes");
-      item.rank =
-        (1 - item.timeLeft / item.totalTime) * 0.6 + item.priority / 5 * 0.5;
+    return (dispatch, getState) => {
+        return createItem(item).then(newId => {
+            item.id = newId.id;
+            let currentTime = moment.utc(Date.now());
+            item.timeLeft = moment.utc(item.duedate).diff(currentTime, "minutes");
+            item.totalTime = moment
+                .utc(item.duedate)
+                .diff(item.createddate, "minutes");
+            item.rank =
+                (1 - item.timeLeft / item.totalTime) * 0.6 + item.priority / 5 * 0.5;
+            item.status = "current";
 
-      dispatch({
-        type: "CREATE_ITEM",
-        newItem: item
-      });
-      Actions.jump("list");
-      return item;
-    });
-  };
+            dispatch({
+                type: "CREATE_ITEM",
+                newItem: item
+            });
+            Actions.jump("list");
+            return item;
+        });
+    };
 }

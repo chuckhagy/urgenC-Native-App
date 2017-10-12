@@ -25,11 +25,9 @@ export default class ResponseComponent extends React.Component {
       item =>
         moment
           .utc(moment.utc(Date.now()))
-          .isSameOrAfter(moment.utc(item.duedate)) && !item.completed
+          .isSameOrAfter(moment.utc(item.duedate)) && item.status === 'current'
     );
-    thisItem.completed = true;
-    thisItem.success = true;
-    thisItem.failure = false;
+    thisItem.status = "success";
     this.props.props.updateThisItem(thisItem);
   };
 
@@ -38,11 +36,9 @@ export default class ResponseComponent extends React.Component {
       item =>
         moment
           .utc(moment.utc(Date.now()))
-          .isSameOrAfter(moment.utc(item.duedate)) && !item.completed
+          .isSameOrAfter(moment.utc(item.duedate)) && item.status === 'current'
     );
-    thisItem.completed = true;
-    thisItem.success = false;
-    thisItem.failure = true;
+      thisItem.status = "failure";
     this.props.props.updateThisItem(thisItem);
   };
 
@@ -51,7 +47,7 @@ export default class ResponseComponent extends React.Component {
       item =>
         moment
           .utc(moment.utc(Date.now()))
-          .isSameOrAfter(moment.utc(item.duedate)) && !item.completed
+          .isSameOrAfter(moment.utc(item.duedate)) && item.status === 'current'
     );
     if (thisItem) {
       return (

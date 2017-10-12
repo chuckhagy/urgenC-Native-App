@@ -18,9 +18,7 @@ export default function updateItemProcess(fullItem) {
           body: item.body,
           priority: item.priority,
           duedate: item.duedate,
-          completed: item.completed,
-          success: item.success,
-          failure: item.failure,
+          status: item.status,
           totalTime: totalTime,
           timeLeft: timeLeft,
           rank: rank

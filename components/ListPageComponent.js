@@ -22,7 +22,7 @@ import {
 
 export default class ListPageComponent extends Component {
   componentDidMount() {
-    this.refreshList = setInterval(() => this.refreshIt(), 1000);
+    this.refreshList = setInterval(() => this.refreshIt(), 100000);
   }
 
   componentWillUnmount() {

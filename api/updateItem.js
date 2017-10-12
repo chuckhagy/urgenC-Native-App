@@ -14,9 +14,7 @@ export default function updateItem(fullItem) {
           body: fullItem.body,
           duedate: fullItem.duedate,
           priority: fullItem.priority,
-          completed: fullItem.completed,
-          success: fullItem.success,
-          failure: fullItem.failure
+          status: fullItem.status,
         }
       })
     }
@@ -27,14 +25,10 @@ export default function updateItem(fullItem) {
         id: record.id,
         title: record.fields.title,
         body: record.fields.body,
-        completed: record.fields.completed,
-        success: record.fields.success,
         priority: record.fields.priority,
-        duedate: record.fields.duedate,
-        createddate: record.fields.createddate,
-        completed: fullItem.completed,
-        success: fullItem.success,
-        failure: fullItem.failure
+          duedate: record.fields.duedate,
+          createddate: record.fields.createddate,
+          status: record.fields.status,
       };
     });
   //.catch() <<<<< DO THIS

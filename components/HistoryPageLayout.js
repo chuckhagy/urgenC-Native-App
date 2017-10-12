@@ -29,7 +29,7 @@ export default class HistoryPageLayout extends Component {
   state = {
     dataSource: ds.cloneWithRows(
       this.props.items.filter(a => {
-        return a.completed && a.failure;
+          return a.status === "failure";
       })
     )
   };
@@ -43,7 +43,7 @@ export default class HistoryPageLayout extends Component {
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(
           newProps.items.filter(a => {
-            return a.completed && a.failure;
+            return a.status === "failure";
           })
         )
       });

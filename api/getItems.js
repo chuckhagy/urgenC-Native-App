@@ -10,17 +10,16 @@ export default function getItems() {
   )
     .then(response => response.json())
     .then(data => {
-      return data.records.map(record => ({
-        id: record.id,
-        title: record.fields.title,
-        body: record.fields.body,
-        completed: record.fields.completed,
-        success: record.fields.success,
-        failure: record.fields.failure,
-        priority: record.fields.priority,
-        duedate: record.fields.duedate,
-        createddate: record.createdTime
-      }));
+      return data.records.map(record => {
+         return {
+             id: record.id,
+             title: record.fields.title,
+             body: record.fields.body,
+             duedate: record.fields.duedate,
+             priority: record.fields.priority,
+             createddate: record.createdTime,
+             status: record.fields.status
+         }
+      });
     });
-  //.catch() <<<<< DO THIS
 }

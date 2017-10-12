@@ -14,7 +14,8 @@ export default function updateItem(fullItem) {
           body: fullItem.body,
           duedate: fullItem.duedate,
           priority: fullItem.priority,
-          createddate: fullItem.createddate
+          createddate: fullItem.createddate,
+          status: 'current'
         }
       })
     }
@@ -25,5 +26,4 @@ export default function updateItem(fullItem) {
         id: record.id
       };
     });
-  //.catch() <<<<< DO THIS
 }
