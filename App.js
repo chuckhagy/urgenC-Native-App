@@ -88,15 +88,15 @@ export default class App extends Component {
                 iconName="line-chart"
                 icon={TabIcon}
               />
-              <Scene
-                key="history"
-                hideNavBar
-                component={historyPageContainer}
-                title="Graveyard"
-                tabBarLabel=" "
-                iconName="frown-o"
-                icon={TabIcon}
-              />
+              {/*<Scene*/}
+                {/*key="history"*/}
+                {/*hideNavBar*/}
+                {/*component={historyPageContainer}*/}
+                {/*title="Graveyard"*/}
+                {/*tabBarLabel=" "*/}
+                {/*iconName="frown-o"*/}
+                {/*icon={TabIcon}*/}
+              {/*/>*/}
             </Scene>
             <Scene
               key="details"

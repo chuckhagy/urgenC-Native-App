@@ -41,10 +41,7 @@ export default class ListPageLayout extends Component {
     };
 
     componentWillReceiveProps(newProps) {
-        console.log('<> New Props Below: <>')
-        console.log(newProps)
         if (newProps.items !== this.props.items) {
-            console.log('<<<<<< Got into the difference block <<<<<<')
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(
                     newProps.items.filter(a => {
