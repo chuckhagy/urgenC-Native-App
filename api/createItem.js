@@ -15,7 +15,6 @@ export default function updateItem(fullItem) {
           duedate: fullItem.duedate,
           priority: fullItem.priority,
           createddate: fullItem.createddate,
-          status: 'current'
         }
       })
     }

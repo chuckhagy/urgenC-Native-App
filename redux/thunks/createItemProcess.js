@@ -13,7 +13,6 @@ export default function createItemProcess(item) {
                 .diff(item.createddate, "minutes");
             item.rank =
                 (1 - item.timeLeft / item.totalTime) * 0.6 + item.priority / 5 * 0.5;
-            item.status = "current";
 
             dispatch({
                 type: "CREATE_ITEM",
