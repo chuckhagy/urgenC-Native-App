@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="84baceec-406a-4b92-911a-fde8e0a100b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App.js" afterPath="$PROJECT_DIR$/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/ListPageLayout.js" afterPath="$PROJECT_DIR$/components/ListPageLayout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/AddPageForm.js" afterPath="$PROJECT_DIR$/components/AddPageForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/DetailsComponent.js" afterPath="$PROJECT_DIR$/components/DetailsComponent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/redux/thunks/getItemsProcess.js" afterPath="$PROJECT_DIR$/redux/thunks/getItemsProcess.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,7 +22,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/App.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1200">
@@ -28,6 +30,29 @@
                   <folding>
                     <element signature="e#38#79#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="getItemsProcess.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/redux/thunks/getItemsProcess.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="30">
+                  <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="0">
+                    <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                    <folding />
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -95,7 +120,6 @@
         <option value="$PROJECT_DIR$/components/LoginPageComponent.js" />
         <option value="$PROJECT_DIR$/components/StatsPageForm.js" />
         <option value="$PROJECT_DIR$/components/ResponseComponent.js" />
-        <option value="$PROJECT_DIR$/redux/thunks/getItemsProcess.js" />
         <option value="$PROJECT_DIR$/api/getItems.js" />
         <option value="$PROJECT_DIR$/components/ListPageComponent.js" />
         <option value="$PROJECT_DIR$/redux/containers/listPageContainer.js" />
@@ -105,6 +129,8 @@
         <option value="$PROJECT_DIR$/redux/thunks/createItemProcess.js" />
         <option value="$PROJECT_DIR$/App.js" />
         <option value="$PROJECT_DIR$/components/ListPageLayout.js" />
+        <option value="$PROJECT_DIR$/redux/thunks/getItemsProcess.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -165,6 +191,12 @@
               <item name="urgenC-router" type="462c0819:PsiDirectoryNode" />
               <item name="redux" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="urgenC-router" type="b2602c69:ProjectViewProjectNode" />
+              <item name="urgenC-router" type="462c0819:PsiDirectoryNode" />
+              <item name="redux" type="462c0819:PsiDirectoryNode" />
+              <item name="thunks" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -208,7 +240,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14924000" />
+    <option name="totallyTimeSpent" value="15125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-158" y="-1080" width="1920" height="1080" extended-state="0" />
@@ -323,9 +355,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -421,9 +451,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -588,16 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redux/thunks/getItemsProcess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/ResponseComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -711,6 +729,25 @@
           <folding>
             <element signature="e#38#79#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redux/thunks/getItemsProcess.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

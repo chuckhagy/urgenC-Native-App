@@ -86,7 +86,7 @@ export default class DetailsComponent extends React.Component {
             mode="datetime"
             placeholder="select date"
             // format="YYYY-MM-DD hh:mm"
-            minDate={moment(Date.now()).format('YYYY-MM-DD')}
+            minDate={moment(Date.now()).format()}
             maxDate="2050-12-31"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
