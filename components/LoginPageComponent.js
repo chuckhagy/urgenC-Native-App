@@ -29,7 +29,7 @@ export default class LoginPageComponent extends React.Component {
                     <Image source={require('../images/logo-small.png')} />
                 </View>
                 <View style={styles.centerB}>
-                <Button dark onPress={this._handleLogin}>
+                <Button dark block onPress={this._handleLogin}>
                     <Text style={styles.logintxt}>
                         L O G I N
                     </Text>
@@ -48,19 +48,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     centerA: {
-        flex: 6,
+        flex: 3,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
     },
     centerB: {
-        flex: 1,
+        flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
     },
     loginbutton: {
-        flex: 3,
+        // flex: 3,
         alignSelf: "center",
-        width: '150',
     },
     logintxt: {
         color: "white",
