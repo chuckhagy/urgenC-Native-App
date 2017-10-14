@@ -16,6 +16,7 @@ import listPageContainer from "./redux/containers/listPageContainer";
 import addPageContainer from "./redux/containers/addPageContainer";
 import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
+import LoginPageComponent from "./components/LoginPageComponent";
 import historyPageContainer from "./redux/containers/historyPageContainer";
 
 import setupStore from "./redux/setupStore";
@@ -55,6 +56,12 @@ export default class App extends Component {
         <Router>
           <Stack key="root">
             <Scene
+                key="login"
+                component={LoginPageComponent}
+                title="urgenC Login"
+                hideNavBar
+            />
+            <Scene
               key="tabbar"
               tabs={true}
               tabBarStyle={{ backgroundColor: "#c90000" }}
@@ -88,15 +95,15 @@ export default class App extends Component {
                 iconName="line-chart"
                 icon={TabIcon}
               />
-              {/*<Scene*/}
-                {/*key="history"*/}
-                {/*hideNavBar*/}
-                {/*component={historyPageContainer}*/}
-                {/*title="Graveyard"*/}
-                {/*tabBarLabel=" "*/}
-                {/*iconName="frown-o"*/}
-                {/*icon={TabIcon}*/}
-              {/*/>*/}
+              <Scene
+                key="history"
+                hideNavBar
+                component={historyPageContainer}
+                title="Graveyard"
+                tabBarLabel=" "
+                iconName="frown-o"
+                icon={TabIcon}
+              />
             </Scene>
             <Scene
               key="details"
