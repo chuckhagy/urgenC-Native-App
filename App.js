@@ -17,6 +17,7 @@ import addPageContainer from "./redux/containers/addPageContainer";
 import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
 import LoginPageComponent from "./components/LoginPageComponent";
+import ProfilePageComponent from "./components/ProfilePageComponent";
 import historyPageContainer from "./redux/containers/historyPageContainer";
 
 import setupStore from "./redux/setupStore";
@@ -80,8 +81,8 @@ export default class App extends Component {
                             />
                             <Scene
                                 key="profile"
+                                component={ProfilePageComponent}
                                 hideNavBar
-                                component={statsPageContainer}
                                 title="Profile"
                                 tabBarLabel=" "
                                 iconName="user"
