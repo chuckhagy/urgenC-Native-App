@@ -13,14 +13,23 @@ import {
     Right,
     Body,
     Icon,
-    Text
+    Text,
+    Form,
+    Input,
+    Label,
+    Item
 } from "native-base"
 
 export default class ProfilePageComponent extends React.Component {
 
-    _handleLogin = () => {
-        Actions.jump("list");
+    state = {
+        originalName: 'Chuck Hagy',
+        name: 'Chuck Hagy',
+        originalStatus: 'Krushing It BROS!!',
+        status: "Krushing It BROS!!",
+        different: false
     }
+
 
     render() {
         return (
@@ -33,30 +42,65 @@ export default class ProfilePageComponent extends React.Component {
                 <View style={styles.profileBgTop}>
                     <Image source={require('../images/user.png')} style={styles.image1}/>
                     <Text style={styles.title}>
-                        Chuck
+                        {this.state.name}
                     </Text>
                 </View>
                 <View style={styles.profileBgMiddle}>
-                    <Text>
-                        Stats 1:
+                    <Text style={styles.textMiddle}>
+                        @chuckhagy
                     </Text>
-                    <Text>
-                        Stats 2:
-                    </Text>
-                    <Text>
-                        Stats 3:
+                    <Text style={styles.textMiddle}>
+                        {this.state.status}
                     </Text>
                 </View>
                 <View style={styles.profileBgBottom}>
-                    <Text>
-                        Friend 1:
-                    </Text>
-                    <Text>
-                        Friend 2:
-                    </Text>
-                    <Text>
-                        Friend 3:
-                    </Text>
+                    {/*<Text>*/}
+                        {/*E D I T:*/}
+                    {/*</Text>*/}
+                    <Form>
+                        <Item>
+                            <Label>DISPLAY NAME:</Label>
+                            <Input
+                                name="name"
+                                onChangeText={name => this.setState({name})}
+                                value={this.state.name}
+
+                            />
+                        </Item>
+                        <Item>
+                            <Label>STATUS:</Label>
+                            <Input
+                                name="status"
+                                onChangeText={status => {
+                                    this.setState({status})
+                                }}
+                                value={this.state.status}
+                            />
+                        </Item>
+                        <Container style={styles.buttons}>
+                            <Button
+                                iconLeft
+                                large
+                                primary
+                                disabled={this.state.originalName === this.state.name &&
+                                this.state.originalStatus === this.state.status
+                                }                            >
+                                <Icon name="send" />
+                                <Text>SAVE IT</Text>
+                            </Button>
+                            <Button
+                                iconLeft
+                                large
+                                danger
+                                disabled={this.state.originalName === this.state.name &&
+                                this.state.originalStatus === this.state.status
+                                }
+                            >
+                                <Icon name="trash" />
+                                <Text>DELETE</Text>
+                            </Button>
+                        </Container>
+                    </Form>
                 </View>
             </Container>
         )
@@ -64,6 +108,13 @@ export default class ProfilePageComponent extends React.Component {
 }
 
 const styles = StyleSheet.create({
+        buttons: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        margin: 35,
+        height: 60
+    },
     profileBgTop: {
         flex: 1,
         justifyContent: 'center',
@@ -74,11 +125,22 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 5,
+        marginBottom: -55
+    },
+    textMiddle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        paddingBottom: 25
+    },
+    status: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        paddingBottom: 25
     },
     profileBgBottom: {
         flex: 1,
-        alignItems: 'center',
-
     },
     profileBg: {
         flex: 1,
