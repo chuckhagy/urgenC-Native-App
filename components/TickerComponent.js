@@ -25,28 +25,23 @@ export default class TickerComponent extends React.Component {
         }
         let currentTime = moment.utc(Date.now());
         let diff = moment.utc(this.props.info.duedate).diff(currentTime, "seconds");
+        let newDiff = moment(this.props.info.duedate).fromNow(true);
         if (diff <= 60) this.setState({timeRemaining: `${diff} sec`, math: diff});
         else if (diff <= 3600) {
-            // let hour = Math.floor(diff / 60);
-            // let hours = ("0" + hour).slice(-2);
-            // let minute = ((diff / 60) - hour) * 60;//gives 30
-            // let minutes = ("0" + minute ).slice(-2);
-            // let totalDiff = hours + ":" + minutes;
 
             this.setState({
-                timeRemaining: `${(diff / 60).toFixed(2)} min`,
-                // timeRemaining: `${(diff / 60).toFixed(0)}m ${diff % 60}s`,
-                // timeRemaining: totalDiff,
+                timeRemaining: newDiff,
                 math: diff
             });
         } else if (diff <= 86400)
             this.setState({
-                timeRemaining: `${(diff / 3600).toFixed(1)} hr`,
+                timeRemaining: newDiff,
+
                 math: diff
             });
         else if (diff >= 86400)
             this.setState({
-                timeRemaining: `${(diff / 86400).toFixed(1)} days`,
+                timeRemaining: newDiff,
                 math: diff
             });
         else this.setState({timeRemaining: diff});
