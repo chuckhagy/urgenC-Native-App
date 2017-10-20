@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     textMiddle: {
         fontSize: 16,
         fontStyle: 'italic',
-        paddingBottom: 25
+        paddingBottom: 25,
     },
     status: {
         fontSize: 20,
