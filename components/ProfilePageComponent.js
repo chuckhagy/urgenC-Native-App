@@ -29,7 +29,7 @@ export default class ProfilePageComponent extends React.Component {
         lastName: 'Hagy',
         originalStatus: 'Krushing It BROS!!',
         status: "Krushing It BROS!!",
-        different: false,
+        originalColor: '#c90000',
         color: '#c90000'
     }
 
@@ -40,11 +40,23 @@ export default class ProfilePageComponent extends React.Component {
             color += letters[Math.floor(Math.random() * 16)];
         }
         this.setState({color});
-        console.log(this.state.color);
+    }
+
+    handleCancel = () => {
+        this.setState(currentState => {
+            return {
+                color: currentState.originalColor,
+                firstName: currentState.originalFirstName,
+                lastName: currentState.originalLastName,
+                status: currentState.originalStatus
+            }
+        });
+
+        Actions.list()
     }
 
     specialColor = () => {
-        return{
+        return {
             width: 160,
             height: 160,
             borderRadius: 80,
@@ -121,18 +133,23 @@ export default class ProfilePageComponent extends React.Component {
                                 primary
                                 disabled={this.state.originalFirstName === this.state.firstName &&
                                 this.state.originalLastName === this.state.lastName &&
-                                this.state.originalStatus === this.state.status
+                                this.state.originalStatus === this.state.status &&
+                                this.state.originalColor === this.state.color
+
                                 }>
                                 <Icon name="send"/>
                                 <Text>SAVE IT</Text>
                             </Button>
                             <Button
+                                onPress={this.handleCancel}
                                 iconLeft
                                 large
                                 danger
                                 disabled={this.state.originalFirstName === this.state.firstName &&
                                 this.state.originalLastName === this.state.lastName &&
-                                this.state.originalStatus === this.state.status
+                                this.state.originalStatus === this.state.status &&
+                                this.state.originalColor === this.state.color
+
                                 }
                             >
                                 <Icon name="trash"/>
@@ -159,7 +176,10 @@ const styles = StyleSheet.create({
     initials: {
         color: 'white',
         textAlign: 'center',
-        fontSize: 110
+        fontSize: 110,
+        textShadowColor: 'black',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 3
     },
     profileBgTop: {
         flex: 1,
