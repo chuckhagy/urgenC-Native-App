@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View, Image} from "react-native";
+import {StyleSheet, View, Image, TouchableOpacity} from "react-native";
 import {Actions} from "react-native-router-flux";
 import {
     Container,
@@ -29,9 +29,30 @@ export default class ProfilePageComponent extends React.Component {
         lastName: 'Hagy',
         originalStatus: 'Krushing It BROS!!',
         status: "Krushing It BROS!!",
-        different: false
+        different: false,
+        color: '#c90000'
     }
 
+    handleColor = () => {
+        let letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        this.setState({color});
+        console.log(this.state.color);
+    }
+
+    specialColor = () => {
+        return{
+            width: 160,
+            height: 160,
+            borderRadius: 80,
+            marginTop: 30,
+            borderWidth: 4,
+            backgroundColor: this.state.color
+        }
+    }
 
     render() {
         return (
@@ -42,13 +63,15 @@ export default class ProfilePageComponent extends React.Component {
                     </Body>
                 </Header>
                 <View style={styles.profileBgTop}>
-                    <View style={styles.image1}>
-                        <View style={styles.transparent}>
-                            <Text style={styles.initials}>
-                                {this.state.firstName.charAt(0) ? this.state.firstName.charAt(0) : this.state.lastName.charAt(0)}
-                            </Text>
+                    <TouchableOpacity onPress={this.handleColor}>
+                        <View style={this.specialColor()}>
+                            <View style={styles.transparent}>
+                                <Text style={styles.initials}>
+                                    {this.state.firstName.charAt(0) ? this.state.firstName.charAt(0) : this.state.lastName.charAt(0)}
+                                </Text>
+                            </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                     <Text style={styles.title}>
                         {this.state.firstName} {this.state.lastName}
                     </Text>
@@ -176,8 +199,6 @@ const styles = StyleSheet.create({
         borderRadius: 80,
         marginTop: 30,
         borderWidth: 4,
-        borderColor: '#909090',
-        backgroundColor: 'blue'
     },
     title: {
         fontSize: 35,
