@@ -55,6 +55,10 @@ export default class ProfilePageComponent extends React.Component {
         Actions.list()
     }
 
+    handleSave = () => {
+        Actions.list()
+    }
+
     specialColor = () => {
         return {
             width: 160,
@@ -128,6 +132,7 @@ export default class ProfilePageComponent extends React.Component {
                         </Item>
                         <Container style={styles.buttons}>
                             <Button
+                                onPress={this.handleSave}
                                 iconLeft
                                 large
                                 primary
