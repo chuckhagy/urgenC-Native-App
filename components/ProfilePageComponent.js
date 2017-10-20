@@ -23,8 +23,10 @@ import {
 export default class ProfilePageComponent extends React.Component {
 
     state = {
-        originalName: 'Chuck Hagy',
-        name: 'Chuck Hagy',
+        originalFirstName: 'Chuck',
+        originalLastName: 'Hagy',
+        firstName: 'Chuck',
+        lastName: 'Hagy',
         originalStatus: 'Krushing It BROS!!',
         status: "Krushing It BROS!!",
         different: false
@@ -40,9 +42,15 @@ export default class ProfilePageComponent extends React.Component {
                     </Body>
                 </Header>
                 <View style={styles.profileBgTop}>
-                    <Image source={require('../images/user.png')} style={styles.image1}/>
+                    <View style={styles.image1}>
+                        <View style={styles.transparent}>
+                            <Text style={styles.initials}>
+                                {this.state.firstName.charAt(0) ? this.state.firstName.charAt(0) : this.state.lastName.charAt(0)}
+                            </Text>
+                        </View>
+                    </View>
                     <Text style={styles.title}>
-                        {this.state.name}
+                        {this.state.firstName} {this.state.lastName}
                     </Text>
                 </View>
                 <View style={styles.profileBgMiddle}>
@@ -54,16 +62,22 @@ export default class ProfilePageComponent extends React.Component {
                     </Text>
                 </View>
                 <View style={styles.profileBgBottom}>
-                    {/*<Text>*/}
-                        {/*E D I T:*/}
-                    {/*</Text>*/}
                     <Form>
                         <Item>
-                            <Label>DISPLAY NAME:</Label>
+                            <Label>FIRST NAME:</Label>
                             <Input
-                                name="name"
-                                onChangeText={name => this.setState({name})}
-                                value={this.state.name}
+                                name="firstName"
+                                onChangeText={firstName => this.setState({firstName})}
+                                value={this.state.firstName}
+
+                            />
+                        </Item>
+                        <Item>
+                            <Label>LAST NAME:</Label>
+                            <Input
+                                name="lastName"
+                                onChangeText={lastName => this.setState({lastName})}
+                                value={this.state.lastName}
 
                             />
                         </Item>
@@ -82,22 +96,24 @@ export default class ProfilePageComponent extends React.Component {
                                 iconLeft
                                 large
                                 primary
-                                disabled={this.state.originalName === this.state.name &&
+                                disabled={this.state.originalFirstName === this.state.firstName &&
+                                this.state.originalLastName === this.state.lastName &&
                                 this.state.originalStatus === this.state.status
-                                }                            >
-                                <Icon name="send" />
+                                }>
+                                <Icon name="send"/>
                                 <Text>SAVE IT</Text>
                             </Button>
                             <Button
                                 iconLeft
                                 large
                                 danger
-                                disabled={this.state.originalName === this.state.name &&
+                                disabled={this.state.originalFirstName === this.state.firstName &&
+                                this.state.originalLastName === this.state.lastName &&
                                 this.state.originalStatus === this.state.status
                                 }
                             >
-                                <Icon name="trash" />
-                                <Text>DELETE</Text>
+                                <Icon name="trash"/>
+                                <Text>CANCEL</Text>
                             </Button>
                         </Container>
                     </Form>
@@ -108,15 +124,23 @@ export default class ProfilePageComponent extends React.Component {
 }
 
 const styles = StyleSheet.create({
-        buttons: {
+    buttons: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "flex-end",
-        margin: 35,
+        marginRight: 35,
+        marginLeft: 35,
+        marginTop: 15,
         height: 60
+    },
+    initials: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 110
     },
     profileBgTop: {
         flex: 1,
+        marginBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
 
@@ -125,8 +149,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 5,
-        marginBottom: -55
+        marginTop: -85,
+        marginBottom: -75
     },
     textMiddle: {
         fontSize: 18,
@@ -150,12 +174,13 @@ const styles = StyleSheet.create({
         width: 160,
         height: 160,
         borderRadius: 80,
-        marginTop: 70,
+        marginTop: 30,
         borderWidth: 4,
-        borderColor: '#909090'
+        borderColor: '#909090',
+        backgroundColor: 'blue'
     },
     title: {
-        fontSize: 50,
+        fontSize: 35,
         marginTop: 10,
         fontWeight: '100',
 
@@ -168,5 +193,9 @@ const styles = StyleSheet.create({
     headingBg: {
         backgroundColor: "#c90000",
         paddingBottom: 5
+    },
+    transparent: {
+        backgroundColor: 'rgba(0,0,0,0)',
+        margin: 10
     },
 });
