@@ -97,7 +97,7 @@ export default class ProfilePageComponent extends React.Component {
                         @chuckhagy
                     </Text>
                     <Text style={styles.textMiddle}>
-                        {this.state.status}
+                        "{this.state.status}"
                     </Text>
                 </View>
                 <View style={styles.profileBgBottom}>
@@ -201,8 +201,8 @@ const styles = StyleSheet.create({
         marginBottom: -75
     },
     textMiddle: {
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 16,
+        fontStyle: 'italic',
         paddingBottom: 25
     },
     status: {
