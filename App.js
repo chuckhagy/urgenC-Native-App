@@ -15,11 +15,10 @@ import {
 import loginPageContainer from "./redux/containers/loginPageContainer";
 import listPageContainer from "./redux/containers/listPageContainer";
 import addPageContainer from "./redux/containers/addPageContainer";
+import profilePageContainer from "./redux/containers/profilePageContainer";
 import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
 import MembersPageComponent from "./components/MembersPageComponent";
-import ProfilePageComponent from "./components/ProfilePageComponent";
-import Blue from "./components/Blue";
 import historyPageContainer from "./redux/containers/historyPageContainer";
 
 import setupStore from "./redux/setupStore";
@@ -83,7 +82,7 @@ export default class App extends Component {
                             />
                             <Scene
                                 key="profile"
-                                component={ProfilePageComponent}
+                                component={profilePageContainer}
                                 hideNavBar
                                 title="Profile"
                                 tabBarLabel=" "

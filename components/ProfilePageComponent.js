@@ -23,14 +23,14 @@ import {
 export default class ProfilePageComponent extends React.Component {
 
     state = {
-        originalDisplayName: 'Chuck',
-        originalEmail: 'chuckhagy@gmail.com',
-        displayName: 'Chuck',
-        email: 'chuckhagy@gmail.com',
-        originalStatus: 'Krushing It BROS!!',
-        status: "Krushing It BROS!!",
-        originalColor: '#c90000',
-        color: '#c90000'
+        originalDisplayName: this.props.authenticatedUser.displayName,
+        originalEmail: this.props.authenticatedUser.email,
+        originalColor: this.props.authenticatedUser.color,
+        originalStatus: this.props.authenticatedUser.statusMessage,
+        displayName: this.props.authenticatedUser.displayName,
+        email: this.props.authenticatedUser.email,
+        status: this.props.authenticatedUser.statusMessage,
+        color: this.props.authenticatedUser.color
     }
 
     handleColor = () => {
@@ -71,6 +71,7 @@ export default class ProfilePageComponent extends React.Component {
     }
 
     render() {
+        console.log(this.props.authenticatedUser, '<<<<')
         return (
             <Container>
                 <Header style={styles.headingBg}>

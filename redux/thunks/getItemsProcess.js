@@ -3,7 +3,6 @@ import moment from "moment";
 
 export default function getItemsProcess() {
     return (dispatch, getState) => {
-        console.log(getState(), 'GOT HERE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<');
         return getItems(getState().userToken, getState().userId)
             .then(items => {
                 const timeItems = items;

@@ -60,6 +60,7 @@ export default class DetailsComponent extends React.Component {
     };
 
     render() {
+        console.log(this.props)
         return (
                 <Content>
                     <Card>
