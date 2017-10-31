@@ -24,9 +24,9 @@ export default class ProfilePageComponent extends React.Component {
 
     state = {
         originalFirstName: 'Chuck',
-        originalLastName: 'Hagy',
-        firstName: 'Chuck',
-        lastName: 'Hagy',
+        originalEmail: 'chuckhagy@gmail.com',
+        displayName: 'Chuck',
+        email: 'chuckhagy@gmail.com',
         originalStatus: 'Krushing It BROS!!',
         status: "Krushing It BROS!!",
         originalColor: '#c90000',
@@ -83,7 +83,7 @@ export default class ProfilePageComponent extends React.Component {
                         <View style={this.specialColor()}>
                             <View style={styles.transparent}>
                                 <Text style={styles.initials}>
-                                    {this.state.firstName.charAt(0) ? this.state.firstName.charAt(0) : this.state.lastName.charAt(0)}
+                                    {this.state.displayName.charAt(0) ? this.state.displayName.charAt(0) : null}
                                 </Text>
                             </View>
                         </View>
@@ -103,20 +103,20 @@ export default class ProfilePageComponent extends React.Component {
                 <View style={styles.profileBgBottom}>
                     <Form>
                         <Item>
-                            <Label>FIRST NAME:</Label>
+                            <Label>NAME:</Label>
                             <Input
-                                name="firstName"
-                                onChangeText={firstName => this.setState({firstName})}
-                                value={this.state.firstName}
+                                name="displayName"
+                                onChangeText={displayName => this.setState({displayName})}
+                                value={this.state.displayName}
 
                             />
                         </Item>
                         <Item>
-                            <Label>LAST NAME:</Label>
+                            <Label>EMAIL:</Label>
                             <Input
-                                name="lastName"
-                                onChangeText={lastName => this.setState({lastName})}
-                                value={this.state.lastName}
+                                name="email"
+                                onChangeText={email => this.setState({email})}
+                                value={this.state.email}
 
                             />
                         </Item>

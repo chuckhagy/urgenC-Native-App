@@ -13,10 +13,19 @@ import {
     Right,
     Body,
     Icon,
-    Text
+    Text,
+    Form,
+    Item,
+    Input,
+    Label
 } from "native-base"
 
 export default class LoginPageComponent extends React.Component {
+
+    state = {
+        username: '',
+        password: ''
+    };
 
     _handleLogin = () => {
         Actions.jump("list");
@@ -24,17 +33,43 @@ export default class LoginPageComponent extends React.Component {
 
     render() {
         return (
+
             <View style={styles.loginbg}>
-                <View style={styles.centerA}>
-                    <Image source={require('../images/logo-small.png')} />
-                </View>
-                <View style={styles.centerB}>
-                <Button dark block onPress={this._handleLogin}>
-                    <Text style={styles.logintxt}>
-                        L O G I N
+                <Image source={require('../images/logo-small.png')}/>
+                <Form>
+                    <Item regular style={styles.spacing}>
+                        <Input
+                            name="username"
+                            onChangeText={username => this.setState({username})}
+                            value={this.state.username}
+                            placeholder='username'
+                            style={styles.inputs}
+                        />
+                    </Item>
+                    <Item regular style={styles.spacing}>
+                        <Input
+                            name="password"
+                            onChangeText={password => this.setState({password})}
+                            value={this.state.password}
+                            placeholder='password'
+                            style={styles.inputs}
+
+                        />
+                    </Item>
+                    <Button dark onPress={this._handleLogin} style={styles.spacing}>
+                        <Text style={styles.buttonText}>
+                            L O G I N
+                        </Text>
+                    </Button>
+                    <Text style={styles.prompt}>
+                        Don't have an account yet?
                     </Text>
-                </Button>
-                </View>
+                    <Button light onPress={this._handleLogin} style={styles.spacing}>
+                        <Text style={styles.buttonTextTwo}>
+                            CLICK HERE TO SIGNUP
+                        </Text>
+                    </Button>
+                </Form>
             </View>
         )
     }
@@ -43,25 +78,27 @@ export default class LoginPageComponent extends React.Component {
 const styles = StyleSheet.create({
     loginbg: {
         flex: 1,
+        flexDirection: 'column',
         backgroundColor: '#c90000',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
-    centerA: {
-        flex: 3,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+    spacing: {
+        flexDirection: 'row',
+        width: 300,
+        marginBottom: 25,
     },
-    centerB: {
-        flex: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
+    inputs: {
+        backgroundColor: 'white'
     },
-    loginbutton: {
-        // flex: 3,
-        alignSelf: "center",
+    prompt: {
+        textAlign: 'center',
+        fontSize: 20,
+        margin: 10
     },
-    logintxt: {
-        color: "white",
+    buttonTextTwo: {
+        textAlign: 'center',
+        letterSpacing: 4
     }
 });
+
