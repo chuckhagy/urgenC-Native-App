@@ -5,6 +5,7 @@ export default function getItemsProcess() {
     return (dispatch, getState) => {
         return getItems()
             .then(items => {
+                console.log(items, 'items<<<<<<<<<<<')
                 const timeItems = items;
                 const currentTime = moment.utc(Date.now());
                 return timeItems.map(item => {

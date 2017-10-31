@@ -1,24 +1,25 @@
 import env from "./env";
+
 export default function getItems() {
   return fetch(
-    `https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/items`,
+    `${env.MY_URL}goals`,
     {
       headers: {
-        Authorization: `Bearer ${env.AIRTABLE_TOKEN}`
+        Authorization: `Bearer ${env.MY_ADMIN_TOKEN}`
       }
     }
   )
     .then(response => response.json())
     .then(data => {
-      return data.records.map(record => {
+      return data.map(record => {
          return {
              id: record.id,
-             title: record.fields.title,
-             body: record.fields.body,
-             duedate: record.fields.duedate,
-             priority: record.fields.priority,
-             createddate: record.createdTime,
-             status: record.fields.status
+             title: record.title.trim(),
+             body: record.body.trim(),
+             duedate: record.dueDate.trim(),
+             priority: record.priority.toString(),
+             createddate: record.created_at,
+             status: 'current'
          }
       });
     });
