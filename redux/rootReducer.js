@@ -68,7 +68,8 @@ export default function rootReducer(currentState = {items: []}, action) {
         case "USER_LOGIN":
             return {
                 ...currentState,
-                userToken: action.token
+                userToken: action.token,
+                userId: action.userId.sub,
             };
 
         default:

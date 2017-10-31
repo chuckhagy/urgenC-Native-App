@@ -8,10 +8,14 @@ export default function tokenProcess(item) {
         return token(item).then(response => {
             //TODO check for invalid response
 
+            let userId = jwtDecode(response.token);
+
+            console.log(userId)
+
             dispatch({
                 type: "USER_LOGIN",
                 token: response.token,
-                userId: jwtDecode(response.token)
+                userId: userId
             });
             Actions.jump("list");
             return item;
