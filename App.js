@@ -18,6 +18,7 @@ import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
 import LoginPageComponent from "./components/LoginPageComponent";
 import ProfilePageComponent from "./components/ProfilePageComponent";
+import Blue from "./components/Blue";
 import historyPageContainer from "./redux/containers/historyPageContainer";
 
 import setupStore from "./redux/setupStore";
@@ -107,11 +108,16 @@ export default class App extends Component {
                                 icon={TabIcon}
                             />
                         </Scene>
-                        <Scene
-                            key="details"
-                            component={DetailsPageComponent}
-                            title="Details"
-                        />
+                            <Scene
+                                key="details"
+                                component={DetailsPageComponent}
+                                title="Goal"
+                            />
+                            <Scene
+                                key="addMembers"
+                                component={Blue}
+                                title="Members"
+                            />
                         <Scene
                             key="add"
                             // hideNavBar
