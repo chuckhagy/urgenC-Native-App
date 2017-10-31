@@ -65,9 +65,10 @@ export default function rootReducer(currentState = {items: []}, action) {
                 return item;
             });
 
+        case "USER_LOGIN":
             return {
                 ...currentState,
-                items: refreshedItems
+                userToken: action.token
             };
 
         default:

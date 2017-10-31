@@ -1,6 +1,6 @@
 import env from "./env";
 
-export default function updateItem(fullItem) {
+export default function createItem(fullItem) {
     return fetch(
         `${env.MY_URL}/goals`,
         {
@@ -20,7 +20,6 @@ export default function updateItem(fullItem) {
     )
         .then(response => response.json())
         .then(record => {
-            console.log(record)
             return {
                 id: record.id
             };

@@ -1,11 +1,12 @@
 import env from "./env";
 
-export default function getItems() {
+
+export default function getItems(token) {
   return fetch(
-    `${env.MY_URL}/goals`,
+    `${env.MY_URL}/goal-assignments/user/1`,
     {
       headers: {
-        Authorization: `Bearer ${env.MY_ADMIN_TOKEN}`
+        Authorization: `Bearer ${token}`
       }
     }
   )

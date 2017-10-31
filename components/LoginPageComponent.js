@@ -28,19 +28,19 @@ export default class LoginPageComponent extends React.Component {
     };
 
     _handleLogin = () => {
-        Actions.jump("list");
+        this.props.tokenAttempt(this.state);
+        // Actions.jump("list");
     }
 
     render() {
         return (
-
             <View style={styles.loginbg}>
                 <Image source={require('../images/logo-small.png')}/>
                 <Form>
                     <Item regular style={styles.spacing}>
                         <Input
                             name="username"
-                            onChangeText={username => this.setState({username})}
+                            onChangeText={username => this.setState({username: username.toLowerCase()})}
                             value={this.state.username}
                             placeholder='username'
                             style={styles.inputs}
@@ -49,7 +49,7 @@ export default class LoginPageComponent extends React.Component {
                     <Item regular style={styles.spacing}>
                         <Input
                             name="password"
-                            onChangeText={password => this.setState({password})}
+                            onChangeText={password => this.setState({password: password.toLowerCase()})}
                             value={this.state.password}
                             placeholder='password'
                             style={styles.inputs}
