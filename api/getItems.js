@@ -2,7 +2,7 @@ import env from "./env";
 
 export default function getItems() {
   return fetch(
-    `${env.MY_URL}goals`,
+    `${env.MY_URL}/goals`,
     {
       headers: {
         Authorization: `Bearer ${env.MY_ADMIN_TOKEN}`
@@ -19,7 +19,7 @@ export default function getItems() {
              duedate: record.dueDate.trim(),
              priority: record.priority.toString(),
              createddate: record.created_at,
-             status: 'current'
+             status: 'current' //HARDCODED
          }
       });
     });

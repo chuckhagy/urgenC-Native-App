@@ -1,28 +1,28 @@
 import env from "./env";
+
 export default function updateItem(fullItem) {
-  return fetch(
-    `https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/items/`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.AIRTABLE_TOKEN}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        fields: {
-          title: fullItem.title,
-          body: fullItem.body,
-          duedate: fullItem.duedate,
-          priority: fullItem.priority,
-          createddate: fullItem.createddate,
+    return fetch(
+        `${env.MY_URL}/goals`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${env.MY_ADMIN_TOKEN}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                    title: fullItem.title,
+                    body: fullItem.body,
+                    dueDate: fullItem.duedate,
+                    priority: fullItem.priority,
+                    ownerUserId: 1 //TODO HARDCODED
+            })
         }
-      })
-    }
-  )
-    .then(response => response.json())
-    .then(record => {
-      return {
-        id: record.id
-      };
-    });
+    )
+        .then(response => response.json())
+        .then(record => {
+            console.log(record)
+            return {
+                id: record.id
+            };
+        });
 }
