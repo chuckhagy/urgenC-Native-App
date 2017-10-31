@@ -53,6 +53,7 @@ export default class LoginPageComponent extends React.Component {
                             value={this.state.password}
                             placeholder='password'
                             style={styles.inputs}
+                            secureTextEntry={true}
 
                         />
                     </Item>

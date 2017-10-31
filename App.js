@@ -16,6 +16,7 @@ import listPageContainer from "./redux/containers/listPageContainer";
 import addPageContainer from "./redux/containers/addPageContainer";
 import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
+import MembersPageComponent from "./components/MembersPageComponent";
 import LoginPageComponent from "./components/LoginPageComponent";
 import ProfilePageComponent from "./components/ProfilePageComponent";
 import Blue from "./components/Blue";
@@ -115,7 +116,7 @@ export default class App extends Component {
                             />
                             <Scene
                                 key="addMembers"
-                                component={Blue}
+                                component={MembersPageComponent}
                                 title="Members"
                             />
                         <Scene
