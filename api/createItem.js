@@ -1,6 +1,6 @@
 import env from "./env";
 
-export default function createItem(fullItem) {
+export default function createItem(fullItem, ownerId) {
     return fetch(
         `${env.MY_URL}/goals`,
         {
@@ -14,7 +14,7 @@ export default function createItem(fullItem) {
                     body: fullItem.body,
                     dueDate: fullItem.duedate,
                     priority: fullItem.priority,
-                    ownerUserId: 1 //TODO HARDCODED
+                    ownerUserId: ownerId
             })
         }
     )

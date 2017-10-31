@@ -1,9 +1,9 @@
 import env from "./env";
 
 
-export default function getItems(token) {
+export default function getItems(token, userId) {
   return fetch(
-    `${env.MY_URL}/goal-assignments/user/1`,
+    `${env.MY_URL}/goal-assignments/user/${userId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`

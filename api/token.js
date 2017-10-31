@@ -17,6 +17,7 @@ export default function token(fullItem) {
     )
         .then(response => {
             return response.json()
+
         })
         .then(record => {
             return {

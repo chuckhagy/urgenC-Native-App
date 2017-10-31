@@ -4,7 +4,7 @@ import moment from "moment";
 
 export default function createItemProcess(item) {
     return (dispatch, getState) => {
-        return createItem(item).then(newId => {
+        return createItem(item, getState().userId).then(newId => {
             item.id = newId.id;
             let currentTime = moment.utc(Date.now());
             item.timeLeft = moment.utc(item.duedate).diff(currentTime, "minutes");
