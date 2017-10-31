@@ -23,7 +23,7 @@ import {
 export default class ProfilePageComponent extends React.Component {
 
     state = {
-        originalFirstName: 'Chuck',
+        originalDisplayName: 'Chuck',
         originalEmail: 'chuckhagy@gmail.com',
         displayName: 'Chuck',
         email: 'chuckhagy@gmail.com',
@@ -136,11 +136,10 @@ export default class ProfilePageComponent extends React.Component {
                                 iconLeft
                                 large
                                 primary
-                                disabled={this.state.originalFirstName === this.state.firstName &&
-                                this.state.originalLastName === this.state.lastName &&
+                                disabled={this.state.originalDisplayName === this.state.displayName &&
+                                this.state.originalEmail === this.state.email &&
                                 this.state.originalStatus === this.state.status &&
                                 this.state.originalColor === this.state.color
-
                                 }>
                                 <Icon name="send"/>
                                 <Text>SAVE IT</Text>
@@ -150,8 +149,8 @@ export default class ProfilePageComponent extends React.Component {
                                 iconLeft
                                 large
                                 danger
-                                disabled={this.state.originalFirstName === this.state.firstName &&
-                                this.state.originalLastName === this.state.lastName &&
+                                disabled={this.state.originalDisplayName === this.state.displayName &&
+                                this.state.originalEmail === this.state.email &&
                                 this.state.originalStatus === this.state.status &&
                                 this.state.originalColor === this.state.color
 
