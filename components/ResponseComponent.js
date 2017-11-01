@@ -28,7 +28,7 @@ export default class ResponseComponent extends React.Component {
           .isSameOrAfter(moment.utc(item.duedate)) && item.status === 'current'
     );
     thisItem.status = "success";
-    this.props.props.updateThisItem(thisItem);
+    this.props.props.updateThisAssignment(thisItem);
   };
 
   _handleNo = () => {

@@ -12,9 +12,10 @@ export default function getItems(token, userId) {
   )
     .then(response => response.json())
     .then(data => {
-      return data.map(record => {
+        return data.map(record => {
          return {
-             id: record.id,
+             id: record.goalId,
+             assignmentId: record.id,
              title: record.title.trim(),
              body: record.body.trim(),
              duedate: record.dueDate.trim(),
