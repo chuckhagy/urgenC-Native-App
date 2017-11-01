@@ -12,6 +12,7 @@ export default function getItems(token, userId) {
   )
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         return data.map(record => {
          return {
              id: record.goalId,
@@ -21,7 +22,7 @@ export default function getItems(token, userId) {
              duedate: record.dueDate.trim(),
              priority: record.priority.toString(),
              createddate: record.created_at,
-             status: 'current' //HARDCODED
+             status: record.status.trim()
          }
       });
     });

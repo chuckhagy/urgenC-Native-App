@@ -8,7 +8,7 @@ export default function rootReducer(currentState = {items: []}, action) {
                     moment.utc(Date.now()).isSameOrAfter(moment.utc(item.duedate)) &&
                     item.status === 'current'
             );
-            console.log(thisTest, 'this test<<<<<<<<<<<<<')
+            console.log(thisTest, '<<<')
             return {
                 ...currentState,
                 items: action.items,
