@@ -15,7 +15,7 @@ export default function updateItemProcess(attributes) {
                         role: response.role,
                         statusMessage: response.statusMessage,
                         username: response.username,
-                        color: response.profileColor,
+                        color: response.color,
                     }
                 });
                 Actions.jump("list");
