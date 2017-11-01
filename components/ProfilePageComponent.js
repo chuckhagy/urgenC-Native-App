@@ -71,7 +71,6 @@ export default class ProfilePageComponent extends React.Component {
     }
 
     render() {
-        console.log(this.props.authenticatedUser, '<<<<')
         return (
             <Container>
                 <Header style={styles.headingBg}>

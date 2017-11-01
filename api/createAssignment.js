@@ -1,9 +1,9 @@
 import env from "./env";
 
-export default function createItem(fullItem, ownerId, token) {
+export default function createItem(status, goalId, userId, token) {
     console.log(token)
     return fetch(
-        `${env.MY_URL}/goals`,
+        `${env.MY_URL}/goal-assignments`,
         {
             method: "POST",
             headers: {
@@ -11,11 +11,9 @@ export default function createItem(fullItem, ownerId, token) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                    title: fullItem.title,
-                    body: fullItem.body,
-                    dueDate: fullItem.duedate,
-                    priority: fullItem.priority,
-                    ownerUserId: ownerId
+                userId,
+                goalId,
+                status
             })
         }
     )

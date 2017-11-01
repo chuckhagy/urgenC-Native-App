@@ -24,8 +24,6 @@ export default function tokenProcess(item) {
                 return getUser(outerToken, outerUserId)
                     // .then(response => response.json())
                     .then(userItem => {
-                        console.log(outerUserId, 'OUTER USER ID <<<<<<<<<<<<<<<<')
-
                         dispatch({
                             type: "USER_LOGIN",
                             token: outerToken,
