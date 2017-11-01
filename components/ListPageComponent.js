@@ -24,24 +24,23 @@ import {
 
 export default class ListPageComponent extends Component {
     componentDidMount() {
-        this.refreshList = setInterval(() => this.refreshIt(), 100000);
+        this.refreshList = setInterval(() => this.refreshIt(), 10000);
     }
 
     componentWillUnmount() {
         clearInterval(this.refreshList);
     }
 
-    refreshIt() {
+    refreshIt = () => {
         this.props.refreshList();
     }
 
-    handleSettings(){
+    handleSettings = () => {
+        console.log(this.props, '<<<< props in component')
+        this.props.logout();
         Actions.jump("login");
     }
 
-    handleSettings(){
-        Actions.jump("login");
-    }
 
     render() {
         return (
@@ -57,7 +56,7 @@ export default class ListPageComponent extends Component {
                     </Body>
                     <Right>
                         <Button transparent onPress={this.handleSettings}>
-                            <Icon name='md-settings' style={styles.icon}/>
+                            <Icon name='md-exit' style={styles.icon}/>
                         </Button>
                     </Right>
                 </Header>

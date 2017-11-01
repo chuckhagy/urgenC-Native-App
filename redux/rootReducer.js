@@ -53,7 +53,7 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "REFRESH_LIST":
-            const refreshedItems = currentState.items;
+            let refreshedItems = currentState.items;
             const currentTime = moment.utc(Date.now());
             refreshedItems = refreshedItems.map(item => {
                 item.timeLeft = moment.utc(item.duedate).diff(currentTime, "minutes");
@@ -64,6 +64,10 @@ export default function rootReducer(currentState = {items: []}, action) {
                     (1 - item.timeLeft / item.totalTime) * 0.5 + item.priority / 5 * 0.5;
                 return item;
             });
+            return{
+                ...currentState,
+                items: refreshedItems
+            }
 
         case "USER_LOGIN":
             return {
@@ -79,6 +83,15 @@ export default function rootReducer(currentState = {items: []}, action) {
                 ...currentState,
                 authenticatedUser: action.updatedUser
             };
+
+        case "LOGOUT":
+            console.log(currentState, '<<<<<<<<< current State')
+            return{
+                ...currentState,
+                authenticatedUser: null,
+                userId: null,
+                userToken: null
+            }
 
 
 
