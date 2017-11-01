@@ -36,7 +36,6 @@ export default class ListPageComponent extends Component {
     }
 
     handleSettings = () => {
-        console.log(this.props, '<<<< props in component')
         this.props.logout();
         Actions.jump("login");
     }

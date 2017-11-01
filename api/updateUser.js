@@ -1,8 +1,6 @@
 import env from "./env";
 
 export default function updateAssignment(fullItem, token, userId) {
-    console.log(fullItem, 'in api utility');
-    console.log(token, "<<< token")
     return fetch(
         `${env.MY_URL}/users/${userId}`,
         {

@@ -85,7 +85,6 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "LOGOUT":
-            console.log(currentState, '<<<<<<<<< current State')
             return{
                 ...currentState,
                 authenticatedUser: null,

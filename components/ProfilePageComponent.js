@@ -55,7 +55,6 @@ export default class ProfilePageComponent extends React.Component {
     }
 
     handleSave = () => {
-        console.log(this.props, '<<<<<<<<< props')
         this.props.updateUserInfo({
             displayName: this.state.displayName,
             email: this.state.email,
