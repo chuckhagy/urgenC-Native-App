@@ -20,6 +20,7 @@ import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
 import MembersPageComponent from "./components/MembersPageComponent";
 import historyPageContainer from "./redux/containers/historyPageContainer";
+import signupPageContainer from "./redux/containers/signupPageContainer";
 
 import setupStore from "./redux/setupStore";
 
@@ -62,6 +63,12 @@ export default class App extends Component {
                             key="login"
                             component={loginPageContainer}
                             title="urgenC Login"
+                            hideNavBar
+                        />
+                        <Scene
+                            key="signup"
+                            component={signupPageContainer}
+                            title="urgenC Signup"
                             hideNavBar
                         />
                         <Scene

@@ -24,22 +24,52 @@ export default class LoginPageComponent extends React.Component {
 
     state = {
         username: '',
-        password: ''
+        password: '',
+        email: '',
+        displayName: ''
     };
 
-    _handleLogin = () => {
-        this.props.tokenAttempt(this.state);
+    _handleCreate = () => {
+        newUser = {
+            displayName: this.state.displayName,
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password,
+        }
+        console.log(newUser)
+        // this.props.tokenAttempt(this.state);
     }
 
-    _handleSignup = () => {
-        Actions.push('signup')
+    _handleBack = () => {
+        Actions.pop()
     }
 
     render() {
         return (
             <View style={styles.loginbg}>
-                <Image source={require('../images/logo-small.png')} style={styles.spacing1}/>
+                <Text style={styles.title}>
+                    New Account
+                </Text>
                 <Form>
+                    <Item regular style={styles.spacing}>
+                        <Input
+                            name="displayName"
+                            onChangeText={displayName => this.setState({displayName: displayName.toLowerCase()})}
+                            value={this.state.displayName}
+                            placeholder='name'
+                            style={styles.inputs}
+
+                        />
+                    </Item>
+                    <Item regular style={styles.spacing}>
+                        <Input
+                            name="email"
+                            onChangeText={email => this.setState({email: email.toLowerCase()})}
+                            value={this.state.email}
+                            placeholder='email'
+                            style={styles.inputs}
+                        />
+                    </Item>
                     <Item regular style={styles.spacing}>
                         <Input
                             name="username"
@@ -60,18 +90,16 @@ export default class LoginPageComponent extends React.Component {
 
                         />
                     </Item>
-                    <Button dark onPress={this._handleLogin} style={styles.spacing}>
+                    <Button dark onPress={this._handleCreate} style={styles.spacing2}>
+                        <Icon name='md-add' style={styles.icon}/>
                         <Text style={styles.buttonText}>
-                            LOGIN
+                            CREATE ACCOUNT
                         </Text>
-                        <Icon name='md-arrow-forward' style={styles.icon}/>
                     </Button>
-                    <Text style={styles.prompt}>
-                        Don't have an account yet?
-                    </Text>
-                    <Button light onPress={this._handleSignup} style={styles.spacing}>
-                        <Text style={styles.buttonTextTwo}>
-                            CLICK HERE TO SIGNUP
+                    <Button light onPress={this._handleBack} style={styles.spacing}>
+                        <Icon name='md-arrow-back' style={styles.icon}/>
+                        <Text style={styles.buttonText}>
+                            BACK
                         </Text>
                     </Button>
                 </Form>
@@ -81,21 +109,31 @@ export default class LoginPageComponent extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    title: {
+        color: 'white',
+        fontSize: 35,
+        fontWeight: '300',
+        marginBottom: 25,
+        marginTop: 40
+    },
     loginbg: {
         flex: 1,
         flexDirection: 'column',
         backgroundColor: '#c90000',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: 10
     },
     spacing: {
         flexDirection: 'row',
         width: 300,
-        marginBottom: 25,
+        marginBottom: 20,
     },
-    spacing1: {
-        marginBottom: 30,
-        marginTop: 30,
+    spacing2: {
+        flexDirection: 'row',
+        width: 300,
+        marginBottom: 15,
+        marginTop: 30
     },
     inputs: {
         backgroundColor: 'white'
@@ -103,9 +141,7 @@ const styles = StyleSheet.create({
     prompt: {
         textAlign: 'center',
         fontSize: 20,
-        marginTop: 30,
-        marginBottom: 10,
-        color: 'white'
+        margin: 10
     },
     buttonTextTwo: {
         textAlign: 'center',
