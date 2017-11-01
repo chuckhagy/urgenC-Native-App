@@ -12,7 +12,6 @@ export default function getItems(token, userId) {
   )
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         return data.map(record => {
          return {
              id: record.goalId,

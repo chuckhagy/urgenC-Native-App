@@ -1,12 +1,12 @@
 import env from "./env";
 
-export default function updateItem(fullItem) {
+export default function updateItem(fullItem, token) {
     return fetch(
         `${env.MY_URL}/goals/${fullItem.id}`,
         {
             method: "PATCH",
             headers: {
-                Authorization: `Bearer ${env.MY_ADMIN_TOKEN}`,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
@@ -15,7 +15,7 @@ export default function updateItem(fullItem) {
                     dueDate: fullItem.duedate,
                     priority: fullItem.priority,
                     status: fullItem.status,
-                    ownerUserId: 1 //HARDCODED
+                    ownerUserId: fullItem.ownerUserId
             })
         }
     )
@@ -28,7 +28,7 @@ export default function updateItem(fullItem) {
                 priority: record.priority,
                 duedate: record.dueDate.trim(),
                 createddate: record.created_at.trim(),
-                status: 'current', //HARDCODED
+                status: record.ownerUserId
             };
         });
     //.catch() <<<<< DO THIS

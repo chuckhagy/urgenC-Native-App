@@ -6,7 +6,6 @@ export default function token(fullItem) {
         {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${env.MY_ADMIN_TOKEN}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({

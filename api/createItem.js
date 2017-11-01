@@ -1,7 +1,6 @@
 import env from "./env";
 
 export default function createItem(fullItem, ownerId, token) {
-    console.log(token)
     return fetch(
         `${env.MY_URL}/goals`,
         {

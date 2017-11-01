@@ -17,7 +17,7 @@ const connectToStore = connect(mapStateToProps, mapDispatchToProps);
 
 const withLifecycle = lifecycle({
   componentDidMount() {
-    console.log('Mounted yo')
+    console.log('Mounted')
   }
 });
 

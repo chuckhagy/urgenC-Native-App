@@ -1,11 +1,11 @@
 import env from "./env";
-export default function updateItem(id) {
+export default function updateItem(id, token) {
   return fetch(
       `${env.MY_URL}/goals/${id}`,
     {
       method: "DELETE",
         headers: {
-            Authorization: `Bearer ${env.MY_ADMIN_TOKEN}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json"
         },
     }
