@@ -19,6 +19,7 @@ import {
     Input,
     Label
 } from "native-base"
+import signupMethod from '../api/signup'
 
 export default class LoginPageComponent extends React.Component {
 
@@ -36,8 +37,8 @@ export default class LoginPageComponent extends React.Component {
             username: this.state.username,
             password: this.state.password,
         }
-        console.log(newUser)
-        // this.props.tokenAttempt(this.state);
+        signupMethod(newUser)
+            .then(Actions.pop())
     }
 
     _handleBack = () => {
