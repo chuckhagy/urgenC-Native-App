@@ -79,11 +79,13 @@ export default class ProfilePageComponent extends React.Component {
         if (this.state.checkBox) this.setState({checkBox: false});
         else this.setState({checkBox: true});
 
-    }
+    };
 
     handleDeleteAccount = () => {
-        console.log('DELETE')
-    }
+        Actions.jump("list");
+        this.props.deleteUser();
+        Actions.jump("login");
+    };
 
         specialColor = () => {
             return {
@@ -96,9 +98,9 @@ export default class ProfilePageComponent extends React.Component {
             }
         };
 
-        render()
-        {
-            return (
+        render() {
+            if(this.props.authenticatedUser) {
+                    return (
                 <Container>
                     <Header style={styles.headingBg}>
                         <Body>
@@ -211,7 +213,14 @@ export default class ProfilePageComponent extends React.Component {
                         </Form>
                     </View>
                 </Container>
+            )}
+            else {
+                return(
+                <View>
+                    <Text>Please login</Text>
+                </View>
             )
+            }
         }
     }
 
