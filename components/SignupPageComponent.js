@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
         fontSize: 35,
         fontWeight: '300',
         marginBottom: 25,
-        marginTop: 40
     },
     loginbg: {
         flex: 1,
