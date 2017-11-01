@@ -17,7 +17,9 @@ import {
     Form,
     Input,
     Label,
-    Item
+    Item,
+    ListItem,
+    CheckBox
 } from "native-base"
 
 export default class ProfilePageComponent extends React.Component {
@@ -72,188 +74,239 @@ export default class ProfilePageComponent extends React.Component {
         );
         Actions.list()
     };
-    specialColor = () => {
-        return {
+
+    checkHandle = () => {
+        if (this.state.checkBox) this.setState({checkBox: false});
+        else this.setState({checkBox: true});
+
+    }
+
+    handleDeleteAccount = () => {
+        console.log('DELETE')
+    }
+
+        specialColor = () => {
+            return {
+                width: 100,
+                height: 100,
+                borderRadius: 50,
+                marginTop: 15,
+                borderWidth: 4,
+                backgroundColor: this.state.color
+            }
+        };
+
+        render()
+        {
+            return (
+                <Container>
+                    <Header style={styles.headingBg}>
+                        <Body>
+                        <Title style={styles.heading}>urgenC</Title>
+                        </Body>
+                    </Header>
+                    <View style={styles.profileBgTop}>
+                        <TouchableOpacity onPress={this.handleColor}>
+                            <View style={this.specialColor()}>
+                                <View style={styles.transparent}>
+                                    <Text style={styles.initials}>
+                                        {this.state.displayName.charAt(0) ? this.state.displayName.charAt(0) : null}
+                                    </Text>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.profileBgMiddle}>
+                        <Text style={styles.textMiddle}>
+                            @{this.props.authenticatedUser.username}
+                        </Text>
+                        <Text style={styles.textMiddle}>
+                            "{this.state.status}"
+                        </Text>
+                    </View>
+                    <View style={styles.profileBgBottom}>
+                        <Form>
+                            <Item>
+                                <Label>NAME:</Label>
+                                <Input
+                                    name="displayName"
+                                    onChangeText={displayName => this.setState({displayName})}
+                                    value={this.state.displayName}
+
+                                />
+                            </Item>
+                            <Item>
+                                <Label>EMAIL:</Label>
+                                <Input
+                                    name="email"
+                                    onChangeText={email => this.setState({email})}
+                                    value={this.state.email}
+
+                                />
+                            </Item>
+                            <Item>
+                                <Label>STATUS:</Label>
+                                <Input
+                                    name="status"
+                                    onChangeText={status => {
+                                        this.setState({status})
+                                    }}
+                                    value={this.state.status}
+                                />
+                            </Item>
+                            <Container style={styles.buttons}>
+                                <Button
+                                    onPress={this.handleSave}
+                                    iconLeft
+                                    medium
+                                    primary
+                                    disabled={this.state.originalDisplayName === this.state.displayName &&
+                                    this.state.originalEmail === this.state.email &&
+                                    this.state.originalStatus === this.state.status &&
+                                    this.state.originalColor === this.state.color
+                                    }>
+                                    <Icon name="send"/>
+                                    <Text>SAVE IT</Text>
+                                </Button>
+                                <Button
+                                    onPress={this.handleCancel}
+                                    iconLeft
+                                    medium
+                                    danger
+                                    disabled={this.state.originalDisplayName === this.state.displayName &&
+                                    this.state.originalEmail === this.state.email &&
+                                    this.state.originalStatus === this.state.status &&
+                                    this.state.originalColor === this.state.color
+
+                                    }
+                                >
+                                    <Icon name="trash"/>
+                                    <Text>CANCEL</Text>
+                                </Button>
+                            </Container>
+                            <ListItem style={styles.verify} onPress={this.checkHandle}>
+                                <CheckBox
+                                    checked={this.state.checkBox}
+                                    onPress={this._checkHandle}
+                                    style={styles.verifyCheck}
+                                />
+                                <Body>
+                                <Text>
+                                    I want to delete my account.
+                                </Text>
+                                </Body>
+                            </ListItem>
+                            <Container style={styles.deleteButtons}>
+                                <Button
+                                    iconLeft
+                                    medium
+                                    danger
+                                    onPress={this.handleDeleteAccount}
+                                    disabled={!this.state.checkBox}
+                                >
+                                    <Icon name="trash"/>
+                                    <Text>DELETE MY ACCOUNT NOW</Text>
+                                </Button>
+                            </Container>
+                        </Form>
+                    </View>
+                </Container>
+            )
+        }
+    }
+
+    const
+    styles = StyleSheet.create({
+        buttons: {
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginRight: 35,
+            marginLeft: 35,
+            marginTop: 15,
+            marginBottom: 45,
+            height: 60
+        },
+        deleteButtons: {
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            marginRight: 35,
+            marginLeft: 35,
+            marginTop: 15,
+            marginBottom: 45,
+            height: 60
+        },
+        initials: {
+            color: 'white',
+            textAlign: 'center',
+            fontSize: 60,
+            textShadowColor: 'black',
+            textShadowOffset: {width: 3, height: 3},
+            textShadowRadius: 3
+        },
+        profileBgTop: {
+            marginBottom: 20,
+            justifyContent: 'center',
+            alignItems: 'center',
+
+        },
+        profileBgMiddle: {
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: -8,
+            marginBottom: 10
+        },
+        textMiddle: {
+            fontSize: 16,
+            fontStyle: 'italic',
+            paddingBottom: 10,
+            fontWeight: 'bold'
+        },
+        status: {
+            fontSize: 20,
+            fontWeight: 'bold',
+            fontStyle: 'italic',
+            paddingBottom: 25
+        },
+        profileBgBottom: {
+        },
+        profileBg: {
+            flex: 1,
+            padding: 20,
+        },
+        image1: {
             width: 160,
             height: 160,
             borderRadius: 80,
             marginTop: 30,
             borderWidth: 4,
-            backgroundColor: this.state.color
-        }
-    };
+        },
+        title: {
+            fontSize: 35,
+            marginTop: 10,
+            fontWeight: '100',
 
-    render() {
-        return (
-            <Container>
-                <Header style={styles.headingBg}>
-                    <Body>
-                    <Title style={styles.heading}>urgenC</Title>
-                    </Body>
-                </Header>
-                <View style={styles.profileBgTop}>
-                    <TouchableOpacity onPress={this.handleColor}>
-                        <View style={this.specialColor()}>
-                            <View style={styles.transparent}>
-                                <Text style={styles.initials}>
-                                    {this.state.displayName.charAt(0) ? this.state.displayName.charAt(0) : null}
-                                </Text>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
-                    <Text style={styles.title}>
-                        {this.state.firstName} {this.state.lastName}
-                    </Text>
-                </View>
-                <View style={styles.profileBgMiddle}>
-                    <Text style={styles.textMiddle}>
-                        @chuckhagy
-                    </Text>
-                    <Text style={styles.textMiddle}>
-                        "{this.state.status}"
-                    </Text>
-                </View>
-                <View style={styles.profileBgBottom}>
-                    <Form>
-                        <Item>
-                            <Label>NAME:</Label>
-                            <Input
-                                name="displayName"
-                                onChangeText={displayName => this.setState({displayName})}
-                                value={this.state.displayName}
-
-                            />
-                        </Item>
-                        <Item>
-                            <Label>EMAIL:</Label>
-                            <Input
-                                name="email"
-                                onChangeText={email => this.setState({email})}
-                                value={this.state.email}
-
-                            />
-                        </Item>
-                        <Item>
-                            <Label>STATUS:</Label>
-                            <Input
-                                name="status"
-                                onChangeText={status => {
-                                    this.setState({status})
-                                }}
-                                value={this.state.status}
-                            />
-                        </Item>
-                        <Container style={styles.buttons}>
-                            <Button
-                                onPress={this.handleSave}
-                                iconLeft
-                                large
-                                primary
-                                disabled={this.state.originalDisplayName === this.state.displayName &&
-                                this.state.originalEmail === this.state.email &&
-                                this.state.originalStatus === this.state.status &&
-                                this.state.originalColor === this.state.color
-                                }>
-                                <Icon name="send"/>
-                                <Text>SAVE IT</Text>
-                            </Button>
-                            <Button
-                                onPress={this.handleCancel}
-                                iconLeft
-                                large
-                                danger
-                                disabled={this.state.originalDisplayName === this.state.displayName &&
-                                this.state.originalEmail === this.state.email &&
-                                this.state.originalStatus === this.state.status &&
-                                this.state.originalColor === this.state.color
-
-                                }
-                            >
-                                <Icon name="trash"/>
-                                <Text>CANCEL</Text>
-                            </Button>
-                        </Container>
-                    </Form>
-                </View>
-            </Container>
-        )
-    }
-}
-
-const styles = StyleSheet.create({
-    buttons: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
-        marginRight: 35,
-        marginLeft: 35,
-        marginTop: 15,
-        height: 60
-    },
-    initials: {
-        color: 'white',
-        textAlign: 'center',
-        fontSize: 110,
-        textShadowColor: 'black',
-        textShadowOffset: {width: 3, height: 3},
-        textShadowRadius: 3
-    },
-    profileBgTop: {
-        flex: 1,
-        marginBottom: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-    },
-    profileBgMiddle: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: -85,
-        marginBottom: -75
-    },
-    textMiddle: {
-        fontSize: 16,
-        fontStyle: 'italic',
-        paddingBottom: 25,
-    },
-    status: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        fontStyle: 'italic',
-        paddingBottom: 25
-    },
-    profileBgBottom: {
-        flex: 1,
-    },
-    profileBg: {
-        flex: 1,
-        padding: 20,
-    },
-    image1: {
-        width: 160,
-        height: 160,
-        borderRadius: 80,
-        marginTop: 30,
-        borderWidth: 4,
-    },
-    title: {
-        fontSize: 35,
-        marginTop: 10,
-        fontWeight: '100',
-
-    },
-    heading: {
-        color: "#ffffff",
-        fontSize: 26,
-        fontWeight: "bold"
-    },
-    headingBg: {
-        backgroundColor: "#c90000",
-        paddingBottom: 5
-    },
-    transparent: {
-        backgroundColor: 'rgba(0,0,0,0)',
-        margin: 10
-    },
-});
+        },
+        heading: {
+            color: "#ffffff",
+            fontSize: 26,
+            fontWeight: "bold"
+        },
+        headingBg: {
+            backgroundColor: "#c90000",
+            paddingBottom: 5
+        },
+        transparent: {
+            backgroundColor: 'rgba(0,0,0,0)',
+            margin: 10
+        },
+        verify: {
+            marginTop: 15,
+            marginRight: 10
+        },
+        verifyCheck: {
+            marginLeft: 6,
+            marginRight: 15
+        },
+    });
