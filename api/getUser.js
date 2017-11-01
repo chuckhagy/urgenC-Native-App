@@ -18,7 +18,7 @@ export default function getItems(token, userId) {
                 email: record.email.trim(),
                 role: record.role.trim(),
                 statusMessage: record.statusMessage.trim(),
-                username: record.username,
+                username: record.username.trim(),
                 color: record.profileColor,
             }
         });

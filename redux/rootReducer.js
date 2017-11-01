@@ -73,6 +73,16 @@ export default function rootReducer(currentState = {items: []}, action) {
                 authenticatedUser: action.authenticatedUser
             };
 
+        case "UPDATE_USER":
+
+            return {
+                ...currentState,
+                authenticatedUser: action.updatedUser
+            };
+
+
+
+
         default:
             return currentState;
     }

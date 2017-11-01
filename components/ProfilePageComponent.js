@@ -46,19 +46,33 @@ export default class ProfilePageComponent extends React.Component {
         this.setState(currentState => {
             return {
                 color: currentState.originalColor,
-                firstName: currentState.originalFirstName,
-                lastName: currentState.originalLastName,
+                displayName: currentState.originalDisplayName,
+                email: currentState.originalEmail,
                 status: currentState.originalStatus
             }
         });
-
         Actions.list()
     }
 
     handleSave = () => {
+        console.log(this.props, '<<<<<<<<< props')
+        this.props.updateUserInfo({
+            displayName: this.state.displayName,
+            email: this.state.email,
+            statusMessage: this.state.status,
+            profileColor: this.state.color
+        }).then(
+            this.setState(currentState => {
+                return {
+                    originalColor: currentState.color,
+                    originalDisplayName: currentState.displayName,
+                    originalEmail: currentState.email,
+                    originalStatus: currentState.status
+                }
+            })
+        );
         Actions.list()
-    }
-
+    };
     specialColor = () => {
         return {
             width: 160,
@@ -68,7 +82,7 @@ export default class ProfilePageComponent extends React.Component {
             borderWidth: 4,
             backgroundColor: this.state.color
         }
-    }
+    };
 
     render() {
         return (
