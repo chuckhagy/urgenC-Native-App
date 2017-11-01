@@ -27,7 +27,7 @@ export default class LoginPageComponent extends React.Component {
         username: '',
         password: '',
         email: '',
-        displayName: ''
+        displayName: '',
     };
 
     _handleCreate = () => {
@@ -55,11 +55,11 @@ export default class LoginPageComponent extends React.Component {
                     <Item regular style={styles.spacing}>
                         <Input
                             name="displayName"
-                            onChangeText={displayName => this.setState({displayName: displayName.toLowerCase()})}
+                            onChangeText={displayName => this.setState({displayName: displayName})}
                             value={this.state.displayName}
                             placeholder='name'
                             style={styles.inputs}
-
+                            autoCorrect={false}
                         />
                     </Item>
                     <Item regular style={styles.spacing}>
@@ -69,6 +69,7 @@ export default class LoginPageComponent extends React.Component {
                             value={this.state.email}
                             placeholder='email'
                             style={styles.inputs}
+                            autoCorrect={false}
                         />
                     </Item>
                     <Item regular style={styles.spacing}>
@@ -78,20 +79,29 @@ export default class LoginPageComponent extends React.Component {
                             value={this.state.username}
                             placeholder='username'
                             style={styles.inputs}
+                            autoCorrect={false}
                         />
                     </Item>
                     <Item regular style={styles.spacing}>
                         <Input
                             name="password"
-                            onChangeText={password => this.setState({password: password.toLowerCase()})}
+                            onChangeText={password => this.setState({password: password})}
                             value={this.state.password}
                             placeholder='password'
                             style={styles.inputs}
                             secureTextEntry={true}
-
+                            autoCorrect={false}
                         />
                     </Item>
-                    <Button dark onPress={this._handleCreate} style={styles.spacing2}>
+                    <Button dark onPress={this._handleCreate} style={styles.spacing2}
+                            disabled={
+                                this.state.displayName.length <= 1 ||
+                                this.state.username.length <= 2 ||
+                                this.state.password.length <= 5 ||
+                                this.state.email.length <= 5 ||
+                                !/(.+)@(.+){2,}\.(.+){2,}/.test(this.state.email)
+                            }
+                    >
                         <Icon name='md-add' style={styles.icon}/>
                         <Text style={styles.buttonText}>
                             CREATE ACCOUNT

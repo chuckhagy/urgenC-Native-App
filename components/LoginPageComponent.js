@@ -47,20 +47,26 @@ export default class LoginPageComponent extends React.Component {
                             value={this.state.username}
                             placeholder='username'
                             style={styles.inputs}
+                            autoCorrect={false}
                         />
                     </Item>
                     <Item regular style={styles.spacing}>
                         <Input
                             name="password"
-                            onChangeText={password => this.setState({password: password.toLowerCase()})}
+                            onChangeText={password => this.setState({password: password})}
                             value={this.state.password}
                             placeholder='password'
                             style={styles.inputs}
                             secureTextEntry={true}
-
+                            autoCorrect={false}
                         />
                     </Item>
-                    <Button dark onPress={this._handleLogin} style={styles.spacing}>
+                    <Button dark onPress={this._handleLogin} style={styles.spacing}
+                            disabled={
+                                this.state.username.length <= 2 ||
+                                this.state.password.length <= 5
+                            }
+                    >
                         <Text style={styles.buttonText}>
                             LOGIN
                         </Text>
