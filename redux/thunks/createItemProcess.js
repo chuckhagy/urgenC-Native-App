@@ -9,7 +9,8 @@ export default function createItemProcess(item) {
         return createItem(item, getState().userId, getState().userToken)
             .then(newId => {
                 outerNewId = newId.id;
-                return createAssignment('current', outerNewId, getState().userId, getState().userToken)
+                console.log('AFTER FIRST REQUEST: ', newId)
+                return createAssignment('current', outerNewId, getState().authenticatedUser.username, getState().userToken)
             })
             .then(newId => {
                 let currentTime = moment.utc(Date.now());
