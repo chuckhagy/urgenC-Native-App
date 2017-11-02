@@ -28,42 +28,46 @@ export default class MembersPageComponent extends React.Component {
 
 
     render() {
-        console.log(this.props, "<><><><><>");
         console.log('owner here', this.props.ownerUserId);
         return (
             <Content>
-                <Form>
-                    <Item stackedLabel>
-                        <Label>Enter username below to add new member</Label>
-                        <Input
-                            name="newMemberName"
-                            onChangeText={newMemberName => this.setState({newMemberName})}
-                            value={this.state.newMemberName}
-                        />
-                    </Item>
-
-                    <Container style={style.buttons}>
-                        <Button
-                            iconLeft
-                            large
-                            primary
-
-                        >
-                            <Icon name="send"/>
-                            <Text>SAVE IT</Text>
-                        </Button>
-                        <Button
-                            iconLeft
-                            large
-                            danger
-                        >
-                            <Icon name="trash"/>
-                            <Text>CANCEL</Text>
-                        </Button>
-                    </Container>
-                </Form>
                 <Text style={style.subHeading}>Current Members:</Text>
-                <MembersListComponent items={{username: 'chuck', status: 'pending'}}/>
+                <MembersListComponent allMembers={this.props.userAssignments}/>
+                <Text style={style.subHeading}>Add New Member:</Text>
+                <View style={style.addingToolsBg}>
+                    <Form>
+                        <Item stackedLabel>
+                            <Label>Enter username below to add new member</Label>
+                            <Input
+                                name="newMemberName"
+                                onChangeText={newMemberName => this.setState({newMemberName: newMemberName.toLowerCase()})}
+                                value={this.state.newMemberName}
+                            />
+                        </Item>
+
+                        <Container style={style.buttons}>
+                            <Button
+                                iconLeft
+                                large
+                                primary
+                                disabled={this.state.newMemberName.length < 1}
+
+                            >
+                                <Icon name="send"/>
+                                <Text>SAVE IT</Text>
+                            </Button>
+                            <Button
+                                iconLeft
+                                large
+                                danger
+                                disabled={this.state.newMemberName.length < 1}
+                            >
+                                <Icon name="trash"/>
+                                <Text>CANCEL</Text>
+                            </Button>
+                        </Container>
+                    </Form>
+                </View>
             </Content>
         );
     }
@@ -90,5 +94,9 @@ const style = StyleSheet.create({
         textAlign: "center",
         margin: 10,
         fontWeight: 'bold'
+    },
+    addingToolsBg: {
+        backgroundColor: "#ffffff",
+        padding: 5
     }
 });

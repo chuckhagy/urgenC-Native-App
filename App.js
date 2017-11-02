@@ -118,7 +118,7 @@ export default class App extends Component {
                             <Scene
                                 key="details"
                                 component={DetailsPageComponent}
-                                title="Goal"
+                                title="Details"
                             />
                             <Scene
                                 key="addMembers"
