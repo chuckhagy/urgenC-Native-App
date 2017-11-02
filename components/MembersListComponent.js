@@ -47,6 +47,7 @@ export default class MembersListComponent extends Component {
     }
 
     renderRow = rowData => {
+        console.log(rowData)
         return (
             <Card>
                 <Body>

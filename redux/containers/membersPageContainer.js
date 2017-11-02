@@ -10,8 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        updateUserInfo: attributes => dispatch(updateUserProcess(attributes)),
-        deleteUser: () => dispatch(deleteUserProcess())
+        deleteAssignemnt: assignmentId => dispatch(deleteUserProcess())
     };
 }
 
