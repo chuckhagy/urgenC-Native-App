@@ -69,12 +69,17 @@ export default class MembersListComponent extends Component {
                         </Text>
                     </View>
                     <View style={styles.containerRight}>
-                        {/*<TouchableOpacity onPress={this._handleDelete(rowData)}>*/}
-                        <TouchableOpacity onPress={() => this._handleDelete(rowData)}>
-                            <Text style={styles.xText}>
-                                <Icon name="trash" style={styles.xText}/>
-                            </Text>
-                        </TouchableOpacity>
+                        {this.props.ownerId === rowData.userId ?
+                            <Icon name="star"/>
+                            : null
+                        }
+                        {this.props.isOwner && this.props.ownerId !== rowData.userId ? <TouchableOpacity onPress={() => this._handleDelete(rowData)}>
+                                <Text style={styles.xText}>
+                                    <Icon name="trash" style={styles.xText}/>
+                                </Text>
+                            </TouchableOpacity>
+                            : null
+                        }
                     </View>
                 </View>
                 </Body>
@@ -83,6 +88,7 @@ export default class MembersListComponent extends Component {
     };
 
     render() {
+        console.log(this.props)
         if (this.props.allMembers.length === 0) return (
             <Spinner color='red' style={styles.spinner}/>
         )

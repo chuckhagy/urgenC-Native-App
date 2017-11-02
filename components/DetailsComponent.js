@@ -51,7 +51,6 @@ export default class DetailsComponent extends React.Component {
     };
 
     _handleAddMember = () => {
-        console.log('id: ', this.props.item.data[0].id)
         let goalId = this.props.item.data[0].id
         Actions.addMembers({ goalId });
     };

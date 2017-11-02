@@ -32,50 +32,62 @@ export default class MembersPageComponent extends React.Component {
     }
 
     render() {
-        let theseAssignments = this.props.items.find(item => item.id === this.props.goalId).userAssignments
+        let thisGoal = this.props.items.find(item => item.id === this.props.goalId);
+        let currentUserId = this.props.authenticatedUser.id;
+        let ownerId = thisGoal.ownerUserId;
+        let theseAssignments = thisGoal.userAssignments
         // TODO console.log('owner here', this.props.ownerUserId);
         console.log('in PAGE level: all props', this.props)
         return (
             <Content>
                 <Text style={style.subHeading}>Current Members:</Text>
-                <MembersListComponent allMembers={theseAssignments}  delete={this.props.deleteAssignment.bind(this)}/>
+                <MembersListComponent
+                    allMembers={theseAssignments}
+                    delete={this.props.deleteAssignment.bind(this)}
+                    isOwner={ownerId === currentUserId}
+                    ownerId={ownerId}
+                />
                 <Text style={style.subHeading}>Add New Member:</Text>
-                <View style={style.addingToolsBg}>
-                    <Form>
-                        <Item stackedLabel>
-                            <Label>Enter username sbelow to add new member</Label>
-                            <Input
-                                name="newMemberName"
-                                onChangeText={newMemberName => this.setState({newMemberName: newMemberName.toLowerCase()})}
-                                value={this.state.newMemberName}
-                            />
-                        </Item>
+                {currentUserId === ownerId ?
+                    <View style={style.addingToolsBg}>
+                        <Form>
+                            <Item stackedLabel>
+                                <Label>Enter username sbelow to add new member</Label>
+                                <Input
+                                    name="newMemberName"
+                                    onChangeText={newMemberName => this.setState({newMemberName: newMemberName.toLowerCase()})}
+                                    value={this.state.newMemberName}
+                                />
+                            </Item>
 
-                        <Container style={style.buttons}>
-                            <Button
-                                iconLeft
-                                large
-                                primary
-                                disabled={this.state.newMemberName.length < 1}
+                            <Container style={style.buttons}>
+                                <Button
+                                    iconLeft
+                                    large
+                                    primary
+                                    disabled={this.state.newMemberName.length < 1}
 
-                            >
-                                <Icon name="send"/>
-                                <Text>SAVE IT</Text>
-                            </Button>
-                            <Button
-                                iconLeft
-                                large
-                                danger
-                                disabled={this.state.newMemberName.length < 1}
-                            >
-                                <Icon name="trash"/>
-                                <Text>CANCEL</Text>
-                            </Button>
-                        </Container>
-                    </Form>
-                </View>
+                                >
+                                    <Icon name="send"/>
+                                    <Text>SAVE IT</Text>
+                                </Button>
+                                <Button
+                                    iconLeft
+                                    large
+                                    danger
+                                    disabled={this.state.newMemberName.length < 1}
+                                >
+                                    <Icon name="trash"/>
+                                    <Text>CANCEL</Text>
+                                </Button>
+                            </Container>
+                        </Form>
+                    </View>
+                    : null
+                }
             </Content>
-        );
+        )
+            ;
     }
 }
 
