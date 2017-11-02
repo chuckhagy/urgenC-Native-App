@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {ListView, View, StyleSheet} from "react-native";
+import {ListView, View, StyleSheet, TouchableOpacity} from "react-native";
 import {
     Container,
     Header,
@@ -46,8 +46,12 @@ export default class MembersListComponent extends Component {
         }
     }
 
+    _handleDelete = (rowData) => {
+        console.log('ASSIGNMENT ID TO DELETE', rowData.id)
+    }
+
     renderRow = rowData => {
-        console.log(rowData)
+        // console.log('function?', this.props.delete)
         return (
             <Card>
                 <Body>
@@ -66,9 +70,12 @@ export default class MembersListComponent extends Component {
                         </Text>
                     </View>
                     <View style={styles.containerRight}>
-                        <Text style={styles.xText}>
-                            X
-                        </Text>
+                        {/*<TouchableOpacity onPress={this._handleDelete(rowData)}>*/}
+                        <TouchableOpacity onPress={() => this._handleDelete(rowData)}>
+                            <Text style={styles.xText}>
+                                <Icon name="trash" style={styles.xText}/>
+                            </Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
                 </Body>
@@ -77,7 +84,6 @@ export default class MembersListComponent extends Component {
     };
 
     render() {
-        console.log(this.props, 'IN LIST')
         if (this.props.allMembers.length === 0) return (
             <Spinner color='red' style={styles.spinner}/>
         )

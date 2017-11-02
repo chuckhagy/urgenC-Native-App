@@ -28,11 +28,11 @@ export default class MembersPageComponent extends React.Component {
 
 
     render() {
-        console.log('owner here', this.props.ownerUserId);
+        // TODO console.log('owner here', this.props.ownerUserId);
         return (
             <Content>
                 <Text style={style.subHeading}>Current Members:</Text>
-                <MembersListComponent allMembers={this.props.userAssignments}/>
+                <MembersListComponent allMembers={this.props.userAssignments} delete={this.props.deleteAssignment}/>
                 <Text style={style.subHeading}>Add New Member:</Text>
                 <View style={style.addingToolsBg}>
                     <Form>
