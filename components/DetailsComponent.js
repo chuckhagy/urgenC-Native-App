@@ -51,7 +51,9 @@ export default class DetailsComponent extends React.Component {
     };
 
     _handleAddMember = () => {
-        Actions.addMembers(localData=this.props.item.data[0]);
+        console.log('id: ', this.props.item.data[0].id)
+        let goalId = this.props.item.data[0].id
+        Actions.addMembers({ goalId });
     };
 
     _checkHandle = () => {

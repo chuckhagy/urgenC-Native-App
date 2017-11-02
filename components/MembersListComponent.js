@@ -17,14 +17,13 @@ import {
     Fab,
     Card
 } from "native-base";
-import {Actions} from "react-native-router-flux";
-
 
 const rowHasChanged = (r1, r2) =>
     r1.id !== r2.id ||
     r1.displayName !== r2.displayName ||
     r1.profileColor !== r2.profileColor ||
-    r1.status !== r2.status;
+    r1.status !== r2.status ||
+    r1.id === undefined || r2.id === undefined;
 
 const ds = new ListView.DataSource({rowHasChanged});
 
@@ -37,6 +36,7 @@ export default class MembersListComponent extends Component {
     };
 
     componentWillReceiveProps(newProps) {
+        console.log('in list level: ', newProps)
         if (newProps.allMembers !== this.props.allMembers) {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(
@@ -47,11 +47,10 @@ export default class MembersListComponent extends Component {
     }
 
     _handleDelete = (rowData) => {
-        console.log('ASSIGNMENT ID TO DELETE', rowData.id)
+        this.props.delete(rowData.id)
     }
 
     renderRow = rowData => {
-        // console.log('function?', this.props.delete)
         return (
             <Card>
                 <Body>

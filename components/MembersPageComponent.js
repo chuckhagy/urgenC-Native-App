@@ -27,17 +27,22 @@ export default class MembersPageComponent extends React.Component {
     }
 
 
+    _handleDelete = (rowData) => {
+        this.props.delete(rowData.id)
+    }
+
     render() {
         // TODO console.log('owner here', this.props.ownerUserId);
+        console.log('in PAGE level: all props', this.props)
         return (
             <Content>
                 <Text style={style.subHeading}>Current Members:</Text>
-                <MembersListComponent allMembers={this.props.userAssignments} delete={this.props.deleteAssignment}/>
+                <MembersListComponent allMembers={this.props.items[0].userAssignments}  delete={this.props.deleteAssignment.bind(this)}/>
                 <Text style={style.subHeading}>Add New Member:</Text>
                 <View style={style.addingToolsBg}>
                     <Form>
                         <Item stackedLabel>
-                            <Label>Enter username below to add new member</Label>
+                            <Label>Enter username sbelow to add new member</Label>
                             <Input
                                 name="newMemberName"
                                 onChangeText={newMemberName => this.setState({newMemberName: newMemberName.toLowerCase()})}
@@ -98,5 +103,5 @@ const style = StyleSheet.create({
     addingToolsBg: {
         backgroundColor: "#ffffff",
         padding: 5
-    }
+    },
 });

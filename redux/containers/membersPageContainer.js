@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import { compose, lifecycle } from "recompose";
 import MembersPageComponent from "../../components/MembersPageComponent";
-import updateUserProcess from "../thunks/updateUserProcess"
-import deleteUserProcess from "../thunks/deleteUserProcess"
+import deleteAssignmentProcess from "../thunks/deleteAssignmentProcess"
 
 function mapStateToProps(state) {
     return { ...state }
@@ -10,7 +9,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        deleteAssignment: assignmentId => dispatch(deleteUserProcess())
+        deleteAssignment: assignmentId => dispatch(deleteAssignmentProcess(assignmentId))
     };
 }
 

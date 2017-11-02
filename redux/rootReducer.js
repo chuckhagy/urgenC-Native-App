@@ -53,7 +53,7 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "REFRESH_LIST":
-            let refreshedItems = currentState.items;
+            let refreshedItems = currentState.items.slice(0);
             const currentTime = moment.utc(Date.now());
             refreshedItems = refreshedItems.map(item => {
                 item.timeLeft = moment.utc(item.duedate).diff(currentTime, "minutes");
@@ -90,6 +90,21 @@ export default function rootReducer(currentState = {items: []}, action) {
                 authenticatedUser: null,
                 userId: null,
                 userToken: null
+            }
+
+        case "DELETE_ASSIGNMENT":
+                let postDeleteAssignmentItems = currentState.items.slice(0);
+                let index = postDeleteAssignmentItems.findIndex(item => item.id === action.deletedAssignment.goalId);
+
+
+            let smallerArray = postDeleteAssignmentItems[index].userAssignments.filter(assignment => assignment.id !== action.deletedAssignment.id)
+
+                postDeleteAssignmentItems[index].userAssignments = smallerArray
+
+                console.log(postDeleteAssignmentItems)
+                return{
+                ...currentState,
+                items: postDeleteAssignmentItems
             }
 
 
