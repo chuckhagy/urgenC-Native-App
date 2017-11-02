@@ -28,9 +28,11 @@ export default class LoginPageComponent extends React.Component {
         password: '',
         email: '',
         displayName: '',
+        connectionDown: false,
     };
 
     _handleCreate = () => {
+        this.setState({connectionDown: false});
         newUser = {
             displayName: this.state.displayName,
             email: this.state.email,
@@ -38,7 +40,13 @@ export default class LoginPageComponent extends React.Component {
             password: this.state.password,
         }
         signupMethod(newUser)
-            .then(Actions.pop())
+            .then(message => {
+                Actions.pop()
+            })
+            .catch(error => {
+                console.log(error)
+                if (error.message === 'Network request failed') this.setState({connectionDown: true})
+            })
     }
 
     _handleBack = () => {
@@ -93,6 +101,7 @@ export default class LoginPageComponent extends React.Component {
                             autoCorrect={false}
                         />
                     </Item>
+                    {this.state.connectionDown ? <Text style={styles.errorStyle}>No connection. Try again later.</Text> : null}
                     <Button dark onPress={this._handleCreate} style={styles.spacing2}
                             disabled={
                                 this.state.displayName.length <= 1 ||
@@ -156,6 +165,12 @@ const styles = StyleSheet.create({
     buttonTextTwo: {
         textAlign: 'center',
         letterSpacing: 4
+    },
+    errorStyle: {
+        textAlign: 'center',
+        color: "white",
+        fontWeight: 'bold',
+        margin: 5,
     }
 });
 

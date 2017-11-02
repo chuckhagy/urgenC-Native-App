@@ -24,11 +24,20 @@ export default class LoginPageComponent extends React.Component {
 
     state = {
         username: '',
-        password: ''
+        password: '',
+        tryAgain: false,
+        connectionDown: false,
     };
 
     _handleLogin = () => {
-        this.props.tokenAttempt(this.state);
+        this.setState({tryAgain: false});
+        this.setState({connectionDown: false});
+        this.props.tokenAttempt(this.state)
+            .catch(error => {
+                if (error.message === 'Invalid token specified') this.setState({tryAgain: true})
+                if (error.message === 'Network request failed') this.setState({connectionDown: true})
+                else console.log(error.message)
+            });
     }
 
     _handleSignup = () => {
@@ -61,10 +70,13 @@ export default class LoginPageComponent extends React.Component {
                             autoCorrect={false}
                         />
                     </Item>
+                    {this.state.tryAgain ? <Text style={styles.errorStyle}>Username or password incorrect.</Text> : null}
+                    {this.state.connectionDown ? <Text style={styles.errorStyle}>No connection. Try again later.</Text> : null}
+
                     <Button dark onPress={this._handleLogin} style={styles.spacing}
                             disabled={
-                                this.state.username.length <= 2 ||
-                                this.state.password.length <= 5
+                                this.state.username.length < 1 ||
+                                this.state.password.length < 1
                             }
                     >
                         <Text style={styles.buttonText}>
@@ -116,6 +128,12 @@ const styles = StyleSheet.create({
     buttonTextTwo: {
         textAlign: 'center',
         letterSpacing: 4
+    },
+    errorStyle: {
+        textAlign: 'center',
+        color: "white",
+        fontWeight: 'bold',
+        margin: 5,
     }
 });
 
