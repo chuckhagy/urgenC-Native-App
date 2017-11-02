@@ -1,13 +1,13 @@
 import env from "./env";
-export default function updateItem(id) {
+export default function updateItem(id, token) {
   return fetch(
-    `https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/items/${id}`,
+      `${env.MY_URL}/goals/${id}`,
     {
       method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${env.AIRTABLE_TOKEN}`,
-        "Content-Type": "application/json"
-      }
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        },
     }
   )
     .then(response => response.json())

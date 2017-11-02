@@ -29,11 +29,12 @@
   "jest": {
     "preset": "jest-expo",
     "setupFiles": [
-    "./setupJest.js"
-  ]
+      "./setupJest.js"
+    ]
   },
   "dependencies": {
     "expo": "21.0.2",
+    "jwt-decode": "^2.2.0",
     "native-base": "^2.3.2",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.4",

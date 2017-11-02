@@ -19,36 +19,67 @@ import {
     Input,
     Label
 } from "native-base"
+import signupMethod from '../api/signup'
 
 export default class LoginPageComponent extends React.Component {
 
     state = {
         username: '',
         password: '',
-        tryAgain: false,
+        email: '',
+        displayName: '',
         connectionDown: false,
     };
 
-    _handleLogin = () => {
-        this.setState({tryAgain: false});
+    _handleCreate = () => {
         this.setState({connectionDown: false});
-        this.props.tokenAttempt(this.state)
+        newUser = {
+            displayName: this.state.displayName,
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password,
+        }
+        signupMethod(newUser)
+            .then(message => {
+                Actions.pop()
+            })
             .catch(error => {
-                if (error.message === 'Invalid token specified') this.setState({tryAgain: true})
+                console.log(error)
                 if (error.message === 'Network request failed') this.setState({connectionDown: true})
-                else console.log(error.message)
-            });
+            })
     }
 
-    _handleSignup = () => {
-        Actions.push('signup')
+    _handleBack = () => {
+        Actions.pop()
     }
 
     render() {
         return (
             <View style={styles.loginbg}>
-                <Image source={require('../images/logo-small.png')} style={styles.spacing1}/>
+                <Text style={styles.title}>
+                    New Account
+                </Text>
                 <Form>
+                    <Item regular style={styles.spacing}>
+                        <Input
+                            name="displayName"
+                            onChangeText={displayName => this.setState({displayName: displayName})}
+                            value={this.state.displayName}
+                            placeholder='name'
+                            style={styles.inputs}
+                            autoCorrect={false}
+                        />
+                    </Item>
+                    <Item regular style={styles.spacing}>
+                        <Input
+                            name="email"
+                            onChangeText={email => this.setState({email: email.toLowerCase()})}
+                            value={this.state.email}
+                            placeholder='email'
+                            style={styles.inputs}
+                            autoCorrect={false}
+                        />
+                    </Item>
                     <Item regular style={styles.spacing}>
                         <Input
                             name="username"
@@ -70,26 +101,25 @@ export default class LoginPageComponent extends React.Component {
                             autoCorrect={false}
                         />
                     </Item>
-                    {this.state.tryAgain ? <Text style={styles.errorStyle}>Username or password incorrect.</Text> : null}
                     {this.state.connectionDown ? <Text style={styles.errorStyle}>No connection. Try again later.</Text> : null}
-
-                    <Button dark onPress={this._handleLogin} style={styles.spacing}
+                    <Button dark onPress={this._handleCreate} style={styles.spacing2}
                             disabled={
-                                this.state.username.length < 1 ||
-                                this.state.password.length < 1
+                                this.state.displayName.length <= 1 ||
+                                this.state.username.length <= 2 ||
+                                this.state.password.length <= 5 ||
+                                this.state.email.length <= 5 ||
+                                !/(.+)@(.+){2,}\.(.+){2,}/.test(this.state.email)
                             }
                     >
+                        <Icon name='md-add' style={styles.icon}/>
                         <Text style={styles.buttonText}>
-                            LOGIN
+                            CREATE ACCOUNT
                         </Text>
-                        <Icon name='md-arrow-forward' style={styles.icon}/>
                     </Button>
-                    <Text style={styles.prompt}>
-                        Don't have an account yet?
-                    </Text>
-                    <Button light onPress={this._handleSignup} style={styles.spacing}>
-                        <Text style={styles.buttonTextTwo}>
-                            CLICK HERE TO SIGNUP
+                    <Button light onPress={this._handleBack} style={styles.spacing}>
+                        <Icon name='md-arrow-back' style={styles.icon}/>
+                        <Text style={styles.buttonText}>
+                            BACK
                         </Text>
                     </Button>
                 </Form>
@@ -99,21 +129,30 @@ export default class LoginPageComponent extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    title: {
+        color: 'white',
+        fontSize: 35,
+        fontWeight: '300',
+        marginBottom: 25,
+    },
     loginbg: {
         flex: 1,
         flexDirection: 'column',
         backgroundColor: '#c90000',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: 10
     },
     spacing: {
         flexDirection: 'row',
         width: 300,
-        marginBottom: 25,
+        marginBottom: 20,
     },
-    spacing1: {
-        marginBottom: 30,
-        marginTop: 30,
+    spacing2: {
+        flexDirection: 'row',
+        width: 300,
+        marginBottom: 15,
+        marginTop: 30
     },
     inputs: {
         backgroundColor: 'white'
@@ -121,9 +160,7 @@ const styles = StyleSheet.create({
     prompt: {
         textAlign: 'center',
         fontSize: 20,
-        marginTop: 30,
-        marginBottom: 10,
-        color: 'white'
+        margin: 10
     },
     buttonTextTwo: {
         textAlign: 'center',

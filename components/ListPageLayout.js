@@ -13,7 +13,8 @@ import {
     Body,
     Icon,
     Text,
-    Spinner
+    Spinner,
+    Fab
 } from "native-base";
 import {Actions} from "react-native-router-flux";
 

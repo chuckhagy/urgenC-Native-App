@@ -3,7 +3,7 @@ import moment from "moment";
 
 export default function getItemsProcess() {
     return (dispatch, getState) => {
-        return getItems()
+        return getItems(getState().userToken, getState().userId)
             .then(items => {
                 const timeItems = items;
                 const currentTime = moment.utc(Date.now());

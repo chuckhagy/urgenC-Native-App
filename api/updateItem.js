@@ -1,35 +1,35 @@
 import env from "./env";
-export default function updateItem(fullItem) {
-  return fetch(
-    `https://api.airtable.com/v0/${env.AIRTABLE_DATABASE_ID}/items/${fullItem.id}`,
-    {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${env.AIRTABLE_TOKEN}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        fields: {
-          title: fullItem.title,
-          body: fullItem.body,
-          duedate: fullItem.duedate,
-          priority: fullItem.priority,
-          status: fullItem.status,
+
+export default function updateItem(fullItem, token) {
+    return fetch(
+        `${env.MY_URL}/goals/${fullItem.id}`,
+        {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                    title: fullItem.title,
+                    body: fullItem.body,
+                    dueDate: fullItem.duedate,
+                    priority: fullItem.priority,
+                    status: fullItem.status,
+                    ownerUserId: fullItem.ownerUserId
+            })
         }
-      })
-    }
-  )
-    .then(response => response.json())
-    .then(record => {
-      return {
-        id: record.id,
-        title: record.fields.title,
-        body: record.fields.body,
-        priority: record.fields.priority,
-          duedate: record.fields.duedate,
-          createddate: record.fields.createddate,
-          status: record.fields.status,
-      };
-    });
-  //.catch() <<<<< DO THIS
+    )
+        .then(response => response.json())
+        .then(record => {
+            return {
+                id: record.id,
+                title: record.title.trim(),
+                body: record.body.trim(),
+                priority: record.priority,
+                duedate: record.dueDate.trim(),
+                createddate: record.created_at.trim(),
+                status: record.ownerUserId
+            };
+        });
+    //.catch() <<<<< DO THIS
 }

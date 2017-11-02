@@ -1,11 +1,11 @@
-import updateItem from "../../api/updateItem";
+import updateAssignment from "../../api/updateAssignment";
 import moment from "moment";
 import {Actions} from "react-native-router-flux";
 
-export default function updateItemProcess(fullItem) {
+export default function updateItemProcess(item) {
     return (dispatch, getState) => {
-        return updateItem(fullItem, getState().userToken)
-            .then(item => {
+        return updateAssignment(item, getState().userToken)
+            .then(response => {
                 let currentTime = moment.utc(Date.now());
                 timeLeft = moment.utc(item.duedate).diff(currentTime, "minutes");
                 totalTime = moment.utc(item.duedate).diff(item.createddate, "minutes");
@@ -19,7 +19,7 @@ export default function updateItemProcess(fullItem) {
                         body: item.body,
                         priority: item.priority,
                         duedate: item.duedate,
-                        status: item.status,
+                        status: response.status,
                         totalTime: totalTime,
                         timeLeft: timeLeft,
                         rank: rank
