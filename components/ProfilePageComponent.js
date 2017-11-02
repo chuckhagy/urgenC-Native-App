@@ -89,9 +89,9 @@ export default class ProfilePageComponent extends React.Component {
 
         specialColor = () => {
             return {
-                width: 100,
-                height: 100,
-                borderRadius: 50,
+                width: 160,
+                height: 160,
+                borderRadius: 80,
                 marginTop: 15,
                 borderWidth: 4,
                 backgroundColor: this.state.color
@@ -121,9 +121,6 @@ export default class ProfilePageComponent extends React.Component {
                     <View style={styles.profileBgMiddle}>
                         <Text style={styles.textMiddle}>
                             @{this.props.authenticatedUser.username}
-                        </Text>
-                        <Text style={styles.textMiddle}>
-                            "{this.state.status}"
                         </Text>
                     </View>
                     <View style={styles.profileBgBottom}>
@@ -233,7 +230,7 @@ export default class ProfilePageComponent extends React.Component {
             marginRight: 35,
             marginLeft: 35,
             marginTop: 15,
-            marginBottom: 45,
+            marginBottom: 55,
             height: 60
         },
         deleteButtons: {
@@ -249,36 +246,41 @@ export default class ProfilePageComponent extends React.Component {
         initials: {
             color: 'white',
             textAlign: 'center',
-            fontSize: 60,
+            fontSize: 115,
             textShadowColor: 'black',
             textShadowOffset: {width: 3, height: 3},
             textShadowRadius: 3
         },
         profileBgTop: {
-            marginBottom: 20,
+            paddingBottom: 20,
             justifyContent: 'center',
             alignItems: 'center',
+            backgroundColor: '#ffffff'
+
 
         },
         profileBgMiddle: {
             alignItems: 'center',
             justifyContent: 'center',
             marginTop: -8,
-            marginBottom: 10
+            backgroundColor: '#ffffff',
+            borderBottomColor: '#000000',
+            borderBottomWidth: 1,
+
         },
         textMiddle: {
             fontSize: 16,
             fontStyle: 'italic',
             paddingBottom: 10,
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            color: '#000000'
         },
         status: {
             fontSize: 20,
             fontWeight: 'bold',
             fontStyle: 'italic',
-            paddingBottom: 25
-        },
-        profileBgBottom: {
+            paddingBottom: 25,
+            color: '#000000'
         },
         profileBg: {
             flex: 1,
