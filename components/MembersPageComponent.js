@@ -32,12 +32,13 @@ export default class MembersPageComponent extends React.Component {
     }
 
     render() {
+        let theseAssignments = this.props.items.find(item => item.id === this.props.goalId).userAssignments
         // TODO console.log('owner here', this.props.ownerUserId);
         console.log('in PAGE level: all props', this.props)
         return (
             <Content>
                 <Text style={style.subHeading}>Current Members:</Text>
-                <MembersListComponent allMembers={this.props.items[0].userAssignments}  delete={this.props.deleteAssignment.bind(this)}/>
+                <MembersListComponent allMembers={theseAssignments}  delete={this.props.deleteAssignment.bind(this)}/>
                 <Text style={style.subHeading}>Add New Member:</Text>
                 <View style={style.addingToolsBg}>
                     <Form>
