@@ -18,9 +18,9 @@ import addPageContainer from "./redux/containers/addPageContainer";
 import profilePageContainer from "./redux/containers/profilePageContainer";
 import statsPageContainer from "./redux/containers/statsPageContainer";
 import DetailsPageComponent from "./components/DetailsPageComponent";
-import MembersPageComponent from "./components/MembersPageComponent";
 import SignupPageComponent from "./components/SignupPageComponent";
 import historyPageContainer from "./redux/containers/historyPageContainer";
+import membersPageContainer from "./redux/containers/membersPageContainer";
 
 import setupStore from "./redux/setupStore";
 
@@ -122,7 +122,7 @@ export default class App extends Component {
                             />
                             <Scene
                                 key="addMembers"
-                                component={MembersPageComponent}
+                                component={membersPageContainer}
                                 title="Members"
                             />
                         <Scene

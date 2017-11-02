@@ -19,7 +19,10 @@ export default function createItem(status, goalId, userId, token) {
         .then(response => response.json())
         .then(record => {
             return {
-                id: record.id
+                id: record.id,
+                goalId: record.goalId,
+                userId: record.userId,
+                status: record.status
             };
         });
 }

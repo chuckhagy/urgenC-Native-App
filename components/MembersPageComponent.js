@@ -20,7 +20,7 @@ import {
     Fab
 } from "native-base";
 
-export default class Blue extends React.Component {
+export default class MembersPageComponent extends React.Component {
 
     state = {
         newMemberName: '',
@@ -28,6 +28,8 @@ export default class Blue extends React.Component {
 
 
     render() {
+        console.log(this.props, "<><><><><>");
+        console.log('owner here', this.props.ownerUserId);
         return (
             <Content>
                 <Form>
