@@ -53,7 +53,6 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "REFRESH_LIST":
-            console.log('refresh list')
             let refreshedItems = currentState.items.slice(0);
             const currentTime = moment.utc(Date.now());
             refreshedItems = refreshedItems.map(item => {
