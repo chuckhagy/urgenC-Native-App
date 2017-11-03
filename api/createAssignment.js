@@ -16,14 +16,18 @@ export default function createAssignment(status, goalId, username, token) {
             })
         }
     )
-        .then(response => response.json())
+        .then(response => {
+            return response.json()
+        })
         .then(record => {
-            console.log(record, '<<< RECORD')
             return {
                 id: record.id,
                 goalId: record.goalId,
                 userId: record.userId,
-                status: record.status
+                status: record.status ? record.status.trim() : null
             };
-        });
+        }).catch(error => {
+            console.log(error)
+            throw error
+        })
 }

@@ -36,7 +36,6 @@ export default class MembersListComponent extends Component {
     };
 
     componentWillReceiveProps(newProps) {
-        console.log('in list level: ', newProps)
         if (newProps.allMembers !== this.props.allMembers) {
             this.setState({
                 dataSource: this.state.dataSource.cloneWithRows(
@@ -57,6 +56,8 @@ export default class MembersListComponent extends Component {
                 <View style={styles.cardBody}>
                     <View style={styles.containerLeft}>
                         <View style={styles.containerLeftTop}>
+                            <View style={{backgroundColor: rowData.profileColor, borderRadius:6, width:12, height:12, marginRight: 10, marginTop: 2}}>
+                            </View>
                             <Text style={styles.nameText}>
                                 {rowData.displayName.trim()}
                             </Text>
@@ -65,7 +66,7 @@ export default class MembersListComponent extends Component {
                             </Text>
                         </View>
                         <Text style={styles.statusText}>
-                            Status: {rowData.status.trim()}
+                            {rowData.statusMessage.trim()}
                         </Text>
                     </View>
                     <View style={styles.containerRight}>
@@ -88,7 +89,6 @@ export default class MembersListComponent extends Component {
     };
 
     render() {
-        console.log(this.props)
         if (this.props.allMembers.length === 0) return (
             <Spinner color='red' style={styles.spinner}/>
         )
@@ -113,7 +113,7 @@ const styles = {
 
     },
     statusText: {
-        fontSize: 14,
+        fontSize: 12,
     },
     xText: {
         fontSize: 24,

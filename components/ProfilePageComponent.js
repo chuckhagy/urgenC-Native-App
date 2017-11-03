@@ -255,7 +255,6 @@ export default class ProfilePageComponent extends React.Component {
             paddingBottom: 20,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#ffffff'
 
 
         },
@@ -263,9 +262,6 @@ export default class ProfilePageComponent extends React.Component {
             alignItems: 'center',
             justifyContent: 'center',
             marginTop: -8,
-            backgroundColor: '#ffffff',
-            borderBottomColor: '#000000',
-            borderBottomWidth: 1,
 
         },
         textMiddle: {

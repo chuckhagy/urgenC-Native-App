@@ -53,10 +53,13 @@ export default class ListPageLayout extends Component {
         }
     }
 
+            // <Spinner color='red' style={styles.spinner}/>
     render() {
         if (this.props.items.length === 0) return (
-            <Spinner color='red' style={styles.spinner}/>
-        )
+                <Text>
+
+                </Text>
+            )
         else
             return (
                 <Content>

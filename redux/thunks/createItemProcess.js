@@ -9,7 +9,6 @@ export default function createItemProcess(item) {
         return createItem(item, getState().userId, getState().userToken)
             .then(newId => {
                 outerNewId = newId.id;
-                console.log('AFTER FIRST REQUEST: ', newId)
                 return createAssignment('current', outerNewId, getState().authenticatedUser.username, getState().userToken)
             })
             .then(newId => {

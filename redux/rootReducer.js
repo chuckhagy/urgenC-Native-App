@@ -64,7 +64,7 @@ export default function rootReducer(currentState = {items: []}, action) {
                     (1 - item.timeLeft / item.totalTime) * 0.5 + item.priority / 5 * 0.5;
                 return item;
             });
-            return{
+            return {
                 ...currentState,
                 items: refreshedItems
             }
@@ -85,7 +85,7 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "LOGOUT":
-            return{
+            return {
                 ...currentState,
                 authenticatedUser: null,
                 userId: null,
@@ -93,21 +93,36 @@ export default function rootReducer(currentState = {items: []}, action) {
             }
 
         case "DELETE_ASSIGNMENT":
-                let postDeleteAssignmentItems = currentState.items.slice(0);
-                let index = postDeleteAssignmentItems.findIndex(item => item.id === action.deletedAssignment.goalId);
+            let postDeleteAssignmentItems = currentState.items.slice(0);
+            let index = postDeleteAssignmentItems.findIndex(item => item.id === action.deletedAssignment.goalId);
 
 
-            let smallerArray = postDeleteAssignmentItems[index].userAssignments.filter(assignment => assignment.id !== action.deletedAssignment.id)
-
-                postDeleteAssignmentItems[index].userAssignments = smallerArray
-
-                console.log(postDeleteAssignmentItems)
-                return{
+            let smallerArray = postDeleteAssignmentItems[index].userAssignments.filter(assignment => assignment.id !== action.deletedAssignment.id);
+            postDeleteAssignmentItems[index].userAssignments = smallerArray
+            return {
                 ...currentState,
                 items: postDeleteAssignmentItems
             }
 
+        case "CREATE_ASSIGNMENT":
+            let postAddAssignmentItems = currentState.items.slice(0);
+            let thisindex = postAddAssignmentItems.findIndex(item => item.id === action.goalId);
 
+            let newUser = action.userItem
+            newUser.userId = action.userId;
+            newUser.goalId = action.goalId;
+            newUser.id = action.id;
+            newUser.status = 'current'
+            newUser.profileColor = newUser.color;
+            console.log(newUser)
+
+            postAddAssignmentItems[thisindex].userAssignments = [...postAddAssignmentItems[thisindex].userAssignments, newUser];
+            console.log(postAddAssignmentItems);
+
+            return {
+                ...currentState,
+                items: postAddAssignmentItems
+            }
 
 
         default:

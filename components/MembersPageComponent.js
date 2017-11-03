@@ -24,12 +24,30 @@ export default class MembersPageComponent extends React.Component {
 
     state = {
         newMemberName: '',
-    }
+    };
 
 
     _handleDelete = (rowData) => {
         this.props.delete(rowData.id)
-    }
+    };
+
+
+    _handleCreate = () => {
+        let attributes = {
+            status: 'current',
+            goalId: this.props.goalId,
+            username: this.state.newMemberName
+        };
+
+        return this.props.createAssignment(attributes)
+
+    };
+
+    _handleCancel = () => {
+        this.setState({
+            newMemberName: ''
+        })
+    };
 
     render() {
         let thisGoal = this.props.items.find(item => item.id === this.props.goalId);
@@ -37,7 +55,7 @@ export default class MembersPageComponent extends React.Component {
         let ownerId = thisGoal.ownerUserId;
         let theseAssignments = thisGoal.userAssignments
         // TODO console.log('owner here', this.props.ownerUserId);
-        console.log('in PAGE level: all props', this.props)
+
         return (
             <Content>
                 <Text style={style.subHeading}>Current Members:</Text>
@@ -57,6 +75,7 @@ export default class MembersPageComponent extends React.Component {
                                     name="newMemberName"
                                     onChangeText={newMemberName => this.setState({newMemberName: newMemberName.toLowerCase()})}
                                     value={this.state.newMemberName}
+                                    autoCorrect={false}
                                 />
                             </Item>
 
@@ -66,6 +85,7 @@ export default class MembersPageComponent extends React.Component {
                                     large
                                     primary
                                     disabled={this.state.newMemberName.length < 1}
+                                    onPress={this._handleCreate}
 
                                 >
                                     <Icon name="send"/>
@@ -76,6 +96,8 @@ export default class MembersPageComponent extends React.Component {
                                     large
                                     danger
                                     disabled={this.state.newMemberName.length < 1}
+                                    onPress={this._handleCancel}
+
                                 >
                                     <Icon name="trash"/>
                                     <Text>CANCEL</Text>

@@ -1,22 +1,29 @@
 import createAssignment from "../../api/createAssignment";
+import getUser from "../../api/getUser";
 import moment from "moment";
 import {Actions} from "react-native-router-flux";
 
-export default function createAssignmentProcess(item) {
+export default function createAssignmentProcess(attributes) {
+    let outGoalId;
+    let outUserId;
+    let outAssignmentId;
     return (dispatch, getState) => {
-        return createAssignment(item, getState().userToken)
+        return createAssignment(attributes.status, attributes.goalId, attributes.username, getState().userToken)
             .then(response => {
+                outGoalId = response.goalId;
+                outUserId = response.userId;
+                outAssignmentId = response.id;
+                return getUser(getState().userToken, response.userId)
+            })
+            .then(userItem => {
                 dispatch({
                     type: "CREATE_ASSIGNMENT",
-                    newItem: {
-                        id: response.id,
-                        userId: response.userId,
-                        goalId: response.goalId,
-                        status: response.status
-                    }
+                    goalId: outGoalId,
+                    userId: outUserId,
+                    id: outAssignmentId,
+                    userItem
                 });
-                Actions.jump("list");
-                return item;
+                return userItem;
             });
     };
 }
