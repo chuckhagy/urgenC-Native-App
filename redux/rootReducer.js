@@ -86,10 +86,6 @@ export default function rootReducer(currentState = {items: []}, action) {
 
         case "LOGOUT":
             return {
-                ...currentState,
-                authenticatedUser: null,
-                userId: null,
-                userToken: null
             }
 
         case "DELETE_ASSIGNMENT":
