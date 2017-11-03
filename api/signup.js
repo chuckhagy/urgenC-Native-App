@@ -19,3 +19,5 @@ export default function token(newUser) {
             return response
         })
  }
+
+// username='chuck' displayName='chuckster' email='chuck@gmail.com' password='123456'

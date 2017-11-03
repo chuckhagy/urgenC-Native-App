@@ -33,6 +33,8 @@ export default class TickerComponent extends React.Component {
                 math: diff
             });
         }
+        if (diff <= 1) this.props.expiration();
+
     }
 
     render() {

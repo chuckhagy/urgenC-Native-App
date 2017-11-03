@@ -53,6 +53,7 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "REFRESH_LIST":
+            console.log('refresh list')
             let refreshedItems = currentState.items.slice(0);
             const currentTime = moment.utc(Date.now());
             refreshedItems = refreshedItems.map(item => {
@@ -85,8 +86,7 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "LOGOUT":
-            return {
-            }
+            return {};
 
         case "DELETE_ASSIGNMENT":
             let postDeleteAssignmentItems = currentState.items.slice(0);
@@ -119,6 +119,12 @@ export default function rootReducer(currentState = {items: []}, action) {
                 ...currentState,
                 items: postAddAssignmentItems
             }
+
+        case "EXPIRED":
+            return {
+                ...currentState,
+                modalOn: true
+            };
 
 
         default:

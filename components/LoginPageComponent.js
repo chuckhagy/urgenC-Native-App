@@ -33,11 +33,16 @@ export default class LoginPageComponent extends React.Component {
         this.setState({tryAgain: false});
         this.setState({connectionDown: false});
         this.props.tokenAttempt(this.state)
+            .then( promise =>{
+                this.setState({username: '', password: ''});
+                return promise
+            })
             .catch(error => {
                 if (error.message === 'Invalid token specified') this.setState({tryAgain: true})
                 if (error.message === 'Network request failed') this.setState({connectionDown: true})
                 else console.log(error.message)
             });
+
     }
 
     _handleSignup = () => {
