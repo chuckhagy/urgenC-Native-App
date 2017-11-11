@@ -25,7 +25,6 @@ export default function tokenProcess(item) {
                 return getUser(outerToken, outerUserId)
                     .then(async (userItem) => {
                         try {
-                            console.log('userID in thunk: ', outerUserId)
                             await AsyncStorage.setItem('@urgenCapp:token', outerToken);
                             await AsyncStorage.setItem('@urgenCapp:userId', outerUserId.toString());
                         } catch (error) {

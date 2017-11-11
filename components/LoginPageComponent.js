@@ -56,7 +56,6 @@ export default class LoginPageComponent extends React.Component {
         try {
             const token = await AsyncStorage.getItem('@urgenCapp:token');
             const userId = await AsyncStorage.getItem('@urgenCapp:userId');
-            console.log('got here: ', token, userId)
             if (token !== null && userId !== null) {
                 this.props.autoLogin(token, userId)
             }

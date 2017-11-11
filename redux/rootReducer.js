@@ -70,6 +70,7 @@ export default function rootReducer(currentState = {items: []}, action) {
                     items: refreshedItems
                 }
             }
+            break;
 
         case "USER_LOGIN":
             return {
@@ -111,10 +112,7 @@ export default function rootReducer(currentState = {items: []}, action) {
             newUser.id = action.id;
             newUser.status = 'current'
             newUser.profileColor = newUser.color;
-            console.log(newUser)
-
             postAddAssignmentItems[thisindex].userAssignments = [...postAddAssignmentItems[thisindex].userAssignments, newUser];
-            console.log(postAddAssignmentItems);
 
             return {
                 ...currentState,
