@@ -3,7 +3,7 @@ import env from "./env";
 
 export default function getItems(token, userId) {
   return fetch(
-    `${env.MY_URL}/goal-assignments/user/${userId}`,
+    `${env.MY_URL}/users/${userId}/goal-assignments`,
     {
       headers: {
         Authorization: `Bearer ${token}`
