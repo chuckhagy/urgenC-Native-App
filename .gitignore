@@ -1,5 +1,4 @@
 node_modules/
 .expo/
 npm-debug.*
-api/env.js
 .idea/
