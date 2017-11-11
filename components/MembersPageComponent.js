@@ -65,9 +65,9 @@ export default class MembersPageComponent extends React.Component {
                     isOwner={ownerId === currentUserId}
                     ownerId={ownerId}
                 />
-                <Text style={style.subHeading}>Add New Member:</Text>
                 {currentUserId === ownerId ?
                     <View style={style.addingToolsBg}>
+                        <Text style={style.subHeading}>Add New Member:</Text>
                         <Form>
                             <Item stackedLabel>
                                 <Label>Enter username sbelow to add new member</Label>

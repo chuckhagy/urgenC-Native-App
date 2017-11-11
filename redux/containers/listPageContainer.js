@@ -5,6 +5,7 @@ import getItemsProcess from "../thunks/getItemsProcess";
 import updateItemsProcess from "../thunks/updateItemsProcess";
 import deleteItemProcess from "../thunks/deleteItemProcess";
 import updateAssignmentProcess from "../thunks/updateAssignmentProcess";
+import logoutProcess from "../thunks/logoutProcess";
 
 function mapStateToProps(state) {
     return {...state};
@@ -17,7 +18,7 @@ function mapDispatchToProps(dispatch) {
         updateThisAssignment: fullItem => dispatch(updateAssignmentProcess(fullItem)),
         deleteItem: id => dispatch(deleteItemProcess(id)),
         refreshList: () => dispatch({type: "REFRESH_LIST"}),
-        logout: () => dispatch({type: "LOGOUT"}),
+        logout: () => dispatch(logoutProcess()),
         expiration: () => dispatch({type: "EXPIRED"})
     };
 }

@@ -27,6 +27,7 @@ export default class ListPageComponent extends Component {
         this.refreshList = setInterval(() => this.refreshIt(), 2000);
     }
 
+
     componentWillUnmount() {
         clearInterval(this.refreshList);
     }

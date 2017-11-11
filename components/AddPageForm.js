@@ -36,7 +36,7 @@ export default class AddPageFormComponent extends React.Component {
       title: this.state.title || "n/a",
       body: this.state.body || "n/a",
       duedate:
-        moment.utc(this.state.duedate).add(7, "hour") || //deals with utc?
+        moment.utc(this.state.duedate).add(8, "hour") || //deals with utc?
         moment.utc(Date.now()).add(1, "day"),
       priority: this.state.priority || "3",
       createddate: moment.utc(Date.now()),
