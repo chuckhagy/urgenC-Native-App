@@ -20,50 +20,96 @@ import {
     Fab
 } from "native-base";
 
-export default class Blue extends React.Component {
+export default class MembersPageComponent extends React.Component {
 
     state = {
         newMemberName: '',
-    }
+    };
 
+
+    _handleDelete = (rowData) => {
+        this.props.delete(rowData.id)
+    };
+
+
+    _handleCreate = () => {
+        let attributes = {
+            status: 'current',
+            goalId: this.props.goalId,
+            username: this.state.newMemberName
+        };
+
+        return this.props.createAssignment(attributes)
+
+    };
+
+    _handleCancel = () => {
+        this.setState({
+            newMemberName: ''
+        })
+    };
 
     render() {
+        let thisGoal = this.props.items.find(item => item.id === this.props.goalId);
+        let currentUserId = this.props.authenticatedUser.id;
+        let ownerId = thisGoal.ownerUserId;
+        let theseAssignments = thisGoal.userAssignments
+        // TODO console.log('owner here', this.props.ownerUserId);
+
         return (
             <Content>
-                <Form>
-                    <Item stackedLabel>
-                        <Label>Enter username below to add new member</Label>
-                        <Input
-                            name="newMemberName"
-                            onChangeText={newMemberName => this.setState({newMemberName})}
-                            value={this.state.newMemberName}
-                        />
-                    </Item>
-
-                    <Container style={style.buttons}>
-                        <Button
-                            iconLeft
-                            large
-                            primary
-
-                        >
-                            <Icon name="send"/>
-                            <Text>SAVE IT</Text>
-                        </Button>
-                        <Button
-                            iconLeft
-                            large
-                            danger
-                        >
-                            <Icon name="trash"/>
-                            <Text>CANCEL</Text>
-                        </Button>
-                    </Container>
-                </Form>
                 <Text style={style.subHeading}>Current Members:</Text>
-                <MembersListComponent items={{username: 'chuck', status: 'pending'}}/>
+                <MembersListComponent
+                    allMembers={theseAssignments}
+                    delete={this.props.deleteAssignment.bind(this)}
+                    isOwner={ownerId === currentUserId}
+                    ownerId={ownerId}
+                />
+                {currentUserId === ownerId ?
+                    <View style={style.addingToolsBg}>
+                        <Text style={style.subHeading}>Add New Member:</Text>
+                        <Form>
+                            <Item stackedLabel>
+                                <Label>Enter username sbelow to add new member</Label>
+                                <Input
+                                    name="newMemberName"
+                                    onChangeText={newMemberName => this.setState({newMemberName: newMemberName.toLowerCase()})}
+                                    value={this.state.newMemberName}
+                                    autoCorrect={false}
+                                />
+                            </Item>
+
+                            <Container style={style.buttons}>
+                                <Button
+                                    iconLeft
+                                    large
+                                    primary
+                                    disabled={this.state.newMemberName.length < 1}
+                                    onPress={this._handleCreate}
+
+                                >
+                                    <Icon name="send"/>
+                                    <Text>SAVE IT</Text>
+                                </Button>
+                                <Button
+                                    iconLeft
+                                    large
+                                    danger
+                                    disabled={this.state.newMemberName.length < 1}
+                                    onPress={this._handleCancel}
+
+                                >
+                                    <Icon name="trash"/>
+                                    <Text>CANCEL</Text>
+                                </Button>
+                            </Container>
+                        </Form>
+                    </View>
+                    : null
+                }
             </Content>
-        );
+        )
+            ;
     }
 }
 
@@ -88,5 +134,9 @@ const style = StyleSheet.create({
         textAlign: "center",
         margin: 10,
         fontWeight: 'bold'
-    }
+    },
+    addingToolsBg: {
+        backgroundColor: "#ffffff",
+        padding: 5
+    },
 });

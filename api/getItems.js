@@ -21,7 +21,9 @@ export default function getItems(token, userId) {
              duedate: record.dueDate.trim(),
              priority: record.priority.toString(),
              createddate: record.created_at,
-             status: record.status.trim()
+             status: record.status.trim(),
+             ownerUserId: record.ownerUserId,
+             userAssignments: record.userAssignments,
          }
       });
     });

@@ -31,7 +31,7 @@ export default class DetailsComponent extends React.Component {
         body: this.props.item.data[0].body,
         duedate: moment
             .utc(this.props.item.data[0].duedate)
-            .subtract(7, "hour")
+            .subtract(8, "hour")
             .format(),
         priority: this.props.item.data[0].priority
     };
@@ -41,7 +41,7 @@ export default class DetailsComponent extends React.Component {
             id: this.state.id,
             title: this.state.title,
             body: this.state.body,
-            duedate: moment.utc(this.state.duedate).add(7, "hour"),
+            duedate: moment.utc(this.state.duedate).add(8, "hour"),
             priority: this.state.priority
         });
     };
@@ -51,7 +51,8 @@ export default class DetailsComponent extends React.Component {
     };
 
     _handleAddMember = () => {
-        Actions.addMembers();
+        let goalId = this.props.item.data[0].id
+        Actions.addMembers({goalId});
     };
 
     _checkHandle = () => {
@@ -60,7 +61,8 @@ export default class DetailsComponent extends React.Component {
     };
 
     render() {
-        return (
+        if (this.props.item.data[0].ownerUserId === this.props.item.data[1].authenticatedUser.id) {
+            return (
                 <Content>
                     <Card>
                         <Text style={style.heading}>
@@ -166,7 +168,57 @@ export default class DetailsComponent extends React.Component {
                         </Container>
                     </Form>
                 </Content>
-        );
+            );
+        } else {
+            return (
+                <Content>
+                    <Card>
+                        <Text style={style.heading}>
+                            <TickerComponent
+                                info={this.props.item.data[0]}
+                                style={style.heading}
+                            />
+                        </Text>
+                    </Card>
+                    <Fab
+                        style={{backgroundColor: '#c90000', marginTop: 50}}
+                        position="topRight"
+                        onPress={this._handleAddMember}
+                    >
+                        <Icon name="md-people"/>
+                    </Fab>
+                    <View>
+                        <Card style={{marginTop: 40}}>
+                            <Text style={style.centerHeading}>
+                                D E T A I L S
+                            </Text>
+                            <Text style={style.guestHeading}>
+                                GOAL:
+                            </Text>
+                            <Text style={style.guestBody}>
+                                {this.state.title}</Text>
+                            <Text style={style.guestHeading}>DETAILS:</Text>
+                            <Text style={style.guestBody}>
+                                {this.state.body}
+                            </Text>
+                            <Text style={style.guestHeading}>
+                                DUE DATE:
+                            </Text>
+                            <Text style={style.guestBody}>
+                                {moment(this.state.duedate).format("YYYY-MM-DD HH:mm")}
+                                </Text>
+                            <Text style={style.guestHeading}>
+                                PRIORITY:
+                            </Text>
+                            <Text style={style.guestBody}>
+                                {this.state.priority} / 5
+                            </Text>
+                        </Card>
+
+                    </View>
+                </Content>
+            )
+        }
     }
 }
 
@@ -191,5 +243,22 @@ const style = StyleSheet.create({
         fontSize: 20,
         textAlign: "center",
         margin: 10
+    },
+    guestHeading: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        marginLeft: 10,
+        marginTop: 10,
+    },
+    guestBody: {
+        marginLeft: 18,
+        marginBottom: 10,
+
+    },
+    centerHeading: {
+        textAlign: 'center',
+        fontSize: 24,
+        marginTop: 10
+
     }
 });

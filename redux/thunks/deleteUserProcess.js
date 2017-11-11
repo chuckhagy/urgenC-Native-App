@@ -5,7 +5,6 @@ export default function deleteUserProcess(attributes) {
     return (dispatch, getState) => {
         return deleteUser(getState().userToken, getState().userId)
             .then(response => {
-                console.log(response, '<<< Response from server here in thunk')
                 dispatch({
                     type: "LOGOUT",
                 });

@@ -1,6 +1,8 @@
 import React from "react";
 import {StyleSheet, View, Image} from "react-native";
 import {Actions} from "react-native-router-flux";
+import {AsyncStorage} from "react-native";
+
 import {
     Container,
     Header,
@@ -20,6 +22,7 @@ import {
     Label
 } from "native-base"
 
+
 export default class LoginPageComponent extends React.Component {
 
     state = {
@@ -33,15 +36,33 @@ export default class LoginPageComponent extends React.Component {
         this.setState({tryAgain: false});
         this.setState({connectionDown: false});
         this.props.tokenAttempt(this.state)
+            .then(promise => {
+                this.setState({username: '', password: ''});
+                return promise
+            })
             .catch(error => {
                 if (error.message === 'Invalid token specified') this.setState({tryAgain: true})
                 if (error.message === 'Network request failed') this.setState({connectionDown: true})
                 else console.log(error.message)
             });
-    }
+
+    };
 
     _handleSignup = () => {
         Actions.push('signup')
+    };
+
+    async componentDidMount() {
+        try {
+            const token = await AsyncStorage.getItem('@urgenCapp:token');
+            const userId = await AsyncStorage.getItem('@urgenCapp:userId');
+            console.log('got here: ', token, userId)
+            if (token !== null && userId !== null) {
+                this.props.autoLogin(token, userId)
+            }
+        } catch (error) {
+            console.log('error getting from async: ', error)
+        }
     }
 
     render() {
@@ -70,8 +91,10 @@ export default class LoginPageComponent extends React.Component {
                             autoCorrect={false}
                         />
                     </Item>
-                    {this.state.tryAgain ? <Text style={styles.errorStyle}>Username or password incorrect.</Text> : null}
-                    {this.state.connectionDown ? <Text style={styles.errorStyle}>No connection. Try again later.</Text> : null}
+                    {this.state.tryAgain ?
+                        <Text style={styles.errorStyle}>Username or password incorrect.</Text> : null}
+                    {this.state.connectionDown ?
+                        <Text style={styles.errorStyle}>No connection. Try again later.</Text> : null}
 
                     <Button dark onPress={this._handleLogin} style={styles.spacing}
                             disabled={

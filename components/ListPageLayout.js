@@ -38,7 +38,7 @@ export default class ListPageLayout extends Component {
     };
 
     renderRow = rowData => {
-        return <ListItemComponent items={rowData} props={this.props.props}/>;
+        return <ListItemComponent items={rowData} props={this.props.props} expiration={this.props.props.expiration} />;
     };
 
     componentWillReceiveProps(newProps) {
@@ -53,10 +53,13 @@ export default class ListPageLayout extends Component {
         }
     }
 
+            // <Spinner color='red' style={styles.spinner}/>
     render() {
         if (this.props.items.length === 0) return (
-            <Spinner color='red' style={styles.spinner}/>
-        )
+                <Text>
+
+                </Text>
+            )
         else
             return (
                 <Content>

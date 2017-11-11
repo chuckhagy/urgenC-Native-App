@@ -1,6 +1,6 @@
 import env from "./env";
 
-export default function createItem(status, goalId, userId, token) {
+export default function createAssignment(status, goalId, username, token) {
     return fetch(
         `${env.MY_URL}/goal-assignments`,
         {
@@ -10,16 +10,24 @@ export default function createItem(status, goalId, userId, token) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                userId,
+                username,
                 goalId,
                 status
             })
         }
     )
-        .then(response => response.json())
+        .then(response => {
+            return response.json()
+        })
         .then(record => {
             return {
-                id: record.id
+                id: record.id,
+                goalId: record.goalId,
+                userId: record.userId,
+                status: record.status ? record.status.trim() : null
             };
-        });
+        }).catch(error => {
+            console.log(error)
+            throw error
+        })
 }

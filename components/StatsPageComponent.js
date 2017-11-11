@@ -26,7 +26,7 @@ export default class StatsPageComponent extends React.Component {
           </Body>
         </Header>
         <Content style={styles.bg}>
-          <StatsPageLayout props={this.props} />
+            {this.props.items ? <StatsPageLayout props={this.props} /> : null}
         </Content>
       </Container>
     );

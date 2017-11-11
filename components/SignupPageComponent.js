@@ -44,7 +44,6 @@ export default class LoginPageComponent extends React.Component {
                 Actions.pop()
             })
             .catch(error => {
-                console.log(error)
                 if (error.message === 'Network request failed') this.setState({connectionDown: true})
             })
     }

@@ -1,6 +1,7 @@
 import token from "../../api/token";
 import getUser from "../../api/getUser";
 import {Actions} from "react-native-router-flux";
+import {AsyncStorage} from "react-native";
 
 var jwtDecode = require('jwt-decode');
 
@@ -22,7 +23,15 @@ export default function tokenProcess(item) {
         })
             .then(item => {
                 return getUser(outerToken, outerUserId)
-                    .then(userItem => {
+                    .then(async (userItem) => {
+                        try {
+                            console.log('userID in thunk: ', outerUserId)
+                            await AsyncStorage.setItem('@urgenCapp:token', outerToken);
+                            await AsyncStorage.setItem('@urgenCapp:userId', outerUserId.toString());
+                        } catch (error) {
+                            console.log('Error saving data:', error)
+                        }
+
                         dispatch({
                             type: "USER_LOGIN",
                             token: outerToken,

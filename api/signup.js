@@ -1,7 +1,6 @@
 import env from "./env";
 
 export default function token(newUser) {
-    console.log(newUser, 'GOT TO BEFORE FETCH')
     return fetch(
         `${env.MY_URL}/users`,
         {
@@ -17,7 +16,8 @@ export default function token(newUser) {
             })
         })
         .then(response => {
-            console.log(response, '<<<<<<<<<<<<<<<<<')
             return response
         })
  }
+
+// username='chuck' displayName='chuckster' email='chuck@gmail.com' password='123456'

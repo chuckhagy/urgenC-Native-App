@@ -26,6 +26,9 @@ export default class StatsPageFormComponent extends React.Component {
 
     render() {
         let allItems = this.props.props.items;
+        let percentage = (allItems.filter(item => item.status === 'success').length /
+            allItems.filter(item => item.status !== 'current').length *
+            100).toFixed(0);
         return (
             <View>
                 <Card style={style.bg}>
@@ -47,10 +50,7 @@ export default class StatsPageFormComponent extends React.Component {
                         </View>
                         <View>
                             <Text style={style.innerTextBig}>
-                                {(allItems.filter(item => item.status === 'success')
-                                        .length /
-                                    allItems.filter(item => item.status !== 'current').length *
-                                    100).toFixed(0)}%
+                                {percentage > 0 ? percentage : '0'}%
                             </Text>
                         </View>
                     </View>

@@ -24,8 +24,9 @@ import {
 
 export default class ListPageComponent extends Component {
     componentDidMount() {
-        this.refreshList = setInterval(() => this.refreshIt(), 10000);
+        this.refreshList = setInterval(() => this.refreshIt(), 2000);
     }
+
 
     componentWillUnmount() {
         clearInterval(this.refreshList);
@@ -37,7 +38,7 @@ export default class ListPageComponent extends Component {
 
     handleSettings = () => {
         this.props.logout();
-        Actions.jump("login");
+        Actions.pop();
     }
 
 

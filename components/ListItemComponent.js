@@ -110,6 +110,7 @@ export default class ListItemComponent extends React.Component {
                     info={this.props.items}
                     style={styles.bold}
                     updateThisItem={this.props.props.updateThisItem}
+                    expiration={this.props.expiration}
                   />
                 </View>
               </View>
