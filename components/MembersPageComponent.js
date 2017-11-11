@@ -70,7 +70,7 @@ export default class MembersPageComponent extends React.Component {
                         <Text style={style.subHeading}>Add New Member:</Text>
                         <Form>
                             <Item stackedLabel>
-                                <Label>Enter username sbelow to add new member</Label>
+                                <Label>Enter username below to add new member</Label>
                                 <Input
                                     name="newMemberName"
                                     onChangeText={newMemberName => this.setState({newMemberName: newMemberName.toLowerCase()})}
