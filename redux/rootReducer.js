@@ -35,11 +35,11 @@ export default function rootReducer(currentState = {items: []}, action) {
             };
 
         case "CREATE_ITEM":
-            const moreItems = currentState.items.slice(0);
-            moreItems.unshift(action.newItem);
+            // let moreItems = currentState.items.slice(0);
+            let moreItems = [...currentState.items.slice(0), action.newItem]
             return {
                 ...currentState,
-                items: moreItems
+                items: [...moreItems]
             };
 
         case "DELETE_ITEM":
@@ -70,7 +70,7 @@ export default function rootReducer(currentState = {items: []}, action) {
                     items: refreshedItems
                 }
             }
-            break;
+            return {...currentState};
 
         case "USER_LOGIN":
             return {
